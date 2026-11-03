@@ -1,0 +1,12 @@
+﻿================================================================================
+SKILL: /clean
+================================================================================
+¿QUÉ HACE?
+Alias en inglés de /limpiar. Elimina archivos temporales y cachés invisibles del proyecto.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. Eliminación de carpetas de caché (__pycache__) y archivos .tmp / .log
+
+EJEMPLOS DE USO:
+- /clean
+================================================================================

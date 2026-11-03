@@ -1,0 +1,16 @@
+﻿================================================================================
+SKILL: /bajar
+================================================================================
+¿QUÉ HACE?
+Descarga e integra en tu computadora los últimos cambios que existan en GitHub
+(útil si trabajas desde varias máquinas o con colaboradores).
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git branch --show-current
+2. git pull origin <nombre-de-rama>
+   (Descarga y fusiona las novedades remotas en tu copia local)
+
+EJEMPLOS DE USO:
+- /bajar
+- bajar cambios
+================================================================================

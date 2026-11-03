@@ -1,0 +1,22 @@
+﻿================================================================================
+SKILL: /iniciar
+================================================================================
+¿QUÉ HACE?
+Inicializa el control de versiones local de Git en el proyecto actual desde cero,
+asegurando que ningún archivo quede sin control de versiones.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git init -b main
+   (Inicializa el repositorio en la rama principal 'main')
+2. Crea automáticamente el archivo .gitignore con exclusiones estándar
+   (node_modules, venv, .env, __pycache__, temporales, etc.)
+3. git add .
+   (Agrega todos los archivos iniciales al área de preparación)
+4. git commit -m "feat: commit inicial del proyecto"
+   (Crea el primer commit de arranque)
+
+EJEMPLOS DE USO:
+- /iniciar
+- iniciar git
+- crear repositorio
+================================================================================

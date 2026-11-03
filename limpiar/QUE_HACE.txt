@@ -1,0 +1,17 @@
+﻿================================================================================
+SKILL: /limpiar
+================================================================================
+¿QUÉ HACE?
+Elimina archivos temporales, residuos y cachés invisibles (__pycache__,
+archivos .tmp, logs temporales, .DS_Store) para mantener tu repositorio limpio y ligero.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. Remove-Item / git clean enfocado en:
+   - __pycache__ y *.pyc
+   - *.tmp, *.log
+   - .DS_Store, Thumbs.db
+
+EJEMPLOS DE USO:
+- /limpiar
+- limpiar temporales
+================================================================================

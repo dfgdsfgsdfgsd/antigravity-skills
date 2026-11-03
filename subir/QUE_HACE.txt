@@ -1,0 +1,17 @@
+﻿================================================================================
+SKILL: /subir
+================================================================================
+¿QUÉ HACE?
+Envía los commits que tienes guardados en tu computadora local al repositorio
+remoto en GitHub.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git branch --show-current
+   (Detecta en qué rama estás parado)
+2. git push origin <nombre-de-rama>
+   (Sube los commits locales a la nube en GitHub)
+
+EJEMPLOS DE USO:
+- /subir
+- subir cambios
+================================================================================

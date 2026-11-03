@@ -1,0 +1,17 @@
+﻿================================================================================
+SKILL: /rama
+================================================================================
+¿QUÉ HACE?
+Crea una nueva rama de Git para trabajar en una función o experimento nuevo
+sin arriesgar el código principal, y cambia inmediatamente a ella.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git checkout -b <nombre-de-rama>
+   o git switch -c <nombre-de-rama>
+   (Crea y se mueve a la nueva rama)
+
+EJEMPLOS DE USO:
+- /rama nueva-interfaz
+- /rama feature/login
+- /rama experimento-animacion
+================================================================================

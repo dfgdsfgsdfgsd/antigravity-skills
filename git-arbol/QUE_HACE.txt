@@ -1,0 +1,18 @@
+﻿================================================================================
+SKILL: /git-arbol
+================================================================================
+¿QUÉ HACE?
+Genera un diagrama gráfico del historial de Git (commits, ramas, fusiones),
+lo guarda en el archivo 'ARBOL_GIT.txt' dentro de tu proyecto y configura
+hooks para que se autoactualice con cada commit.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git log --graph --oneline --all --decorate
+   (Dibuja el árbol visual de Git)
+2. Redirección al archivo ARBOL_GIT.txt
+3. Instalación de hooks en .git/hooks/ (post-commit, post-checkout, post-merge)
+
+EJEMPLOS DE USO:
+- /git-arbol
+- mostrar arbol git
+================================================================================

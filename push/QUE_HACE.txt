@@ -1,0 +1,13 @@
+﻿================================================================================
+SKILL: /push
+================================================================================
+¿QUÉ HACE?
+Alias en inglés de /subir. Sube las confirmaciones locales a GitHub.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git branch --show-current
+2. git push origin <nombre-de-rama>
+
+EJEMPLOS DE USO:
+- /push
+================================================================================

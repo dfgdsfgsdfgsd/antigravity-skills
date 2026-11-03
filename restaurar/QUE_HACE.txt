@@ -1,0 +1,19 @@
+﻿================================================================================
+SKILL: /restaurar
+================================================================================
+¿QUÉ HACE?
+Te permite viajar en el tiempo y regresar el proyecto al instante a cualquier
+versión, hash, tag o commit anterior específico.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git log --oneline -n 10
+   (Muestra las versiones previas para elegir)
+2. git checkout <hash-o-tag>
+   o git reset --hard <hash-o-tag>
+   (Restaura el proyecto al estado de ese commit exacto)
+
+EJEMPLOS DE USO:
+- /restaurar
+- /restaurar a3f1c2
+- restaurar a la version de ayer
+================================================================================

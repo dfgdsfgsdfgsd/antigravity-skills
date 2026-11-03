@@ -1,0 +1,16 @@
+﻿================================================================================
+SKILL: /arbol
+================================================================================
+¿QUÉ HACE?
+Genera un mapa de estructura de archivos y carpetas del proyecto en forma de
+árbol limpio, ignorando carpetas pesadas como node_modules, .git, venv y dist,
+y lo guarda en 'ESTRUCTURA_PROYECTO.txt'.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. Exploración recursiva de directorios con filtros inteligentes.
+2. Escritura del archivo ESTRUCTURA_PROYECTO.txt en la raíz.
+
+EJEMPLOS DE USO:
+- /arbol
+- arbol de carpetas
+================================================================================

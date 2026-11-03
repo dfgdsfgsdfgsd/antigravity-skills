@@ -1,0 +1,14 @@
+﻿================================================================================
+SKILL: /volver
+================================================================================
+¿QUÉ HACE?
+Sinónimo de /restaurar. Vuelve a un commit, versión o estado previo guardado en Git.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git log --oneline -n 10
+2. git checkout <hash-o-tag> / git reset --hard <hash-o-tag>
+
+EJEMPLOS DE USO:
+- /volver
+- /volver al commit anterior
+================================================================================

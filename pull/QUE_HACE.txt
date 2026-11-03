@@ -1,0 +1,13 @@
+﻿================================================================================
+SKILL: /pull
+================================================================================
+¿QUÉ HACE?
+Alias en inglés de /bajar. Trae los cambios remotos de GitHub a tu máquina local.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git branch --show-current
+2. git pull origin <nombre-de-rama>
+
+EJEMPLOS DE USO:
+- /pull
+================================================================================

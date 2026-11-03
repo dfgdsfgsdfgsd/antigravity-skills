@@ -1,0 +1,20 @@
+﻿================================================================================
+SKILL: /guardar
+================================================================================
+¿QUÉ HACE?
+Guarda todos los cambios pendientes que hayas hecho en tus archivos dentro
+del repositorio local de Git.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git status -s
+   (Comprueba qué archivos se modificaron, agregaron o borraron)
+2. git add .
+   (Prepara todos los cambios del directorio)
+3. git commit -m "<mensaje descriptivo>"
+   (Crea el commit con el mensaje que le indiques o generado inteligentemente)
+
+EJEMPLOS DE USO:
+- /guardar
+- /guardar agregué barra de navegación
+- /guardar corregido bug en el reproductor
+================================================================================

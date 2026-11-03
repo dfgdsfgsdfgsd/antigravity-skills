@@ -1,0 +1,17 @@
+﻿================================================================================
+SKILL: anti-regresion
+================================================================================
+¿QUÉ HACE?
+Protocolo de ingeniería y seguridad para evitar regresiones (romper cosas que ya
+funcionaban), bucles infinitos de eventos y pérdida de sincronización multimedia
+durante refactorizaciones o agregado de nuevas funciones.
+
+PAUTAS QUE APLICA EN SEGUNDO PLANO:
+1. Verificación de invariantes antes de tocar código funcional.
+2. Comprobación de listeners y ciclos reactivos (re-renders infinitos).
+3. Respaldo o commit preventivo antes de refactorizaciones grandes.
+4. Pruebas de funcionamiento para verificar que lo anterior siga intacto.
+
+EJEMPLOS DE USO:
+- Se activa automáticamente o mediante consulta al refactorizar componentes críticos.
+================================================================================

@@ -1,0 +1,19 @@
+﻿================================================================================
+SKILL: /deshacer
+================================================================================
+¿QUÉ HACE?
+Descarta cambios recientes que no te gustaron o que rompieron algo, restaurando
+el proyecto a un estado limpio o al commit anterior.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git restore .
+   (Descarta modificaciones no confirmadas en archivos existentes)
+2. git clean -fd
+   (Elimina archivos nuevos sin seguimiento que no formaban parte del commit)
+3. git reset --hard HEAD
+   (Fuerza el regreso exacto al último commit guardado)
+
+EJEMPLOS DE USO:
+- /deshacer
+- deshacer ultimos cambios
+================================================================================

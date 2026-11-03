@@ -1,0 +1,15 @@
+﻿================================================================================
+SKILL: /save
+================================================================================
+¿QUÉ HACE?
+Alias en inglés de /guardar. Registra y confirma todos los cambios locales en Git.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. git status -s
+2. git add .
+3. git commit -m "<mensaje>"
+
+EJEMPLOS DE USO:
+- /save
+- /save update button styles
+================================================================================

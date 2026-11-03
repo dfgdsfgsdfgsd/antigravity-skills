@@ -1,0 +1,13 @@
+﻿================================================================================
+SKILL: /tree
+================================================================================
+¿QUÉ HACE?
+Alias en inglés de /arbol. Genera el mapa de carpetas limpio en ESTRUCTURA_PROYECTO.txt.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. Mapeo recursivo filtrado (sin node_modules ni .git)
+2. Guardado en ESTRUCTURA_PROYECTO.txt
+
+EJEMPLOS DE USO:
+- /tree
+================================================================================
