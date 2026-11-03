@@ -9,10 +9,7 @@ Alias de `/backup-skills`.
 
 Sigue exactamente las instrucciones de `backup-skills`:
 1. `cd "C:\Users\Daniel\.gemini\config\skills"`
-2. Descarga cambios remotos: `git pull --rebase origin main`
-3. Comprueba cambios locales: `git status --porcelain`
-4. Si hay cambios locales, confirma y sube:
-   `git add .`
-   `git commit -m "chore(skills): sincronizar skills ($((Get-Date).ToString('yyyy-MM-dd HH:mm:ss')))"`
-   `git push origin main`
-5. Informa del estado y enlace: https://github.com/dfgdsfgsdfgsd/antigravity-skills
+2. Prepara y confirma cambios locales (`git add .`, `git commit`).
+3. Descarga novedades remotas (`git pull --rebase origin main`).
+4. Sube cambios a GitHub (`git push origin main`).
+5. Repositorio: https://github.com/dfgdsfgsdfgsd/antigravity-skills

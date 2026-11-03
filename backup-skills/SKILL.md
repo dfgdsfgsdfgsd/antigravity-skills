@@ -7,27 +7,24 @@ description: Sincroniza bidireccionalmente todas las skills globales de Antigrav
 
 Esta skill se activa cuando el usuario escribe `/backup-skills`, `/sync-skills`, `sincronizar skills`, `backup skills`, `respaldar skills` o pide sincronizar sus skills con GitHub.
 
-## Instrucciones de ejecución:
+## Instrucciones de ejecución segura en 4 pasos:
 
 1. **Ir a la carpeta global de skills**:
    `cd "C:\Users\Daniel\.gemini\config\skills"`
 
-2. **Paso 1: Descargar novedades remotas primero (GitHub -> PC local)**:
-   - Ejecuta `git pull --rebase origin main` para traer cualquier skill creada o modificada en otra computadora o desde la web de GitHub.
-   - Si hubo archivos descargados o actualizados, indícaselo brevemente al usuario.
+2. **Paso 1: Guardar cambios locales primero (evita bloqueos de git pull)**:
+   - Ejecuta `git add .`
+   - Comprueba si hay cambios con `git status --porcelain`.
+   - Si hay cambios, crea el commit local:
+     `git commit -m "chore(skills): sincronizar skills ($((Get-Date).ToString('yyyy-MM-dd HH:mm:ss')))"`
 
-3. **Paso 2: Comprobar cambios locales pendientes (PC local -> GitHub)**:
-   - Ejecuta `git status --porcelain` para verificar si hay skills nuevas, modificadas o eliminadas localmente.
+3. **Paso 2: Descargar novedades remotas de GitHub**:
+   - Ejecuta `git pull --rebase origin main`
+   - Esto descarga e integra cualquier cambio o skill creada en otra máquina o en GitHub sin perder lo que tengas local.
 
-4. **Paso 3: Subir cambios locales si existen**:
-   - Si hay cambios:
-     - Añadir todos los archivos: `git add .`
-     - Crear un commit con fecha y hora actual:
-       `git commit -m "chore(skills): sincronizar skills ($((Get-Date).ToString('yyyy-MM-dd HH:mm:ss')))"`
-     - Subir a GitHub:
-       `git push origin main`
-   - Si no había cambios locales ni remotos:
-     - Informar al usuario que sus skills ya están 100% sincronizadas y al día en ambas direcciones.
+4. **Paso 3: Subir cambios locales a GitHub**:
+   - Ejecuta `git push origin main`
+   - Si no hubo cambios ni locales ni remotos, indícale al usuario que todo está 100% al día en ambas direcciones.
 
-5. **Mostrar resumen con el enlace al repositorio**:
+5. **Mostrar confirmación con el enlace**:
    - Repositorio: https://github.com/dfgdsfgsdfgsd/antigravity-skills
