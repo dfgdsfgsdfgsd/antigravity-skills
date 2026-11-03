@@ -1,19 +1,29 @@
-﻿================================================================================
-SKILL: /backup-skills
+================================================================================
+SKILL: /backup-skills (o /sync-skills)
 ================================================================================
 ¿QUÉ HACE?
-Respalda y sincroniza automáticamente todas tus skills personalizadas de
-Antigravity en tu repositorio remoto de GitHub (antigravity-skills).
+Sincronización bidireccional completa (2 vías) de todas tus skills globales
+de Antigravity con tu repositorio de GitHub (antigravity-skills).
+
+1. DESCARGA primero cualquier novedad que hayas hecho desde otra computadora
+   o directamente desde la web de GitHub.
+2. SUBE después cualquier skill nueva o modificada en esta PC local hacia GitHub.
 
 COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
 1. cd "C:\Users\Daniel\.gemini\config\skills"
-2. git status --porcelain
-3. git add .
-4. git commit -m "chore(skills): actualizar respaldo de skills (<fecha-hora>)"
-5. git push origin main
+2. git pull --rebase origin main
+   (Descarga cambios de GitHub y los integra limpiamente sin conflictos)
+3. git status --porcelain
+   (Verifica si tienes cambios locales pendientes)
+4. git add .
+5. git commit -m "chore(skills): sincronizar skills (<fecha-hora>)"
+6. git push origin main
+   (Sube tus cambios locales a GitHub)
 
 EJEMPLOS DE USO:
 - /backup-skills
+- /sync-skills
+- sincronizar skills
 - respaldar skills
-- guardar skills en github
+- bajar mis skills de github
 ================================================================================

@@ -1,0 +1,22 @@
+================================================================================
+SKILL: /sync-skills
+================================================================================
+¿QUÉ HACE?
+Alias de /backup-skills. Sincronización bidireccional (2 vías) entre tu PC local
+y tu repositorio en GitHub (antigravity-skills).
+
+1. Descarga primero lo nuevo de GitHub (git pull --rebase origin main).
+2. Sube después tus skills locales nuevas o modificadas (git add, git commit, git push).
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. cd "C:\Users\Daniel\.gemini\config\skills"
+2. git pull --rebase origin main
+3. git status --porcelain
+4. git add .
+5. git commit -m "chore(skills): sincronizar skills (<fecha-hora>)"
+6. git push origin main
+
+EJEMPLOS DE USO:
+- /sync-skills
+- /backup-skills
+================================================================================
