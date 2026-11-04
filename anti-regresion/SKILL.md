@@ -1,11 +1,11 @@
 ---
 name: anti-regresion
-description: Guía de ingeniería y protocolo de seguridad para evitar regresiones, bucles infinitos de eventos y roturas en código funcional durante refactorizaciones o agregado de funciones, con checklist especializado para video y multimedia web.
+description: Guía de ingeniería y protocolo de seguridad para evitar regresiones, bucles infinitos de eventos y roturas en código funcional durante refactorizaciones o agregado de funciones, con checklist especializado para video, frontend DOM y Python.
 ---
 
 # Anti-Regresión & Refactor Seguro (Protocolo Universal)
 
-Esta skill establece las directivas obligatorias de seguridad que el asistente debe respetar antes de modificar código funcional en cualquier proyecto, evitando que optimizaciones o nuevas características rompan lo que ya anda bien.
+Esta skill establece las directivas obligatorias de seguridad que el asistente debe respetar antes de modificar código funcional en cualquier proyecto (JavaScript, Python, Node, Remotion), evitando que optimizaciones o nuevas características rompan lo que ya anda bien.
 
 ---
 
@@ -33,9 +33,49 @@ Esta skill establece las directivas obligatorias de seguridad que el asistente d
 
 ---
 
-## 🎬 PARTE 2: Checklist Crítico para Video, Audio y Multimedia Web
+## 🌐 PARTE 2: Blindaje de Frontend DOM & JavaScript Vanilla
 
-Cuando el proyecto involucre elementos HTML5 (`<video>`, `<audio>`), streaming o Web Audio API, se aplican estas reglas inviolables:
+Cuando se agreguen, muevan o eliminen botones o elementos visuales en HTML/JS:
+
+### 1. Regla de Oro del Elemento Eliminado (Protección contra `TypeError: Cannot read properties of null`)
+- **NUNCA** eliminar o mover un elemento del HTML sin auditar y blindar previamente **todas las referencias** a ese ID o clase en JavaScript.
+- Si un elemento puede no existir en el DOM:
+  - **PROHIBIDO:** `boton.disabled = false;` o `boton.addEventListener(...)` directo.
+  - **OBLIGATORIO:** Usar guardas estrictas: `if (boton) { boton.disabled = false; }` o encadenamiento opcional `boton?.addEventListener(...)`.
+  - Si un elemento arroja `TypeError`, **JavaScript detiene por completo la función** que lo contiene, rompiendo funciones críticas que estaban programadas más abajo (como la selección de pantallas o la reproducción).
+
+### 2. Máquina de Estados de Clic vs Selección (Colisión de Eventos)
+- Cuando un elemento hijo interactivo (ej. video, botón) esté dentro de un contenedor seleccionable (ej. tarjeta, teléfono):
+  - **Distinguir siempre:** ¿El usuario hizo clic para **seleccionar/activar** el contenedor, o para **interactuar** con el hijo?
+  - Si el contenedor estaba inactivo: el primer clic debe **activarlo** (sin disparar la acción toggle interna que lo cancelaría).
+  - Si el contenedor ya estaba activo: el clic ejecuta la **acción interactiva** (ej. pausar/reproducir).
+
+---
+
+## 🐍 PARTE 3: Blindaje para Python, FastAPI y Pipelines de Backend
+
+Cuando se modifique código backend en Python o pipelines de procesamiento:
+
+### 1. Retrocompatibilidad Estricta de Payloads y APIs
+- Al recibir diccionarios o JSON desde clientes web (`data = await request.json()`):
+  - **NUNCA** asumir que una clave existe: usar siempre `data.get("clave", valor_por_defecto)`.
+  - Si se añade un parámetro nuevo (ej. `pauseExport`), debe tener siempre fallback para clientes o pantallas antiguas que no lo envíen.
+
+### 2. Ejecutables Externos y Dependencias de Sistema (FFmpeg, ImageMagick, etc.)
+- **PROHIBIDO** asumir que un ejecutable como `ffmpeg` está en el `PATH` global de Windows.
+- Usar siempre wrappers autocontenidos (ej. `imageio_ffmpeg.get_ffmpeg_exe()`) con fallback seguro.
+- Si el proceso falla, capturar `stderr.decode()` para reportar el error exacto y no colgar el servidor.
+
+### 3. Validación Preventiva de Sintaxis
+- Antes de dar por terminado cualquier cambio en Python, ejecutar siempre:
+  `python -m py_compile archivo.py`
+  para garantizar que no haya errores de indentación, sintaxis o caracteres mal codificados.
+
+---
+
+## 🎬 PARTE 4: Checklist Crítico para Video, Audio y Multimedia Web
+
+Cuando el proyecto involucre elementos HTML5 (`<video>`, `<audio>`), streaming o Web Audio API:
 
 ### 1. Manejo del elemento `<video>`
 - **Jamás alterar `currentTime` en listeners de carga:**
