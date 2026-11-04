@@ -82,6 +82,16 @@ Cuando el proyecto involucre elementos HTML5 (`<video>`, `<audio>`), streaming o
   - NUNCA modificar `video.currentTime` dentro de `canplay`, `loadeddata` o `seeked` sin `{ once: true }`. Hacerlo reinicia el decodificador de video indefinidamente.
 - **Cumplimiento estricto de la política de Autoplay:**
   - Asignar siempre `video.muted = true` **antes** de llamar a `video.play()`. Si se llama a `.play()` con audio sin interacción previa, el navegador rechaza la promesa y congela el video silenciosamente.
+- **Prohibición de Autoplay al cambiar de pantalla o contenedor (Exclusión Mutua de Video):**
+  - En interfaces con múltiples pantallas, diapositivas, tarjetas o teléfonos simultáneos (ej. editores de reels, carruseles):
+    - **PROHIBIDO:** Disparar `.play()` automáticamente al hacer clic para seleccionar o cambiar de pantalla/lienzo. La selección de un contenedor debe dejar el video en **pausa limpia** en su fotograma correspondiente, esperando a que el usuario pulse explícitamente el botón Reproducir.
+    - **Garantía de Pausa Global en el DOM:** NUNCA confiar únicamente en iterar arrays de estado en memoria para pausar videos. Se debe ejecutar siempre una pausa directa sobre todos los elementos del DOM: `document.querySelectorAll("video").forEach(v => { v.pause(); v.muted = true; })`.
+    - **Exclusión Mutua Estricta:** Antes de iniciar la reproducción de cualquier video (`togglePlayPause`), pausar forzosamente todos los demás videos del documento para garantizar que jamás existan dos o más videos corriendo en simultáneo en segundo plano.
+- **Sincronización Suave de Scrubber y Línea de Tiempo a 60 FPS:**
+  - El evento nativo `timeupdate` de HTML5 solo dispara unas 3 a 4 veces por segundo (~250 ms), causando saltos y tirones visibles en el cursor de la barra de reproducción.
+  - Usar un bucle de animación con `requestAnimationFrame` mientras el video esté en reproducción (`!video.paused`) para mover el cursor y el contador a 60/120 FPS fluidos.
+  - Cancelar inmediatamente el bucle (`cancelAnimationFrame`) al pausar, finalizar o cambiar de pantalla para mantener el consumo de CPU en 0% en reposo.
+  - En `<input type="range">`, utilizar `step="any"` para habilitar desplazamiento continuo sin cuantizaciones rígidas.
 - **Respetar la fluidez nativa del decodificador:**
   - El decodificador de video corre por hardware a 25/30/60 FPS nativos.
   - NUNCA usar un `setInterval` de JavaScript para forzar `video.currentTime = ...` en cada cuadro durante la reproducción normal. Eso vacía el búfer de fotogramas y genera micro-congelamientos ("tirones").
