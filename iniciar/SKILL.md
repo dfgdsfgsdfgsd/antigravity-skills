@@ -1,6 +1,6 @@
 ---
 name: iniciar
-description: Inicializa un repositorio Git local automáticamente (git init, .gitignore inteligente, branch main y primer commit).
+description: Inicializa un repositorio Git local automáticamente (git init, .gitignore inteligente, branch main, primer commit y ARBOL_GIT.txt auto-actualizable).
 ---
 
 # /iniciar - Inicializar Git en un proyecto nuevo
@@ -52,9 +52,14 @@ Esta skill se activa cuando el usuario escribe `/iniciar`, `/init`, `iniciar git
    - Ejecuta: `git add .`
    - Ejecuta: `git commit -m "feat: commit inicial del proyecto"`
 
-5. **Confirmación clara**:
+5. **Configurar `ARBOL_GIT.txt` con auto-actualización**:
+   - Configura `scripts/update_arbol.js` y los hooks `.git/hooks/post-commit`, `post-checkout` y `post-merge`.
+   - Genera el archivo `ARBOL_GIT.txt` inicial con:
+     `git log --graph --pretty=format:"%h %ad | %s%d [%an]" --date=format:"%Y-%m-%d %H:%M:%S" --all`
+
+6. **Confirmación clara**:
    - Muestra un resumen confirmando:
      - Repositorio inicializado en la rama `main`.
      - Archivo `.gitignore` creado.
      - Primer commit realizado con éxito.
-     - Recordatorio de que en adelante puede usar `/guardar` para registrar sus avances.
+     - `ARBOL_GIT.txt` generado y enlazado con auto-actualización permanente.

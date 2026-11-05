@@ -1,17 +1,65 @@
 ---
 name: init
-description: Inicializa un repositorio Git local automáticamente (git init, .gitignore inteligente, branch main y primer commit).
+description: Inicializa un repositorio Git local automáticamente (git init, .gitignore inteligente, branch main, primer commit y ARBOL_GIT.txt auto-actualizable).
 ---
 
-# /init - Inicializar Git en un proyecto nuevo
+# /init - Inicializar Git en un proyecto nuevo (Alias de /iniciar)
 
-Alias en inglés para `/iniciar`.
+Esta skill se activa cuando el usuario escribe `/iniciar`, `/init`, `iniciar git`, `crear git` o pide inicializar el control de versiones en el proyecto actual.
 
 ## Instrucciones de ejecución
 
-Sigue exactamente las instrucciones de la skill `/iniciar`:
-1. Verifica si ya existe `.git`.
-2. Ejecuta `git init -b main`.
-3. Crea un `.gitignore` completo si no existe.
-4. Ejecuta `git add .` y `git commit -m "feat: commit inicial del proyecto"`.
-5. Confirma al usuario el estado inicial.
+1. **Verificar si ya existe Git**:
+   - Comprueba si existe la carpeta `.git` en el directorio de trabajo actual (`Test-Path .git` o `git status`).
+   - Si ya es un repositorio Git, informa al usuario indicándole la rama activa (`git branch --show-current`) y el estado actual, sin reinicializar.
+
+2. **Inicializar Git**:
+   - Ejecuta: `git init -b main`
+   - Si la versión de Git no toma `-b main`, ejecuta: `git init` y luego `git branch -M main`.
+
+3. **Crear `.gitignore` automático (si no existe)**:
+   - Si no existe un `.gitignore` en la raíz, genera uno adecuado que incluya exclusiones estándar:
+     ```gitignore
+     # Dependencias
+     node_modules/
+     __pycache__/
+     *.py[cod]
+     *$py.class
+     .venv/
+     venv/
+     env/
+
+     # Variables de entorno y secretos
+     .env
+     .env.local
+     .env.*.local
+
+     # Sistema operativo y editores
+     .DS_Store
+     Thumbs.db
+     ehthumbs.db
+     Desktop.ini
+
+     # Builds y temporales
+     dist/
+     build/
+     out/
+     *.tmp
+     *.log
+     ```
+
+4. **Crear el primer commit**:
+   - Ejecuta: `git add .`
+   - Ejecuta: `git commit -m "feat: commit inicial del proyecto"`
+
+5. **Configurar `ARBOL_GIT.txt` con auto-actualización**:
+   - Configura `scripts/update_arbol.js` y los hooks `.git/hooks/post-commit`, `post-checkout` y `post-merge`.
+   - Genera el archivo `ARBOL_GIT.txt` inicial con:
+     `git log --graph --pretty=format:"%h %ad | %s%d [%an]" --date=format:"%Y-%m-%d %H:%M:%S" --all`
+
+6. **Confirmación clara**:
+   - Muestra un resumen confirmando:
+     - Repositorio inicializado en la rama `main`.
+     - Archivo `.gitignore` creado.
+     - Primer commit realizado con éxito.
+     - `ARBOL_GIT.txt` generado y enlazado con auto-actualización permanente.
