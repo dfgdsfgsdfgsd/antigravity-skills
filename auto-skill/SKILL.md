@@ -1,66 +1,71 @@
 ---
 name: auto-skill
-description: Analiza la conversación actual, extrae el flujo o truco técnico recién resuelto, crea automáticamente una nueva skill global funcional y la respalda en GitHub.
+description: Analiza la conversación actual, detecta el stack tecnológico (Python, Node, WebGL, FFmpeg, etc.), extrae el flujo resuelto, crea automáticamente una nueva skill global adaptativa y la respalda en GitHub.
 ---
 
-# /auto-skill - Creador Autónomo de Skills
+# /auto-skill - Creador Autónomo de Skills con Detección de Stack
 
 Esta meta-skill se activa cuando el usuario escribe `/auto-skill`, `/autoskill`, `/aprender`, o pide *"convierte lo que hicimos en una skill"*, *"crea una skill de esto"*, etc.
 
-Su propósito es **automatizar la creación de skills** sin que el usuario tenga que redactar instrucciones técnicas ni estructurar carpetas manualmente.
+Su propósito es **automatizar la creación de skills inteligentes**, asegurando que cada skill conozca exactamente su **entorno de compatibilidad** (Python, Node.js, Frontend WebGL/DOM, FFmpeg, Git o Universal) y verifique los requisitos antes de ejecutarse.
 
 ---
 
 ## 🛠️ Procedimiento de Ejecución en 6 Pasos
 
-### Paso 1: Analizar la Conversación
-- Revisa los mensajes y pasos recientes de la conversación.
-- Identifica el núcleo de valor:
-  - ¿Qué problema se resolvió o qué funcionalidad se construyó?
-  - ¿Qué comandos exactos se ejecutaron (PowerShell, Git, Node, Python, FFmpeg)?
-  - ¿Qué errores o trampas surgieron y cómo se solucionaron?
-  - ¿Cuáles son los parámetros o variables que cambian según el proyecto?
+### Paso 1: Analizar la Conversación y Detectar el Stack
+1. **Identificar la Solución:** ¿Qué problema se resolvió o qué funcionalidad se construyó?
+2. **Detectar el Stack Tecnológico:**
+   - 🐍 **Python:** Si usa scripts `.py`, dependencias `pip`, librerías como OpenCV, MoviePy, FastAPI, etc.
+   - 🟢 **Node.js / JS / TS:** Si usa `package.json`, librerías npm, Remotion, Express, Electron, etc.
+   - 🌐 **Frontend / WebGL / DOM:** Si opera sobre `index.html`, `canvas`, fragment shaders, WebGL o CSS.
+   - 🎬 **Herramientas Multimedia:** Si depende de binarios externos (`ffmpeg`, `ffprobe`, aceleración por hardware).
+   - 🐙 **Git / Terminal / DevOps:** Agnóstica a lenguajes (aplica a cualquier proyecto).
+   - 🔄 **Híbrida / Multi-stack:** Si tiene una versión en Python y otra en Node.js (ej. script de procesamiento de datos).
 
 ### Paso 2: Definir el Nombre y los Comandos de Activación
-- Escoge un nombre **corto, claro y nemotécnico en español** (ej. `recortar-audio`, `optimizar-imagen`, `extraer-subtitulos`, `water-shader`).
-- Define los disparadores obvios (ej: `/recortar-audio`, `recorta audio`, etc.).
-- Si tiene un equivalente común en inglés o un alias corto, planifica crear también la carpeta alias.
+- Escoge un nombre **corto, claro y nemotécnico en español** (ej. `ondas-agua`, `cortar-audio`, `optimizar-video`).
+- Define los comandos de disparo (`/<nombre>`, alias si corresponde).
 
-### Paso 3: Redactar el `SKILL.md`
-Crea una especificación completa y robusta siguiendo el estándar de Antigravity:
+### Paso 3: Redactar el `SKILL.md` con Detección de Entorno
+Toda skill generada debe incluir en su estructura:
+
 1. **Frontmatter YAML:**
    ```yaml
    ---
    name: <nombre-skill>
-   description: <descripción concisa de 1 oración indicando qué hace y cuándo usarla>
+   description: <qué hace y para qué stack aplica>
    ---
    ```
-2. **Título y Cuándo se Activa:**
-   Explicar claramente qué comandos o frases disparan la skill.
-3. **Paso a Paso Infalible:**
-   - Instrucciones numeradas y directas.
-   - Comandos de terminal exactos con variables explicadas.
-   - Checklist de prevención de errores y anti-regresión (qué NO hacer para evitar romper el entorno).
-4. **Respuesta al Usuario:**
-   Formato esperado del informe o confirmación que debe dar la IA al completar la tarea.
+2. **Ficha de Compatibilidad y Requisitos:**
+   - **Stack compatible:** `Python | Node.js | Frontend WebGL | Universal`
+   - **Requisitos previos:** Binarios requeridos (ej. Python 3.9+, Node 18+, FFmpeg en PATH).
+3. **Paso 0 de Verificación (Guarda de Seguridad):**
+   - Antes de ejecutar comandos, la skill debe verificar si el proyecto actual cumple el entorno:
+     - *Si el proyecto no tiene Python/Node:* la skill debe avisar al usuario antes de fallar o ofrecer la alternativa correspondiente a su stack.
+4. **Instrucciones de Ejecución Paso a Paso:**
+   - Comandos exactos probados con explicaciones claras.
+   - Manejo de rutas relativas y compatibilidad con Windows PowerShell / POSIX.
+5. **Protocolo Anti-Regresión:**
+   - Qué trampas comunes evitar (CORS, memory leaks, bloqueo de CPU vs. GPU, TDZ, etc.).
 
 ### Paso 4: Guardar en la Carpeta Global de Skills
-- Ruta de destino: `C:\Users\Daniel\.gemini\config\skills\<nombre-skill>\SKILL.md`
-- Si corresponde crear un alias, crea también `C:\Users\Daniel\.gemini\config\skills\<alias>\SKILL.md`.
+- Carpeta principal: `C:\Users\Daniel\.gemini\config\skills\<nombre-skill>\SKILL.md`
+- Si corresponde alias, crear también `C:\Users\Daniel\.gemini\config\skills\<alias>\SKILL.md`.
 
 ### Paso 5: Respaldar y Sincronizar en GitHub
-Ejecuta la sincronización automática en el repositorio de skills:
+Ejecuta la sincronización en el repositorio universal:
 ```powershell
 cd "C:\Users\Daniel\.gemini\config\skills"
 git add .
-git commit -m "feat(skills): agregar skill /<nombre-skill>"
+git commit -m "feat(skills): agregar skill /<nombre-skill> [stack: <stack>]"
 git pull --rebase origin main
 git push origin main
 ```
 
-### Paso 6: Confirmación al Usuario
-Muestra una ficha clara con:
+### Paso 6: Presentar Ficha al Usuario
+Muestra al usuario:
 - 🏷️ **Comando:** `/<nombre-skill>`
-- 📝 **Propósito:** Qué tarea automatiza.
-- 📁 **Ubicación:** Enlace cliqueable al archivo `SKILL.md` generado.
-- 🚀 **Disponibilidad:** Confirmación de que ya está instalada globalmente y sincronizada en GitHub.
+- 💻 **Stack Detectado:** (ej. *Python + FFmpeg* o *Frontend WebGL*)
+- 🛡️ **Verificación de Entorno:** Cómo se comprueba si el proyecto es compatible.
+- 📁 **Ubicación:** Enlace cliqueable al archivo `SKILL.md`.
