@@ -200,7 +200,8 @@ function setupFloatingPanel(triggerBtnId, panelId) {
 
 ## 🚫 Protocolo Anti-Regresión
 
-1. **Nunca dejar la ventana dentro de ancestros con `overflow-x: hidden` o `overflow-y: auto`:** Recortará cualquier desborde horizontal. Siempre extraer a `document.body`.
-2. **Nunca olvidar `userSelect = 'none'` durante el arrastre:** Si no se previene, el texto del fondo se seleccionará y romperá la fluidez del movimiento del mouse.
-3. **Respetar Shadow DOM en componentes web:** Si la ventana contiene web components (como `<emoji-picker>`), el manejador de clics exteriores debe comprobar `!e.target.closest('emoji-picker')` para evitar cierres accidentales al hacer clic dentro del shadow root.
-4. **Dimensiones fijas sin scroll horizontal:** Asegurar siempre que los elementos internos tengan suficiente `min-width` para evitar barras de desplazamiento horizontal internas.
+1. **Nunca cerrar la ventana al hacer clic en los campos de texto (`inputs` / `textareas`):** El detector de clics exteriores debe excluir explícitamente las cajas de texto asociadas (`!e.target.closest('textarea')`) para que el usuario pueda colocar el cursor o seleccionar texto sin que la paleta se cierre.
+2. **Nunca dejar la ventana dentro de ancestros con `overflow-x: hidden` o `overflow-y: auto`:** Recortará cualquier desborde horizontal. Siempre extraer a `document.body`.
+3. **Nunca olvidar `userSelect = 'none'` durante el arrastre:** Si no se previene, el texto del fondo se seleccionará y romperá la fluidez del movimiento del mouse.
+4. **Respetar Shadow DOM en componentes web:** Si la ventana contiene web components (como `<emoji-picker>`), el manejador de clics exteriores debe comprobar `!e.target.closest('emoji-picker')` para evitar cierres accidentales al hacer clic dentro del shadow root.
+5. **Dimensiones fijas sin scroll horizontal:** Asegurar siempre que los elementos internos tengan suficiente `min-width` para evitar barras de desplazamiento horizontal internas.
