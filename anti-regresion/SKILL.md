@@ -103,10 +103,15 @@ Cuando el proyecto involucre elementos HTML5 (`<video>`, `<audio>`), streaming o
   - Los archivos de audio que se reproduzcan en bucle continuo o reciban múltiples peticiones por rangos (`Range: bytes=...`) deben servirse desde un **búfer en memoria RAM** (`fs.readFileSync`), no abriendo `fs.createReadStream` en cada petición.
   - Esto reduce el consumo de CPU de Node a 0% y elimina los cuelgues en Windows.
 
-### 3. Rendimiento CSS sobre Reproductores de Video
+### 3. Rendimiento CSS y Efectos de Fondo sobre Reproductores de Video
 - **Evitar capas de composición pesadas:**
   - NUNCA superponer animaciones infinitas (`animate-ping`, `animate-pulse`) combinadas con filtros `backdrop-filter: blur(...)` encima de un video.
   - Esto fuerza al navegador a recalcular shaders de desenfoque gaussiano 60 veces por segundo, disparando el uso de CPU a más del 50% incluso en reposo.
+- **Efectos de distorsión líquida o refracción (Navegador vs FFmpeg):**
+  - **En el Navegador:** NUNCA usar filtros SVG dinámicos (`<feTurbulence>` con `<animate>`) junto a un reproductor de video: Chrome los procesa por CPU y congela la decodificación por hardware DirectComposition. Usar Shaders WebGL directos en la GPU, asegurando siempre `gl.viewport(0, 0, width, height)` explícito y jamás asignar `crossOrigin = "anonymous"` a imágenes en Base64 (`data:`).
+  - **En FFmpeg:** Usar desplazamiento procedural Perlin (`displace=edge=smear`) y duplicar con `split` los mapas de ruido si se aplican pases de iluminación suave (`blend=softlight`) para crestas 3D.
+- **Protección contra reseteo de `video.src` tras subidas asíncronas:**
+  - Cuando un archivo de video se cargue localmente con `URL.createObjectURL(file)` y se suba al backend en segundo plano para persistencia, **NUNCA reasignar `video.src`** al recibir la URL del servidor si el video ya está reproduciéndose con éxito. Reasignar `video.src` reinicia forzosamente el buffer y la posición a 0s.
 
 ---
 
