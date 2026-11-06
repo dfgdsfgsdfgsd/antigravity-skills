@@ -50,8 +50,11 @@ Toda skill generada debe incluir en su estructura:
    - Qué trampas comunes evitar (CORS, memory leaks, bloqueo de CPU vs. GPU, TDZ, etc.).
 
 ### Paso 4: Guardar en la Carpeta Global de Skills
-- Carpeta principal: `C:\Users\Daniel\.gemini\config\skills\<nombre-skill>\SKILL.md`
-- Si corresponde alias, crear también `C:\Users\Daniel\.gemini\config\skills\<alias>\SKILL.md`.
+- Carpeta principal: `C:\Users\Daniel\.gemini\config\skills\<nombre-skill>\`
+- Generar obligatoriamente dos archivos:
+  1. `SKILL.md`: La especificación técnica completa para Antigravity.
+  2. `QUE_HACE.txt`: Ficha resumen en texto plano con el banner, ¿QUÉ HACE?, comandos en segundo plano y ejemplos de uso.
+- Si corresponde alias, crear también la carpeta del alias con su `SKILL.md` y `QUE_HACE.txt`.
 
 ### Paso 5: Respaldar y Sincronizar en GitHub
 Ejecuta la sincronización en el repositorio universal:

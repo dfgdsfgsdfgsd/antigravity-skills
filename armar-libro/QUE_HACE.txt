@@ -1,0 +1,19 @@
+================================================================================
+SKILL: /armar-libro
+================================================================================
+¿QUÉ HACE?
+Alias idéntico de /libro. Captura el aprendizaje técnico o flujo resuelto en
+el chat y lo redacta simultáneamente en formato Clase Charlada (Profesor y
+alumnos) y Manual de Ingeniería O'Reilly, actualizando el historial editorial.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. Extracción temática del conocimiento conversacional.
+2. Redacción paralela (Versión Charlada + Versión Libro Técnico).
+3. Actualización de archivos Markdown maestros e incremento de versión en
+   HISTORIAL_VERSIONES_LIBRO.txt.
+
+EJEMPLOS DE USO:
+- /armar-libro
+- /libro
+- armar capitulo con esto
+================================================================================

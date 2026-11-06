@@ -1,0 +1,19 @@
+================================================================================
+SKILL: /autoskill
+================================================================================
+¿QUÉ HACE?
+Alias idéntico de /auto-skill. Analiza el chat reciente, extrae la solución
+técnica con su stack correspondiente (Python, Node, WebGL, etc.), crea
+automáticamente la nueva skill con su SKILL.md y QUE_HACE.txt, y la sube
+a GitHub.
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. Análisis de contexto y detección de stack.
+2. Escritura de SKILL.md y QUE_HACE.txt en la carpeta global.
+3. Sincronización git push con el repositorio remoto antigravity-skills.
+
+EJEMPLOS DE USO:
+- /autoskill
+- /auto-skill
+- aprender flujo
+================================================================================

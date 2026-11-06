@@ -1,0 +1,24 @@
+================================================================================
+SKILL: /auto-skill
+================================================================================
+¿QUÉ HACE?
+Crea de manera autónoma una nueva skill global en Antigravity a partir del
+flujo de trabajo, comandos o problemas técnicos recién resueltos en el chat:
+1. Detecta el stack tecnológico (Python, Node.js, Frontend WebGL, FFmpeg, Git).
+2. Genera la especificación completa en SKILL.md con guardas anti-regresión.
+3. Genera el archivo resumen explicativo QUE_HACE.txt.
+4. Sincroniza y respalda automáticamente la nueva skill en GitHub
+   (repositorio antigravity-skills).
+
+COMANDOS QUE EJECUTA / REEMPLAZA EN SEGUNDO PLANO:
+1. Extracción de patrones de terminal y código de la conversación.
+2. Creación de carpeta y SKILL.md en %USERPROFILE%\.gemini\config\skills\
+3. Creación de QUE_HACE.txt.
+4. git add, commit, pull --rebase y push al repositorio de skills en GitHub.
+
+EJEMPLOS DE USO:
+- /auto-skill
+- /autoskill
+- convierte esto en una skill
+- crear skill de lo que hicimos
+================================================================================
