@@ -1,0 +1,38 @@
+================================================================================
+                    /anti-estela  (y alias /anti-ghosting)
+   Protocolo de Eliminación de Estelas Fantasma y Desgarros en Chromium
+================================================================================
+
+¿QUÉ HACE?
+Elimina de raíz las estelas fantasma (ghost trails), marcas persistentes y
+desgarros de repintado (screen tearing) que se producen al mover, arrastrar
+o animar elementos DOM (videos, imágenes, carteles de texto) dentro de
+contenedores escalados (CSS transform: scale).
+
+¿POR QUÉ SUCEDE?
+Bajo transform: scale(0.75), el motor gráfico Chromium (Skia) trunca decimales
+en el cálculo de rectángulos sucios de repintado (damage rects), omitiendo
+la fila exterior de píxeles y dejando fotocopias congeladas del marco anterior.
+Además, el uso de 'outline' exterior desborda la caja y mancha el fondo.
+
+SOLUCIÓN APLICADA:
+1. Aislamiento GPU en 1:1:
+   Añade transform: translateZ(0) y backface-visibility: hidden al contenedor,
+   a la pantalla interna y al elemento arrastrable.
+2. Borde interior acotado:
+   Sustituye 'outline' por 'border' interno con 'box-sizing: border-box'.
+3. Sincronización V-Sync con requestAnimationFrame:
+   Evita saturación de eventos del ratón sincronizando la posición con la
+   tasa de refresco nativa (60Hz/120Hz).
+4. Cache-Busting HTTP:
+   Configura cabeceras Cache-Control: no-cache y versionado en index.html
+   (?v=...) para que el navegador no ejecute CSS/JS antiguos en memoria.
+
+COMANDOS DE DISPARO:
+- /anti-estela
+- /anti-ghosting
+
+ARCHIVOS DEL PROTOCOLO:
+- C:\Users\Daniel\.gemini\config\skills\anti-estela\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\anti-estela\QUE_HACE.txt
+================================================================================
