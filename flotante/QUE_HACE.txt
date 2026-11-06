@@ -1,0 +1,16 @@
+====================================================================
+  SKILL: /flotante (Alias de /ventana-flotante)
+  MODALIDAD: Frontend DOM / HTML5 / CSS3 / Vanilla JS
+====================================================================
+
+¿QUÉ HACE?
+-----------
+Alias directo y rápido de /ventana-flotante.
+Implementa ventanas, paletas de herramientas e inspectores flotantes
+duales (arrastrables con el mouse y anclables al margen derecho) para
+interfaces web, resolviendo la superposición de lienzos y el recorte
+por desbordes (overflow).
+
+Ver especificación completa en:
+C:\Users\Daniel\.gemini\config\skills\ventana-flotante\SKILL.md
+====================================================================

@@ -1,0 +1,40 @@
+====================================================================
+  SKILL: /ventana-flotante (Alias: /flotante)
+  MODALIDAD: Frontend DOM / HTML5 / CSS3 / Vanilla JS
+====================================================================
+
+¿QUÉ HACE?
+-----------
+Implementa ventanas, paletas de herramientas e inspectores flotantes
+duales (arrastrables con el mouse y anclables a los márgenes) para
+interfaces web, resolviendo la superposición de lienzos y el recorte
+por desbordes (overflow) en contenedores estrechos.
+
+CARACTERÍSTICAS CLAVE:
+-----------------------
+1. Escape de Contenedores con Overflow:
+   Traslada el panel al <body> con position: fixed para evitar que
+   un sidebar con overflow-y: auto lo recorte.
+
+2. Posicionamiento Inteligente (Canvas-Aware):
+   Detecta automáticamente la pantalla de vista previa o lienzo y
+   se ubica a su derecha, evitando tapar el área de trabajo activa.
+
+3. Arrastre Fluido con el Mouse (Draggable):
+   Tirador superior para mover la ventana a cualquier lugar de la
+   pantalla, con límites que evitan que se salga de la ventana.
+
+4. Modo Dual de Anclaje (Docked Right):
+   Botón para fijar el panel al margen derecho como un inspector
+   lateral fijo (estilo Figma o Premiere), y botón para volver a
+   modo flotante.
+
+5. Persistencia Automática:
+   Guarda en localStorage la preferencia del modo (flotante/anclado)
+   y las coordenadas manuales elegidas por el usuario.
+
+COMANDOS DISPONIBLES:
+---------------------
+/ventana-flotante  -> Implementa o audita ventanas y paneles flotantes
+/flotante          -> Alias directo rápido
+====================================================================
