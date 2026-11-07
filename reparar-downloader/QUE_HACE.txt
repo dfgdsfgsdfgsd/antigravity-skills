@@ -1,0 +1,25 @@
+====================================================================
+  /reparar-downloader - Reparador de Descargadores Next.js con yt-dlp
+====================================================================
+
+¿QUÉ HACE?
+Diagnostica y soluciona fallos comunes en aplicaciones Next.js / Node.js
+que descargan video (TikTok, YouTube, Instagram, X) usando yt-dlp o
+youtube-dl-exec con gestores de paquetes modernos (pnpm) y Turbopack.
+
+PROBLEMAS QUE RESUELVE:
+1. Descargas trabadas indefinidamente en "Procesando..." debido a binarios
+   de yt-dlp.exe vacíos (0 bytes) por fallos en scripts postinstall.
+2. Error "Cannot find module '@next/env'" o dependencias no resueltas por
+   ejecución desacoplada del store de pnpm.
+3. Tiempos de compilación anormalmente lentos en Turbopack causados por
+   detección errónea de la raíz del proyecto.
+4. Generación y puesta a punto de scripts de inicio rápido .bat para Windows.
+
+STACK COMPATIBLE:
+- Node.js (18+), Next.js (App Router / Pages), pnpm, TypeScript, yt-dlp.
+
+COMANDOS:
+- /reparar-downloader
+- /fix-ytdlp (alias)
+====================================================================

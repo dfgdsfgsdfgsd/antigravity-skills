@@ -1,0 +1,12 @@
+====================================================================
+  /fix-ytdlp (Alias de /reparar-downloader)
+====================================================================
+
+¿QUÉ HACE?
+Alias directo de /reparar-downloader.
+Diagnostica y soluciona fallos en aplicaciones Next.js/Node.js que usan
+yt-dlp y youtube-dl-exec con pnpm y Turbopack.
+
+Ver detalles en:
+C:\Users\Daniel\.gemini\config\skills\reparar-downloader\QUE_HACE.txt
+====================================================================
