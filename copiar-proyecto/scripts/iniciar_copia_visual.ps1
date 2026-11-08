@@ -12,12 +12,7 @@ $batPath = "C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\scripts\ejecut
 $nombreO = Split-Path -Leaf $Origen
 $nombreD = Split-Path -Leaf $Destino
 
-$batContent = @"
-@echo off
-chcp 65001 >nul
-title 🚀 Copiando: $nombreO -> $nombreD - Progreso en Tiempo Real
-powershell.exe -ExecutionPolicy Bypass -NoProfile -File "C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\scripts\copiar_con_progreso.ps1" -Origen "$Origen" -Destino "$Destino" -Hilos $Hilos
-"@
+$batContent = "@echo off`r`ntitle Copiando: $nombreO -> $nombreD - Progreso en Tiempo Real`r`npowershell.exe -ExecutionPolicy Bypass -NoProfile -File `"C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\scripts\copiar_con_progreso.ps1`" -Origen `"$Origen`" -Destino `"$Destino`" -Hilos $Hilos"
 
-Set-Content -Path $batPath -Value $batContent -Encoding UTF8
+[System.IO.File]::WriteAllText($batPath, $batContent, [System.Text.Encoding]::ASCII)
 Start-Process "explorer.exe" -ArgumentList "`"$batPath`""
