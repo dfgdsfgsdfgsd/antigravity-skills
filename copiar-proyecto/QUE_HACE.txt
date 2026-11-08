@@ -1,0 +1,34 @@
+================================================================================
+                 /copiar-proyecto  (y alias /copiar, /progreso-copia)
+     Copia Segura con Barra de Progreso Visual y Telemetría en Tiempo Real
+================================================================================
+
+¿QUÉ HACE?
+Copia o migra proyectos enteros (incluyendo node_modules masivos y .git) mostrando
+una barra de progreso gráfica continua en tiempo real con:
+- Porcentaje completado (0% al 100%).
+- Archivos transferidos vs. total (ej. 150.000 / 200.000).
+- Velocidad en archivos por segundo.
+- Tiempo estimado restante (ETA).
+
+¿POR QUÉ SUCEDE LA INCERTIDUMBRE?
+Las herramientas estándar de consola (robocopy, copy) o la ruedita genérica de
+Antigravity (Background Tasks) no informan a la interfaz sobre el porcentaje
+real porque no leen el flujo de salida, dejando al usuario a oscuras.
+
+SOLUCIÓN APLICADA:
+1. Pre-cálculo instantáneo del total de elementos mediante simulación /L.
+2. Robocopy multi-hilo (/MT:16) con registro optimizado.
+3. Lector en tiempo real con FileShare.ReadWrite en memoria RAM (sin tocar el disco).
+4. Renderizado dinámico de barra [██████░░░░] con velocidad y ETA.
+
+COMANDOS DE DISPARO:
+- /copiar-proyecto
+- /copiar
+- /progreso-copia
+
+ARCHIVOS DEL PROTOCOLO:
+- C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\QUE_HACE.txt
+- C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\scripts\copiar_con_progreso.ps1
+================================================================================
