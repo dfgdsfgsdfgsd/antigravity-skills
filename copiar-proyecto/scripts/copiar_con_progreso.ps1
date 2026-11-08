@@ -9,10 +9,22 @@ param (
     [string[]]$ExcluirCarpetas = @('__pycache__', '.tmp')
 )
 
+# Configurar consola para visualizacion impecable
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
+$host.UI.RawUI.WindowTitle = "🚀 Copiando: $(Split-Path $Origen -Leaf) -> $(Split-Path $Destino -Leaf)"
+
+Clear-Host
+Write-Host "================================================================================" -ForegroundColor Cyan
+Write-Host "        🚀 TRANSFERENCIA DE PROYECTO CON TELEMETRÍA EN TIEMPO REAL             " -ForegroundColor Yellow
+Write-Host "================================================================================" -ForegroundColor Cyan
+Write-Host " 📂 Origen:  $Origen" -ForegroundColor White
+Write-Host " 📁 Destino: $Destino" -ForegroundColor White
+Write-Host " ⚡ Hilos:   $Hilos simultáneos" -ForegroundColor Gray
+Write-Host "--------------------------------------------------------------------------------" -ForegroundColor Cyan
 
 if (-not (Test-Path $Origen)) {
-    Write-Error "El directorio de origen no existe: $Origen"
+    Write-Host "❌ Error: El directorio de origen no existe: $Origen" -ForegroundColor Red
+    Start-Sleep -Seconds 5
     exit 1
 }
 
@@ -20,9 +32,20 @@ if (-not (Test-Path $Destino)) {
     New-Item -ItemType Directory -Path $Destino -Force | Out-Null
 }
 
-Write-Host "Analizando origen para calcular total..." -ForegroundColor Cyan
+# 1. Escaneo ultra-rápido en paralelo mientras se informa al usuario
+Write-Host "`n🔍 [1/2] Calculando volumen total de archivos..." -ForegroundColor Cyan
 $tempScan = [System.IO.Path]::GetTempFileName()
-robocopy $Origen $Destino /L /E /NDL /NJH /NJS /NC /NS /NP /LOG:$tempScan | Out-Null
+$scanProc = Start-Process -FilePath "robocopy" -ArgumentList "`"$Origen`"", "`"$Destino`"", "/L", "/E", "/NDL", "/NJH", "/NJS", "/NC", "/NS", "/NP", "/LOG:`"$tempScan`"" -NoNewWindow -PassThru
+
+$spinChars = @('|', '/', '-', '\')
+$spinIdx = 0
+while (-not $scanProc.HasExited) {
+    $spin = $spinChars[$spinIdx % 4]
+    Write-Host -NoNewline "`r   Escaneando carpetas... $spin " -ForegroundColor Gray
+    $spinIdx++
+    Start-Sleep -Milliseconds 250
+}
+
 $totalArchivos = 0
 if (Test-Path $tempScan) {
     $totalArchivos = (Get-Content $tempScan | Where-Object { $_.Trim() -ne '' }).Count
@@ -30,11 +53,15 @@ if (Test-Path $tempScan) {
 }
 
 if ($totalArchivos -eq 0) {
-    Write-Host "No hay archivos nuevos para copiar o el origen ya esta sincronizado." -ForegroundColor Yellow
+    Write-Host "`r   ✅ No hay archivos pendientes o el proyecto ya está sincronizado." -ForegroundColor Green
+    Start-Sleep -Seconds 3
     exit 0
 }
 
-Write-Host "Total de archivos a transferir: $totalArchivos" -ForegroundColor Green
+Write-Host "`r   📦 Total confirmado: $totalArchivos archivos a transferir.               `n" -ForegroundColor Green
+
+# 2. Iniciar copia real multi-hilo con telemetría en vivo
+Write-Host "🚀 [2/2] Transfiriendo archivos a máxima velocidad..." -ForegroundColor Cyan
 
 $logFile = [System.IO.Path]::GetTempFileName()
 $excludeArgs = @()
@@ -42,13 +69,12 @@ if ($ExcluirCarpetas.Count -gt 0) {
     $excludeArgs = @("/XD") + $ExcluirCarpetas
 }
 
-# Iniciar Robocopy multi-hilo
 $proc = Start-Process -FilePath "robocopy" -ArgumentList (@("`"$Origen`"", "`"$Destino`"", "/E", "/MT:$Hilos", "/R:1", "/W:1", "/NDL", "/NJH", "/NJS", "/NP", "/LOG:`"$logFile`"") + $excludeArgs) -NoNewWindow -PassThru
 
 $startTime = Get-Date
 
 while (-not $proc.HasExited) {
-    Start-Sleep -Milliseconds 600
+    Start-Sleep -Milliseconds 400
     if (Test-Path $logFile) {
         $copiados = 0
         try {
@@ -62,18 +88,26 @@ while (-not $proc.HasExited) {
         } catch { }
 
         $pct = [math]::Min(100, [math]::Round(($copiados / [math]::Max($totalArchivos, 1)) * 100, 1))
-        $anchoBarra = 28
+        $anchoBarra = 30
         $llenos = [math]::Round(($pct / 100) * $anchoBarra)
         $vacios = [math]::Max(0, $anchoBarra - $llenos)
-        $barra = ("#" * $llenos) + ("-" * $vacios)
+        $barra = ("█" * $llenos) + ("░" * $vacios)
 
         $elapsed = ((Get-Date) - $startTime).TotalSeconds
-        $rate = if ($elapsed -gt 0) { [math]::Round($copiados / $elapsed, 1) } else { 0 }
+        $rate = if ($elapsed -gt 0) { [math]::Round($copiados / $elapsed, 0) } else { 0 }
         $eta = if ($rate -gt 0 -and ($totalArchivos - $copiados) -gt 0) { [math]::Round(($totalArchivos - $copiados) / $rate) } else { 0 }
 
-        Write-Host -NoNewline "`rProgreso: [$barra] $pct% | $copiados / $totalArchivos arch. | $rate arch/s | ETA: ${eta}s    "
+        $host.UI.RawUI.WindowTitle = "[$pct%] Copiando: $(Split-Path $Origen -Leaf) -> ETA: ${eta}s"
+
+        Write-Host -NoNewline "`r[$barra] $pct% | $copiados / $totalArchivos arch. | $rate arch/s | Restante: ${eta}s     " -ForegroundColor Yellow
     }
 }
 
 Remove-Item $logFile -Force -ErrorAction SilentlyContinue
-Write-Host "`nTransferencia completada al 100% con exito!" -ForegroundColor Green
+
+$host.UI.RawUI.WindowTitle = "[100%] ¡Copia Completada!"
+Write-Host "`n`n================================================================================" -ForegroundColor Green
+Write-Host "   ✅ ¡TRANSFERENCIA COMPLETADA AL 100% CON ÉXITO! ($totalArchivos archivos)" -ForegroundColor Green
+Write-Host "================================================================================" -ForegroundColor Green
+Write-Host "La ventana se cerrará automáticamente en 4 segundos..." -ForegroundColor Gray
+Start-Sleep -Seconds 4

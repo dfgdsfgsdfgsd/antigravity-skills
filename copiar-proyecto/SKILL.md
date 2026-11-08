@@ -31,16 +31,20 @@ Esta skill soluciona el problema ejecutando un **escaneo previo ultra-rápido** 
 
 ## 🛠️ Modo de Uso Paso a Paso
 
-### 1. Ejecución Directa mediante el Script Integrado
+### 1. Invocación Automática con Ventana Emergente en Pantalla
 
-Desde la terminal o invocada por Antigravity:
+Para que el usuario vea la **barra de progreso en tiempo real frente a sus ojos** sin depender de la ruedita ciega de Antigravity, se lanza en una ventana visible de PowerShell:
 
 ```powershell
-& "C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\scripts\copiar_con_progreso.ps1" `
-    -Origen "H:\receta 1\mi-proyecto" `
-    -Destino "D:\Proyectos\mi-proyecto" `
-    -Hilos 16
+Start-Process powershell.exe -ArgumentList "-ExecutionPolicy Bypass -NoProfile -File `"C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\scripts\copiar_con_progreso.ps1`" -Origen `"H:\saas\agencyos`" -Destino `"D:\Proyectos\agencyos`" -Hilos 16"
 ```
+
+* **Qué verá el usuario de inmediato:**
+  1. Se abre una ventana visible en su escritorio titulada `[ 🚀 Copiando: agencyos -> D:\Proyectos ]`.
+  2. Muestra un spinner animado mientras calcula el total: `Escaneando carpetas... /`.
+  3. Muestra la barra visual en vivo: `[██████████████░░░░░░░░] 64.2% | 13.600 / 21.254 arch. | 1.250 arch/s | Restante: 6s`.
+  4. El título de la ventana de Windows se actualiza dinámicamente con el porcentaje `[64%] Copiando...`.
+  5. Al llegar al 100%, confirma el éxito con mensaje verde y se cierra sola tras 4 segundos.
 
 ### Parámetros Disponibles:
 * `-Origen`: Ruta absoluta de la carpeta a copiar (admite espacios con comillas).
