@@ -95,6 +95,11 @@ pause
 
 ---
 
+
+### 5. Pantalla Negra en Vista Previa Web (<video>) y Error 0xc00d5212
+- **Causa:** TikTok y otras plataformas ofrecen streams en HEVC (hvc1/ytevc1). Los navegadores en Windows sin extensión HEVC no pueden decodificar el video en la etiqueta <video>, mostrando solo una barra negra/reproductor colapsado de audio.
+- **Solución:** Priorizar siempre flujos estándar H.264 (vc1) sobre hdplay en el extractor y enmarcar el <video> con max-w-sm sm:max-w-md mx-auto para respetar la relación vertical (9:16) de Reels y TikTok.
+
 ## 🚫 Protocolo Anti-Regresión
 1. **Nunca usar `npm install` si el repositorio usa `pnpm-lock.yaml`:** Rompe los symlinks creados por pnpm.
 2. **No borrar `.pnpm-store`:** Ralentiza las futuras instalaciones en discos lentos o HDDs.
