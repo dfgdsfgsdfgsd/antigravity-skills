@@ -1,0 +1,18 @@
+================================================================================
+                    /disco-100  (Alias de /liberar-disco)
+    Protocolo de Diagnóstico y Liberación de Disco al 100% y Procesos Zombis
+================================================================================
+
+¿QUÉ HACE?
+Alias directo de /liberar-disco. Diagnostica y erradica cuellos de botella de disco
+al 100%, termina procesos huérfanos (Node, Next.js, Python, bucles cmd.exe) y
+restablece la salud de unidades locales y USB.
+
+COMANDOS DE DISPARO:
+- /disco-100
+- /liberar-disco
+
+DOCUMENTACIÓN PRINCIPAL:
+- C:\Users\Daniel\.gemini\config\skills\liberar-disco\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\liberar-disco\QUE_HACE.txt
+================================================================================

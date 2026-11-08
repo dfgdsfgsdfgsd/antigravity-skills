@@ -1,0 +1,39 @@
+================================================================================
+                    /liberar-disco  (y alias /disco-100)
+    Protocolo de Diagnóstico y Liberación de Disco al 100% y Procesos Zombis
+================================================================================
+
+¿QUÉ HACE?
+Diagnostica la saturación extrema de discos (100% de uso constante, cola saturada
+y latencias > 1.000 ms), detecta procesos huérfanos o zombis invisibles en segundo
+plano (Node.js, Next.js dev, Python, PostCSS, comandos colgados en CMD/PowerShell)
+y los finaliza de inmediato devolviendo el disco al 0% de uso.
+
+¿POR QUÉ SUCEDE?
+1. Servidores Headless Huérfanos:
+   Terminales integradas o agentes de IA que cerraron su sesión pero dejaron vivos
+   servidores de desarrollo ('next dev', 'server.py') con vigilantes de archivos activos.
+2. Entornos Node en Discos Mecánicos USB:
+   Carpetas con decenas de miles de archivos ('node_modules', '.next') ejecutándose
+   sobre discos HDD externos de 5400 RPM / SMR, saturando el bus y los cabezales.
+3. Bucles Infinitos en Consola:
+   Procesos 'cmd.exe' atrapados en bucles de lectura del sistema de archivos NTFS
+   ($BitMap) por órdenes rotas ('rmdir' con comillas mal cerradas).
+4. Micro-archivos escaneados por el Sistema:
+   APKs descompilados (miles de archivos .smali) que el Antivirus y el proceso System
+   de Windows analizan simultáneamente.
+
+SOLUCIÓN APLICADA:
+1. Inspección de telemetría WMI (Win32_PerfFormattedData_PerfDisk_PhysicalDisk).
+2. Detección de procesos zombis mediante CommandLines que apuntan a la unidad.
+3. Terminación forzada y segura de los árboles huérfanos (Stop-Process -Force).
+4. Verificación en tiempo real de caída a 0% de actividad y 0 de cola de disco.
+
+COMANDOS DE DISPARO:
+- /liberar-disco
+- /disco-100
+
+ARCHIVOS DEL PROTOCOLO:
+- C:\Users\Daniel\.gemini\config\skills\liberar-disco\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\liberar-disco\QUE_HACE.txt
+================================================================================
