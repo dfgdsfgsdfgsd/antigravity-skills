@@ -1,0 +1,23 @@
+================================================================================
+                    /radar  (y alias /actualizar-proyectos, /pendientes)
+          Centro de Control, Estado de Proyectos y Recordatorios Persistentes
+================================================================================
+
+¿QUÉ HACE?
+1. Radiografía Instantánea: Escanea todos los proyectos de D:\Proyectos y muestra
+   una tabla limpia con su rama activa, remoto en GitHub y cambios pendientes.
+2. Memoria de Recordatorios: Muestra alertas y tareas técnicas persistentes guardadas.
+3. Sincronización en Lote: Con '/actualizar-proyectos' o '/radar sync', guarda y
+   sube todos los proyectos modificados a GitHub automáticamente de un solo tiro.
+
+COMANDOS DE DISPARO:
+- /radar                  (Muestra la radiografía completa + alertas activas)
+- /actualizar-proyectos   (Sube todos los proyectos modificados a GitHub en lote)
+- /pendientes             (Consulta tus tareas y recordatorios pendientes)
+
+ARCHIVOS DEL PROTOCOLO:
+- C:\Users\Daniel\.gemini\config\skills\radar\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\radar\QUE_HACE.txt
+- C:\Users\Daniel\.gemini\config\skills\radar\scripts\radar_proyectos.ps1
+- C:\Users\Daniel\.gemini\config\recordatorios.json
+================================================================================

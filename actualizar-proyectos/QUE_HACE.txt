@@ -1,0 +1,17 @@
+================================================================================
+            /actualizar-proyectos  (Alias de /radar - Modo Sincronización)
+          Sincronización Masiva de Todos los Proyectos en Lote a GitHub
+================================================================================
+
+¿QUÉ HACE?
+Detecta todos los proyectos modificados en D:\Proyectos y los commitea y sube
+a sus respectivos repositorios remotos en GitHub de un solo tiro.
+
+COMANDOS DE DISPARO:
+- /actualizar-proyectos
+- /radar sync
+
+DOCUMENTACIÓN PRINCIPAL:
+- C:\Users\Daniel\.gemini\config\skills\radar\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\radar\QUE_HACE.txt
+================================================================================

@@ -1,0 +1,18 @@
+================================================================================
+                /pendientes  (Alias de /radar - Modo Recordatorios)
+         Lista de Alertas, Tareas y Recordatorios Persistentes del Espacio
+================================================================================
+
+¿QUÉ HACE?
+Muestra todas las tareas pendientes y recordatorios técnicos activos guardados
+en la memoria persistente global de Antigravity.
+
+COMANDOS DE DISPARO:
+- /pendientes
+- /radar recordatorios
+
+DOCUMENTACIÓN PRINCIPAL:
+- C:\Users\Daniel\.gemini\config\skills\radar\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\radar\QUE_HACE.txt
+- C:\Users\Daniel\.gemini\config\recordatorios.json
+================================================================================
