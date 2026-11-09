@@ -1,0 +1,22 @@
+================================================================================
+                    /lanzador - LANZADOR INTELIGENTE DE PROYECTOS
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+Permite poner en marcha cualquier proyecto sin recordar ni escribir comandos:
+1. Detecta automáticamente el stack (Node, Vite, Next, Flask, FastAPI, etc.).
+2. Genera un archivo iniciar.bat inteligente que instala dependencias si faltan,
+   arranca el servidor y abre el navegador automáticamente.
+3. Si lo pides en el chat (/run), abre de inmediato el servidor en una ventana
+   y levanta la web en tu navegador.
+
+COMANDOS DE ACTIVACIÓN:
+- /lanzador
+- /run
+- /arrancar
+- "inicia el servidor", "corre el proyecto"
+
+EJEMPLOS DE USO:
+- "/run" (en cualquier proyecto abierto en Antigravity)
+- "/lanzador" (crea el archivo iniciar.bat y abre el navegador)
+- "/arrancar H:\receta 1\finance-app"
