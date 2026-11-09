@@ -1,0 +1,10 @@
+================================================================================
+                    /interfaz-dual - ALIAS DE /gui-dual
+================================================================================
+
+Este comando es un alias directo de /gui-dual.
+Transforma scripts de Python en suites visuales modernas con modo Web y Modo Escritorio nativo.
+
+COMANDOS:
+- /interfaz-dual
+- /gui-dual

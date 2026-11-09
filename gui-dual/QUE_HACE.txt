@@ -1,0 +1,28 @@
+================================================================================
+                    /gui-dual - SUITE VISUAL DUAL PARA PYTHON
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+Transforma cualquier script, CLI o automatización en Python en una aplicación con
+interfaz gráfica moderna dual:
+  1. Modo Web: Se abre automáticamente en el navegador mediante Flask (iniciar_web.bat).
+  2. Modo Escritorio: Se abre en una ventana nativa de Windows con PyWebView (iniciar_desktop.bat).
+
+Ambas versiones comparten la misma interfaz visual en HTML/Tailwind sin duplicar código.
+
+CARACTERÍSTICAS AUTOMÁTICAS INCLUIDAS:
+- Diseño en modo oscuro profesional con Tailwind CSS.
+- Drag & Drop de archivos para cargar datos de entrada con un arrastre.
+- Barra de progreso porcentual y consola de logs en vivo.
+- Organización cronológica de resultados en out/YYYY-MM-DD/.
+- Botón directo en la barra superior para abrir la carpeta out en el Explorador de Windows.
+- Memoria caché inteligente para evitar reprocesar elementos idénticos.
+
+COMANDOS DE DISPARO:
+- /gui-dual
+- /interfaz-dual
+
+EJEMPLOS DE USO:
+- "aplica /gui-dual a este script de descarga de videos"
+- "crea una interfaz visual con /gui-dual para este clasificador de imágenes"
+- "convierte este script de terminal en una app con /gui-dual"
