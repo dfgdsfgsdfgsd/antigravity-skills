@@ -1,0 +1,10 @@
+================================================================================
+                    /skills - ALIAS DE /catalogo
+================================================================================
+
+Muestra el catálogo estructurado de todas las skills organizadas por familias funcionales.
+
+COMANDOS:
+- /skills
+- /catalogo
+================================================================================

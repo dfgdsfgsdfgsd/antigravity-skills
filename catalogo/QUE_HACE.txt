@@ -1,0 +1,18 @@
+================================================================================
+                    /catalogo - CATÁLOGO MAESTRO DE SKILLS
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+Muestra el catálogo completo de las 50 skills organizadas en 6 categorías:
+1. 🐙 Control de Versiones & Git
+2. 🚀 Automatización, Servidores & GUI
+3. 🔍 Diagnóstico, Análisis & Estructura
+4. 🎨 Frontend, DOM & Multimedia
+5. 🧹 Mantenimiento, Copias & Disco
+6. 🧠 Meta-Skills, Aprendizaje & Documentación
+
+COMANDOS:
+- /catalogo
+- /skills
+- /catalogo <categoria> (ej. /catalogo git, /catalogo servidores)
+================================================================================
