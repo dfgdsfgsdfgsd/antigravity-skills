@@ -1,0 +1,10 @@
+================================================================================
+                    /explicar - ALIAS DE /que-hace
+================================================================================
+
+Este comando es un alias directo de /que-hace.
+Analiza cualquier proyecto, explica su propósito y crea automáticamente QUE_HACE.txt en su raíz.
+
+COMANDOS:
+- /explicar
+- /que-hace

@@ -1,0 +1,26 @@
+================================================================================
+                    /que-hace - RADIOGRAFÍA AUTOMÁTICA DE PROYECTOS
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+Analiza cualquier carpeta, repositorio o proyecto de código tras preguntas como:
+  - "¿Qué hace esto?"
+  - "¿Qué hace esta aplicación?"
+  - "¿De qué trata este proyecto?"
+  - O los comandos: /que-hace [ruta], /explicar [ruta]
+
+Y AUTOMÁTICAMENTE:
+1. Explica en el chat con total claridad qué hace el proyecto y cómo se corre.
+2. Genera y guarda de inmediato en la raíz del proyecto un archivo QUE_HACE.txt
+   (y QUE_HACE.md) documentando su stack, comandos de inicio, archivos clave
+   y funcionalidades.
+
+COMANDOS DE DISPARO:
+- /que-hace
+- /explicar
+- Preguntas naturales: "¿qué hace este proyecto?", "¿cómo funciona esto?"
+
+EJEMPLOS DE USO:
+- "que hace H:\receta 1\reescalar"
+- "/que-hace D:\Proyectos\captura-pantalla"
+- "/explicar" (analiza el proyecto actual abierto en Antigravity)
