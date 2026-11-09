@@ -1,6 +1,6 @@
----
+﻿---
 name: lanzador
-description: Detecta el stack de cualquier proyecto (Node.js, Vite, Next.js, Flask, FastAPI, Streamlit, HTML) y genera un lanzador iniciar.bat inteligente que instala dependencias si faltan, arranca el servidor y abre el navegador automáticamente, ejecutándolo de inmediato si se invoca desde el chat (/run, /lanzador, /arrancar).
+description: Detecta el stack (Node, Vite, Next, Flask, FastAPI, Streamlit, HTML) y genera iniciar.bat, instala dependencias y abre el navegador automáticamente. Alias: /run, /arrancar
 ---
 
 # /lanzador (/run, /arrancar) - Lanzador Inteligente de Proyectos sin Consola

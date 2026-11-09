@@ -1,6 +1,6 @@
----
+﻿---
 name: radar
-description: Radiografía instantánea de todos los proyectos en disco (estado de Git, ramas, cambios pendientes y sincronización con GitHub) junto con un sistema de recordatorios técnicos persistentes y sincronización masiva en lote.
+description: Radiografía instantánea de todos los proyectos en disco, cambios pendientes, sincronización y recordatorios persistentes. Alias: /actualizar-proyectos, /pendientes
 ---
 
 # /radar - Centro de Control, Estado de Proyectos y Recordatorios Persistentes

@@ -1,6 +1,6 @@
----
+﻿---
 name: rama
-description: Crea una nueva rama en el repositorio Git local y cambia a ella usando git checkout -b.
+description: Crea una nueva rama en el repositorio Git local y cambia a ella usando git checkout -b. Alias: /branch
 ---
 
 # /rama - Crear y cambiar a una nueva rama en Git

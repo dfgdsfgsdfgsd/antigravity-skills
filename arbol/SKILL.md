@@ -1,6 +1,6 @@
----
+﻿---
 name: arbol
-description: Genera un diagrama de árbol limpio del proyecto (ignorando node_modules y .git), mostrándolo en el chat y guardándolo en ESTRUCTURA_PROYECTO.txt.
+description: Genera un diagrama de árbol limpio del proyecto (ignorando node_modules y .git) en ESTRUCTURA_PROYECTO.txt. Alias: /tree
 ---
 
 # /arbol - Generar Diagrama de Árbol de Carpetas y Archivos

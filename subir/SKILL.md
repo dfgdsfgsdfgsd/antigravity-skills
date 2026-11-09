@@ -1,6 +1,6 @@
----
+﻿---
 name: subir
-description: Sube los commits locales de la rama actual al repositorio remoto en GitHub mediante git push.
+description: Sube los commits locales de la rama actual al repositorio remoto en GitHub mediante git push. Alias: /push
 ---
 
 # /subir - Subir cambios a GitHub (git push)

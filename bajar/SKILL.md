@@ -1,6 +1,6 @@
----
+﻿---
 name: bajar
-description: Descarga y sincroniza en tu máquina los últimos cambios existentes en GitHub mediante git pull.
+description: Descarga y sincroniza en tu máquina los últimos cambios existentes en GitHub mediante git pull. Alias: /pull
 ---
 
 # /bajar - Descargar cambios desde GitHub

@@ -1,6 +1,6 @@
----
+﻿---
 name: auto-skill
-description: Analiza la conversación actual, detecta el stack tecnológico (Python, Node, WebGL, FFmpeg, etc.), extrae el flujo resuelto, crea automáticamente una nueva skill global adaptativa y la respalda en GitHub.
+description: Analiza la conversación actual, detecta el stack, extrae el flujo resuelto, crea automáticamente una nueva skill global y la respalda en GitHub. Alias: /autoskill
 ---
 
 # /auto-skill - Creador Autónomo de Skills con Detección de Stack
@@ -34,7 +34,7 @@ Toda skill generada debe incluir en su estructura:
    ```yaml
    ---
    name: <nombre-skill>
-   description: <qué hace y para qué stack aplica>
+   description: Analiza la conversación actual, detecta el stack, extrae el flujo resuelto, crea automáticamente una nueva skill global y la respalda en GitHub. Alias: /autoskill
    ---
    ```
 2. **Ficha de Compatibilidad y Requisitos:**

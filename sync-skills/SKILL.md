@@ -1,6 +1,6 @@
----
+﻿---
 name: sync-skills
-description: Sincroniza bidireccionalmente todas las skills globales de Antigravity con GitHub (antigravity-skills), descargando novedades y subiendo cambios locales.
+description: Sincroniza bidireccionalmente todas las skills globales de Antigravity con GitHub (antigravity-skills). Alias: /backup-skills
 ---
 
 # /sync-skills - Sincronización Bidireccional de Skills con GitHub

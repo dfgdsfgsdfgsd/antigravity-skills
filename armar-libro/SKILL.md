@@ -1,6 +1,6 @@
----
+﻿---
 name: armar-libro
-description: Transforma explicaciones, soluciones complejas, tutoriales o debates técnicos en capítulos de libro organizados en doble formato (Clase Charlada y Manual Técnico O'Reilly).
+description: Transforma explicaciones, soluciones complejas o debates técnicos en capítulos de libro (Clase Charlada + Manual O'Reilly). Alias: /libro
 ---
 
 # /armar-libro - Alias de /libro

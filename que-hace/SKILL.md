@@ -1,6 +1,6 @@
----
+﻿---
 name: que-hace
-description: Analiza cualquier proyecto, script o carpeta técnica tras preguntas como '¿qué hace esto?', '¿qué hace esta app?' o el comando /que-hace, explicando su funcionamiento y generando automáticamente una ficha QUE_HACE.txt y QUE_HACE.md en la raíz del proyecto.
+description: Analiza cualquier proyecto, script o carpeta técnica, explicando su funcionamiento y generando automáticamente QUE_HACE.txt. Alias: /explicar
 ---
 
 # /que-hace - Radiografía y Documentación Automática de Proyectos

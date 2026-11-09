@@ -1,6 +1,6 @@
----
+﻿---
 name: liberar-disco
-description: Diagnostica saturación de disco al 100%, detecta y termina procesos zombis invisibles en segundo plano (servidores Node.js, Next.js dev, Python, PostCSS, loops infinitos en CMD/PowerShell), desenmascara cuellos de botella en unidades USB/HDD (SMR, indexación, Defender sobre APKs/smali, $BitMap) y devuelve el disco a 0% de uso.
+description: Diagnostica saturación de disco al 100%, termina procesos zombis y optimiza cuellos de botella HDD/USB. Alias: /disco-100
 ---
 
 # /liberar-disco - Protocolo de Diagnóstico y Liberación de Disco al 100% y Procesos Zombis

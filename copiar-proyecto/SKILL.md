@@ -1,6 +1,6 @@
----
+﻿---
 name: copiar-proyecto
-description: Copia o migra proyectos y carpetas completas entre discos locales y externos mostrando una barra de progreso visual en tiempo real con porcentaje, conteo de archivos transferidos, velocidad y tiempo estimado (ETA), eliminando la incertidumbre de procesos a ciegas.
+description: Copia proyectos entre discos mostrando barra de progreso visual en tiempo real, velocidad y tiempo estimado (ETA). Alias: /copiar
 ---
 
 # /copiar-proyecto - Copia Segura con Barra de Progreso Visual y Telemetría en Tiempo Real

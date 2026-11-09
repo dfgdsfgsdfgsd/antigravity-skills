@@ -1,6 +1,6 @@
----
+﻿---
 name: reparar-downloader
-description: Diagnostica y repara aplicaciones Next.js/Node.js que usan youtube-dl-exec o yt-dlp con pnpm y Turbopack, solucionando descargas infinitas en "Procesando", binarios de 0 bytes, errores @next/env y lanzadores .bat.
+description: Diagnostica y repara aplicaciones Next.js/Turbopack con yt-dlp/youtube-dl-exec con pnpm. Alias: /fix-ytdlp
 ---
 
 # /reparar-downloader - Reparador de Descargadores Next.js con yt-dlp y pnpm

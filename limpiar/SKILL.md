@@ -1,6 +1,6 @@
----
+﻿---
 name: limpiar
-description: Elimina archivos temporales y cachés invisibles (__pycache__, .tmp) para mantener el repositorio ligero.
+description: Elimina archivos temporales y cachés invisibles (__pycache__, .tmp) para mantener el repositorio ligero. Alias: /clean
 ---
 
 # /limpiar - Eliminar cachés y archivos temporales

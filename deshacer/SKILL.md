@@ -1,6 +1,6 @@
----
+﻿---
 name: deshacer
-description: Descarta cambios o restaura el proyecto a cualquier commit, versión o estado limpio previo de Git al instante.
+description: Descarta cambios o restaura el proyecto a cualquier commit, versión o estado limpio previo de Git al instante. Alias: /rollback, /volver, /restaurar
 ---
 
 # /deshacer - Restaurar versión o descartar cambios

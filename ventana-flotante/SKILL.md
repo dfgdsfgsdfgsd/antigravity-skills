@@ -1,6 +1,6 @@
----
+﻿---
 name: ventana-flotante
-description: Implementa paneles y ventanas flotantes duales (arrastrables libremente con el mouse y acoplables/dockeables a los márgenes) sin tapar lienzos ni inputs, con persistencia en localStorage para Frontend DOM.
+description: Implementa paneles y ventanas flotantes duales (arrastrables y acoplables a márgenes) con localStorage. Alias: /flotante
 ---
 
 # /ventana-flotante - Sistema Dual de Ventanas Flotantes Arrastrables y Paneles Acoplables

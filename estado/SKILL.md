@@ -1,6 +1,6 @@
----
+﻿---
 name: estado
-description: Muestra una radiografía rápida del estado del proyecto (rama activa, archivos modificados y sincronización con GitHub).
+description: Muestra una radiografía rápida del estado del proyecto (rama activa, archivos modificados y sincronización con GitHub). Alias: /status
 ---
 
 # /estado - Radiografía rápida del repositorio

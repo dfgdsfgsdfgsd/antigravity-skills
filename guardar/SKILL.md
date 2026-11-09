@@ -1,6 +1,6 @@
----
+﻿---
 name: guardar
-description: Guarda todos los cambios pendientes en el repositorio Git local mediante git add y git commit.
+description: Guarda todos los cambios pendientes en el repositorio Git local mediante git add y git commit. Alias: /save
 ---
 
 # /guardar - Guardar cambios en Git local

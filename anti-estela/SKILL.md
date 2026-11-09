@@ -1,6 +1,6 @@
----
+﻿---
 name: anti-estela
-description: Diagnostica y elimina estelas fantasma, desgarros de repintado (screen tearing) y artefactos visuales al arrastrar o animar elementos DOM en navegadores Chromium mediante aislamiento de capas GPU (translateZ, backface-visibility), contención de bordes internos, sincronización requestAnimationFrame y control de caché HTTP.
+description: Diagnostica y elimina estelas fantasma y tearing en animaciones DOM Chromium mediante capas GPU (translateZ). Alias: /anti-ghosting
 ---
 
 # /anti-estela - Eliminación de Estelas Fantasma y Artefactos de Renderizado en Chromium

@@ -1,6 +1,6 @@
----
+﻿---
 name: iniciar
-description: Inicializa un repositorio Git local automáticamente (git init, .gitignore inteligente, branch main, primer commit y ARBOL_GIT.txt auto-actualizable).
+description: Inicializa un repositorio Git local automáticamente (git init, .gitignore inteligente, branch main, primer commit y ARBOL_GIT.txt). Alias: /init
 ---
 
 # /iniciar - Inicializar Git en un proyecto nuevo

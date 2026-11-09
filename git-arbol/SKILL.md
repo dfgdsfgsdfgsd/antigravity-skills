@@ -1,6 +1,6 @@
----
+﻿---
 name: git-arbol
-description: Genera el grafo de Git, lo guarda en ARBOL_GIT.txt y activa la auto-actualización automática mediante Git hooks tras cada commit o cambio de rama.
+description: Genera el grafo de Git, lo guarda en ARBOL_GIT.txt y activa la auto-actualización automática mediante Git hooks. Alias: /git-tree
 ---
 
 # /git-arbol - Diagrama de Árbol de Git con Auto-Actualización

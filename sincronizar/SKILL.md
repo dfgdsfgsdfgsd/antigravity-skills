@@ -1,6 +1,6 @@
----
+﻿---
 name: sincronizar
-description: Sincroniza bidireccionalmente el proyecto con GitHub en 1 solo paso (baja novedades con rebase, guarda cambios locales y sube con push).
+description: Sincroniza bidireccionalmente el proyecto con GitHub en 1 solo paso (baja novedades con rebase, guarda cambios locales y sube con push). Alias: /sync
 ---
 
 # /sincronizar - Sincronización Total con GitHub

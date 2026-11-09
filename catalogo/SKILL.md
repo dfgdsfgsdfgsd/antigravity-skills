@@ -1,6 +1,6 @@
----
+﻿---
 name: catalogo
-description: Muestra el catálogo maestro clasificado de las skills organizadas en 6 familias funcionales (Git, Automatización/Servidores, Diagnóstico, Frontend, Mantenimiento y Meta-Skills), permitiendo búsquedas por categorías.
+description: Muestra el catálogo maestro clasificado de las skills organizadas en 6 familias funcionales con guía rápida. Alias: /skills
 ---
 
 # /catalogo (/skills) - Catálogo Maestro de Herramientas de Antigravity

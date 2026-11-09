@@ -1,6 +1,6 @@
----
+﻿---
 name: gui-dual
-description: Convierte cualquier script o proceso de Python en una suite visual moderna con arquitectura dual (Web en navegador con Flask + Ventana de escritorio nativa con PyWebView) compartiendo el mismo HTML/Tailwind, organizador cronológico out/YYYY-MM-DD/, barra de progreso y botón de apertura rápida.
+description: Convierte cualquier script o proceso de Python en una suite visual moderna con arquitectura dual (Web con Flask + Ventana PyWebView). Alias: /interfaz-dual
 ---
 
 # /gui-dual - Generador de Interfaces Modernas Duales (Web & Escritorio) para Python
