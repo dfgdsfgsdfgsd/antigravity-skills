@@ -1,0 +1,11 @@
+================================================================================
+          SKILL GLOBAL DE ANTIGRAVITY: /aprender-lanzador
+================================================================================
+
+📌 ALIAS OFICIAL DE /tutor-lanzador:
+Genera un script didáctico (iniciar_tutor.bat) para aprender comandos de consola
+reales paso a paso con opciones interactivas [S/N].
+
+Documentación principal:
+C:\Users\Daniel\.gemini\config\skills\tutor-lanzador\SKILL.md
+================================================================================

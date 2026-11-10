@@ -1,0 +1,26 @@
+================================================================================
+          SKILL GLOBAL DE ANTIGRAVITY: /tutor-lanzador
+================================================================================
+
+📌 ¿QUÉ HACE ESTA SKILL?
+Genera en cualquier proyecto un lanzador interactivo y didáctico (iniciar_tutor.bat)
+diseñado para que el usuario aprenda y recuerde los comandos de consola reales
+(pip, npm, start, puertos locales y combinaciones como Ctrl+C). Enseña la razón
+técnica detrás de cada paso e incluye opciones [S/N] antes de ejecutar.
+
+🛠️ STACK COMPATIBLE:
+- Universal: Python (Flask, FastAPI, Streamlit, Django) y Node.js (Vite, Next, React, etc.).
+- Entorno: Windows Batch (.bat).
+
+⌨️ COMANDOS Y ALIAS:
+- /tutor-lanzador [ruta opcional]
+- /aprender-lanzador [ruta opcional]
+- /tutor-run [ruta opcional]
+
+🎯 ENFOQUE PEDAGÓGICO DE 'iniciar_tutor.bat':
+1. Dependencias: Enseña qué es pip/npm y qué significa el archivo de manifiesto.
+2. Navegador: Enseña el comando 'start' y el truco para que la terminal no se congele.
+3. Servidor: Enseña el comando para arrancar y cómo cerrarlo de forma segura con Ctrl+C.
+4. Par complementario: Asegura que también exista 'iniciar.bat' para el día a día.
+
+================================================================================
