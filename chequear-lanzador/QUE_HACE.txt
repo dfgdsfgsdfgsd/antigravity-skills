@@ -1,0 +1,12 @@
+================================================================================
+          SKILL GLOBAL DE ANTIGRAVITY: /chequear-lanzador
+================================================================================
+
+📌 ALIAS OFICIAL DE /verificar-lanzador:
+Permite auditar si un proyecto o conjunto de proyectos tiene script de inicio
+(.bat/.cmd/.sh), si abre el navegador sin bloquear la consola, y genera o repara
+lanzadores automáticos.
+
+Documentación principal:
+C:\Users\Daniel\.gemini\config\skills\verificar-lanzador\SKILL.md
+================================================================================

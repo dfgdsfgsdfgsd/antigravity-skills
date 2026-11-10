@@ -1,0 +1,28 @@
+================================================================================
+          SKILL GLOBAL DE ANTIGRAVITY: /verificar-lanzador
+================================================================================
+
+📌 ¿QUÉ HACE ESTA SKILL?
+Audita proyectos individuales o carpetas de múltiples proyectos para comprobar si
+cuentan con un script de inicio automático (.bat/.cmd/.sh), verifica que la
+apertura del navegador sea asíncrona y no bloquee la consola, y genera o repara
+lanzadores inteligentes adaptados al stack tecnológico (Node, Flask, FastAPI, etc.).
+
+🛠️ STACK COMPATIBLE:
+- Universal: Python (Flask, FastAPI, Streamlit, Django), Node.js (Vite, Next, React,
+  Express, Astro) y HTML/CSS estático con servidor embebido.
+- Entornos: Windows (Batch) y Linux/macOS (Shell Script).
+
+⌨️ COMANDOS Y ALIAS:
+- /verificar-lanzador [ruta opcional]
+- /chequear-lanzador [ruta opcional]
+- /audit-lanzador [ruta opcional]
+
+🎯 REGLAS DE AUDITORÍA:
+1. Detecta archivos de inicio (iniciar.bat, run.bat, iniciar_servidor.bat, etc.).
+2. Valida si abre el navegador automáticamente en http://localhost:<puerto>.
+3. Evita el bloqueo de terminal colocando la apertura asíncrona con temporizador antes
+   del comando bloqueante de servidor.
+4. Genera o repara el script al instante ante peticiones del usuario.
+
+================================================================================

@@ -1,6 +1,6 @@
 # 📚 Catálogo Maestro de Skills de Antigravity
 
-> **Total de herramientas maestras:** 25 skills consolidadas  
+> **Total de herramientas maestras:** 26 skills consolidadas  
 > **Repositorio de respaldo:** [github.com/dfgdsfgsdfgsd/antigravity-skills](https://github.com/dfgdsfgsdfgsd/antigravity-skills)  
 > **Comando de consulta rápida:** `/catalogo`
 
@@ -9,7 +9,7 @@
 ## 🗂️ Índice por Familias Funcionales
 
 1. [🐙 Control de Versiones & Git](#1--control-de-versiones--git) (10 herramientas)
-2. [🚀 Automatización, Servidores & GUI](#2--automatización-servidores--gui) (2 herramientas)
+2. [🚀 Automatización, Servidores & GUI](#2--automatización-servidores--gui) (3 herramientas)
 3. [🔍 Diagnóstico, Análisis & Estructura](#3--diagnóstico-análisis--estructura) (3 herramientas)
 4. [🎨 Frontend, DOM & Multimedia](#4--frontend-dom--multimedia) (3 herramientas)
 5. [🧹 Mantenimiento, Copias & Disco](#5--mantenimiento-copias--disco) (3 herramientas)
@@ -39,6 +39,7 @@
 | Comando Principal | Alias Reconocidos | ¿Qué hace? |
 | :--- | :--- | :--- |
 | **`/lanzador`** | `/run`, `/arrancar`, `/play` | Detecta el stack (Node, Vite, Next, Flask, etc.), crea `iniciar.bat`, instala dependencias y abre el navegador automáticamente. |
+| **`/verificar-lanzador`** | `/chequear-lanzador`, `/audit-lanzador` | Audita si el proyecto tiene lanzador (.bat/.sh), si abre el navegador automáticamente de forma no-bloqueante, y repara o genera scripts de inicio. |
 | **`/gui-dual`** | `/interfaz-dual` | Transforma scripts de Python en suites visuales modernas (Web Flask + Ventana nativa PyWebView con HTML/Tailwind y carpeta `out/`). |
 
 ---
