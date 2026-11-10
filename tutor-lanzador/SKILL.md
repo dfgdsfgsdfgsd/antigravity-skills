@@ -65,3 +65,12 @@ Si el proyecto no tiene aún `iniciar.bat` (el modo rápido sin preguntas), la s
 
 ### Paso 4: Presentación al Usuario
 Mostrar en el chat un resumen de los comandos enseñados para que el usuario pueda guardarlos en sus notas o probarlos directamente en su terminal.
+
+---
+
+## 🛡️ Reglas de Robustez Batch (Anti-Cierre Inesperado)
+
+Para evitar que la ventana se cierre de golpe en Windows CMD:
+1. **Evitar paréntesis anidados:** No colocar textos largos con paréntesis dentro de bloques `if (...)`. Utilizar saltos con etiquetas `goto :label` (ej. `if not exist "requirements.txt" goto sin_reqs`).
+2. **Valor por defecto en preguntas:** Inicializar siempre la variable antes de `set /p` (ej. `set "INST=S"`) para que si el usuario solo presiona ENTER, no cause error de sintaxis `=="S"`.
+3. **Escape de caracteres:** En los textos explicativos dentro de `echo`, escapar caracteres reservados como `^&^&` y `^>`.
