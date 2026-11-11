@@ -234,8 +234,13 @@ def convert_md_to_docx(md_path, docx_path=None):
     if in_table:
         flush_table()
 
-    doc.save(str(docx_file))
-    print(f"Exportación exitosa: {docx_file}")
+    try:
+        doc.save(str(docx_file))
+        print(f"Exportación exitosa: {docx_file}")
+    except PermissionError:
+        alt_file = docx_file.with_stem(docx_file.stem + "_actualizado")
+        doc.save(str(alt_file))
+        print(f"Aviso: '{docx_file.name}' está abierto en Word. Se guardó copia actualizada en: {alt_file.name}")
     return True
 
 if __name__ == '__main__':
