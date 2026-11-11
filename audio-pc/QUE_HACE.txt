@@ -1,0 +1,12 @@
+=====================================================================
+  🔊 ALIAS: /audio-pc -> /transmitir-audio
+=====================================================================
+
+¿QUÉ HACE?
+Alias directo de /transmitir-audio. Genera una suite de transmisión
+de audio de la PC a cualquier teléfono celular en la misma red local WiFi
+con captura WASAPI loopback y WebSockets de ultra baja latencia.
+
+Consulta la documentación técnica principal en:
+C:\Users\Daniel\.gemini\config\skills\transmitir-audio\SKILL.md
+=====================================================================

@@ -1,0 +1,37 @@
+=====================================================================
+  🔊 SKILL: TRANSMITIR-AUDIO (/transmitir-audio, /audio-pc, /soundcast)
+=====================================================================
+
+¿QUÉ HACE?
+Transmite todo el audio de tu PC con Windows hacia tu teléfono celular,
+tablet o cualquier dispositivo en la misma red WiFi local en tiempo
+real, sin instalar ninguna aplicación en el móvil.
+
+El celular solo necesita abrir su cámara, escanear el código QR y tocar
+"Escuchar".
+
+STACK Y TECNOLOGÍAS:
+- Python 3.10+ (FastAPI, Uvicorn, PyAudioWPatch, QrCode, NumPy)
+- Windows WASAPI Loopback (captura del sonido del sistema sin cables virtuales)
+- Web Audio API (reproducción nativa en C++ en el navegador del celular)
+- WebSockets binarios de ultra baja latencia (~40ms - 120ms)
+
+CARACTERÍSTICAS CLAVE:
+1. Cero descargas en el celular (funciona en Safari iOS, Chrome Android, etc.).
+2. Ultra baja latencia (~40ms en modo Ultra, ~120ms en Balanceado).
+3. Super Boost de volumen digital hasta 200%.
+4. Osciloscopio animado en vivo en la pantalla del celular.
+5. Modo segundo plano y Wake Lock para escuchar con pantalla bloqueada.
+6. Código QR gigante en pantalla y consola para conexión instantánea.
+7. Arquitectura anti-eco y anti-microcortes con remuestreo automático.
+
+COMANDOS Y ALIAS:
+- /transmitir-audio
+- /audio-pc
+- /soundcast
+
+EJEMPLOS DE USO:
+- "Quiero escuchar lo que suena en la PC en mi celular con auriculares."
+- "Crea un servidor para transmitir audio de la computadora al teléfono."
+- "Repara los microcortes o el eco en la transmisión de audio local."
+=====================================================================
