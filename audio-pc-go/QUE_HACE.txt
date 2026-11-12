@@ -1,0 +1,12 @@
+==============================================================================
+SKILL: /audio-pc-go (Alias de /soundcast-go)
+==============================================================================
+
+¿QUÉ HACE?
+Alias directo de /soundcast-go. Crea o repara la suite de transmisión de audio
+desde Windows al celular en Go (WASAPI Loopback puro sin CGO, binario portable
+de ~8-10MB, <15MB RAM y frontend embebido).
+
+CONSULTA:
+C:\Users\Daniel\.gemini\config\skills\soundcast-go\QUE_HACE.txt
+==============================================================================

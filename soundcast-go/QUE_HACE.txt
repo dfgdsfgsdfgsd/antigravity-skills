@@ -1,0 +1,34 @@
+==============================================================================
+SKILL: /soundcast-go (Transmisor de Audio PC a Celular en Go)
+==============================================================================
+
+¿QUÉ HACE?
+Crea, configura o repara la suite de transmisión de audio local en tiempo real
+desde una computadora con Windows hacia cualquier teléfono celular, tablet o
+navegador en la misma red WiFi, implementada en Go (Golang) nativo.
+
+CARACTERÍSTICAS PRINCIPALES:
+- Pure Go (CGO_ENABLED=0): Sin necesidad de GCC, MinGW ni librerías C++.
+- Un solo ejecutable (.exe): Servidor, capturador WASAPI y frontend web embebidos.
+- Ultraliviano: Consume menos de 15 MB de RAM (frente a 120 MB en Python).
+- Baja Latencia: ~30-50ms mediante WebSockets binarios con descarte de lag.
+- Cero aplicaciones en el celular: Solo escanear el código QR en pantalla.
+
+COMANDOS PRINCIPALES:
+- /soundcast-go   : Activa la skill para generar o compilar el servidor en Go.
+- /audio-pc-go    : Alias directo.
+
+ARCHIVOS GENERADOS EN EL PROYECTO:
+- SoundCast.exe          : Ejecutable portable autónomo.
+- main.go                : Entrypoint con //go:embed static/*.
+- pkg/audio/capture.go   : Captura WASAPI Loopback (go-ole + go-wca).
+- pkg/network/ip.go      : IP LAN local y generador de código QR.
+- pkg/server/server.go   : API REST y WebSockets binarios.
+- static/                : Frontend Web Audio API con vúmetro y control de volumen.
+- iniciar.bat            : Lanzador automático de 1 clic.
+- compilar.bat           : Recompilador optimizado (-ldflags="-s -w").
+
+REQUISITOS:
+- Windows 10 u 11.
+- Go 1.18+ (instalado en C:\Program Files\Go o en PATH).
+==============================================================================
