@@ -69,6 +69,7 @@
 
 | Comando Principal | Alias Reconocidos | ¿Qué hace? |
 | :--- | :--- | :--- |
+| **`/sync-gui`** | `/sincronizador-gui`, `/sincronizador` | Sincronizador gráfico de carpetas y discos en C# con panel dual 50/50, Auto-Sync en tiempo real y explorador con drill-down. |
 | **`/copiar-proyecto`** | `/copiar` | Copia proyectos completos entre discos mostrando barra de progreso visual, velocidad y ETA en tiempo real. |
 | **`/liberar-disco`** | `/disco-100` | Diagnostica disco al 100%, mata procesos zombis en segundo plano y optimiza cuellos de botella HDD/USB. |
 | **`/limpiar`** | `/clean` | Elimina archivos temporales, cachés ocultas y carpetas `__pycache__` para aligerar el proyecto. |

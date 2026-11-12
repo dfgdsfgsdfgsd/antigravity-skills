@@ -1,0 +1,10 @@
+====================================================================
+  /sincronizador-gui - ALIAS DE /sync-gui
+====================================================================
+
+¿QUÉ HACE?
+Alias directo del comando /sync-gui para crear, compilar y ejecutar
+el sincronizador gráfico nativo de Windows en C# WinForms.
+
+Para más información, consulta la ficha principal en /sync-gui.
+====================================================================

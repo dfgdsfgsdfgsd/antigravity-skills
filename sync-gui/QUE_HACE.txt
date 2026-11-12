@@ -1,0 +1,34 @@
+====================================================================
+  /sync-gui - SINCRONIZADOR GRÁFICO DE CARPETAS Y DISCOS (C# WINFORMS)
+====================================================================
+
+¿QUÉ HACE?
+Crea, repara o compila una aplicación gráfica nativa para Windows (GUI)
+que sincroniza carpetas y discos externos con selección multi-carpeta,
+panel dual 50/50, vigilancia en tiempo real (Auto-Sync) y explorador
+comparativo con navegación por carpetas (Drill-Down).
+
+CARACTERÍSTICAS PRINCIPALES:
+1. 0 Dependencias externas: Se compila con el compilador csc.exe nativo
+   preinstalado en Windows en ~1 segundo.
+2. Vista Dual 50/50: Carpetas de origen a la izquierda con checkboxes y
+   carpetas existentes en el disco de destino a la derecha.
+3. Explorador Drill-Down: Vista limpia que muestra solo carpetas principales;
+   un doble clic entra a la carpeta para ver los archivos y un botón permite
+   subir de nivel.
+4. Auto-Sync Continuo: Vigilancia en vivo con FileSystemWatcher que respalda
+   cambios automáticamente al guardar un archivo.
+5. Memoria Optimizada: Escanea más de 750.000 archivos con <15 MB de RAM.
+6. Persistencia Total: Recuerda rutas, carpetas marcadas y opciones al abrir.
+
+COMANDO DE ACTIVACIÓN:
+  /sync-gui
+  /sincronizador-gui
+  /sincronizador
+
+COMANDO DE COMPILACIÓN NATIVA:
+  & "C:\Windows\Microsoft.NET\Framework64\v4.0.30319\csc.exe" /target:winexe /optimize+ /out:"Sincronizador.exe" "Program.cs"
+
+COMPATIBILIDAD:
+  Windows 7, 8, 10, 11 (C# / .NET Framework 4.0+ preinstalado).
+====================================================================
