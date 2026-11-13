@@ -84,10 +84,13 @@ Guarda y recarga automáticamente al iniciar:
 - **Vigilante en destino:** Detecta cuando se crean, renombran o borran carpetas en el disco externo y refresca la lista derecha en tiempo real.
 - **Auto-Sync en origen:** Si se activa la casilla, cualquier archivo nuevo o modificado en las carpetas vigiladas se copia de inmediato al destino sin pulsar ningún botón.
 
-### 5. Explorador Jerárquico Comparativo (*Drill-Down*)
-- **Nivel Raíz (Solo Carpetas):** Muestra únicamente las carpetas consolidadas con su estado (`🟢 Al día`, `🟡 Modificada / Pendiente`, `🔵 Nueva en Origen`, `🔴 Solo en Destino`), su peso total y cantidad de archivos.
-- **Doble clic en una carpeta:** Entra a la carpeta y muestra sus archivos individuales con ruta limpia y botón `[ ⬅️ Volver a Carpetas ]` o doble clic en `.. [Subir nivel]`.
-- **Botón de Modo:** Permite alternar entre "Solo Carpetas" y "Todos los Archivos".
+### 5. Explorador Jerárquico Comparativo (*Drill-Down* de 3 Niveles) y Selector de Destino
+- **Selector de Destino Activo (`cmbExplorerDest`):** Menú desplegable en la barra del explorador que lista todos los destinos (discos externos locales y Google Drive). Al cambiar de destino o al cargar la pestaña, compara automáticamente contra la unidad elegida (priorizando discos físicos con datos sincronizados reales).
+- **Columna `Ruta Destino`:** Muestra la ruta física o remota exacta en el destino (`H:\sync2`, `H:\sync2\agencyos\archivo.txt` o `gdrive:/...`) para saber en todo momento dónde reside cada archivo y carpeta.
+- **Nivel 0 (Directorio Raíz de Origen):** Muestra la carpeta raíz principal sincronizada (ej. `📁 Proyectos (D:\Proyectos)`) con su tamaño total en origen y destino, conteo de subcarpetas, total de archivos y estado global consolidado (`🟢 Al día 100% Sincronizada`).
+- **Nivel 1 (Subcarpetas):** Doble clic en la raíz entra a sus subcarpetas individuales (`agencyos`, `VoiceStudio`, etc.) mostrando su ruta destino respectiva, tamaño y archivos al día, con opción `⬅️ Volver a Raíz`.
+- **Nivel 2 (Archivos):** Doble clic en cualquier subcarpeta muestra sus archivos individuales con fechas de modificación y rutas de destino exactas, con opción `⬅️ Volver a Subcarpetas`.
+- **Botón de Modo:** Permite alternar entre la navegación jerárquica y "Todos los Archivos" (vista plana con rutas completas).
 
 ### 6. Sincronización en la Nube con Google Drive (Sin Cliente de Escritorio)
 - **Botón `[☁ Google Drive]`:** Inicia el asistente de vinculación OAuth2 abriendo el navegador predeterminado para iniciar sesión en Google y otorgar acceso.
