@@ -43,11 +43,11 @@ Antes de compilar o generar el proyecto:
 │ 1. Carpeta Origen: [ D:\Proyectos                               ] [Exam]│
 │ 2. Carpeta Destino: [ E:\Respaldo                               ] [Exam]│
 ├───────────────────────────────────┬────────────────────────────────────┤
-│ 📁 Subcarpetas Origen (Izquierda) │ 💾 Carpetas en Destino (Derecha)   │
-│ [✔] agencyos                      │ • agencyos                         │
-│ [✔] dowloader_video               │ • dowloader_video                  │
-│ [✔] generador-reels               │ • generador-reels                  │
-│ [✔ Todas] [☐ Ninguna]             │ 🔄 Actualizar vista | 📂 Abrir     │
+│ 📁 Subcarpetas Origen (Izquierda) │ 💾 Dispositivos Destino (Derecha)  │
+│ [✔] agencyos                      │ [✔] E:\Respaldo (Disco Externo)    │
+│ [✔] dowloader_video               │ [✔] F:\Backup_USB (Memoria USB)    │
+│ [✔] generador-reels               │ ➕ Añadir Destino | 🔍 Detectar USB│
+│ [✔ Todas] [☐ Ninguna]             │ 📂 Abrir Destino  | ➖ Quitar      │
 ├───────────────────────────────────┴────────────────────────────────────┤
 │ Pestañas: [ 📊 Sincronización y Progreso ] [ 📂 Explorador de Archivos ]│
 │                                                                        │
