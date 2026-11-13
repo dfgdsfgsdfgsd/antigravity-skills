@@ -46,8 +46,9 @@ Antes de compilar o generar el proyecto:
 │ 📁 Subcarpetas Origen (Izquierda) │ 💾 Dispositivos Destino (Derecha)  │
 │ [✔] agencyos                      │ [✔] E:\Respaldo (Disco Externo)    │
 │ [✔] dowloader_video               │ [✔] F:\Backup_USB (Memoria USB)    │
-│ [✔] generador-reels               │ ➕ Añadir Destino | 🔍 Detectar USB│
-│ [✔ Todas] [☐ Ninguna]             │ 📂 Abrir Destino  | ➖ Quitar      │
+│ [✔] generador-reels               │ [✔] [☁ Drive] gdrive:/Backups      │
+│ [✔ Todas] [☐ Ninguna]             │ ➕ Añadir | 🔍 USBs | ☁ Drive      │
+│                                   │ 📂 Abrir  | ➖ Quitar              │
 ├───────────────────────────────────┴────────────────────────────────────┤
 │ Pestañas: [ 📊 Sincronización y Progreso ] [ 📂 Explorador de Archivos ]│
 │                                                                        │
@@ -87,6 +88,12 @@ Guarda y recarga automáticamente al iniciar:
 - **Nivel Raíz (Solo Carpetas):** Muestra únicamente las carpetas consolidadas con su estado (`🟢 Al día`, `🟡 Modificada / Pendiente`, `🔵 Nueva en Origen`, `🔴 Solo en Destino`), su peso total y cantidad de archivos.
 - **Doble clic en una carpeta:** Entra a la carpeta y muestra sus archivos individuales con ruta limpia y botón `[ ⬅️ Volver a Carpetas ]` o doble clic en `.. [Subir nivel]`.
 - **Botón de Modo:** Permite alternar entre "Solo Carpetas" y "Todos los Archivos".
+
+### 6. Sincronización en la Nube con Google Drive (Sin Cliente de Escritorio)
+- **Botón `[☁ Google Drive]`:** Inicia el asistente de vinculación OAuth2 abriendo el navegador predeterminado para iniciar sesión en Google y otorgar acceso.
+- **Gestión transparente:** Añade `[☁ Drive] gdrive:/Backups_Proyectos` a la lista de destinos, permitiendo marcar casillas para respaldar localmente y en la nube en una sola corrida.
+- **Auto-Sync a la nube:** Replica archivos modificados al instante vía conexiones cifradas HTTPS sin consumir RAM constante.
+- **Seguridad de tokens:** Las credenciales y tokens se almacenan en `tools/rclone.conf` protegido y excluido de Git.
 
 ---
 
