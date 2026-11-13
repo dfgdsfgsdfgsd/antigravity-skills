@@ -108,6 +108,14 @@ Guarda y recarga automáticamente al iniciar:
 - **Prevención Anti-Bloqueo:** Al iniciar una sincronización hacia la nube, si no hay internet se detiene inmediatamente con una advertencia explicativa, evitando que la aplicación quede "pensando" o congelada indefinidamente.
 - **Timeouts estrictos:** Llamadas a rclone con `--contimeout 5s --timeout 15s --retries 2` para abortar limpiamente en caso de cortes repentinos de red.
 
+### 9. Spinning Animado en Tiempo Real Estilo Google Drive
+- **Spinner circular vectorial GDI+:** Dibuja un arco giratorio azul suave a ~28 FPS (`#1A73E8`) con puntas redondeadas y pista gris tenue sobre fondo de doble búfer anti-parpadeo.
+- **Píldoras de estado dinámicas por fila (`SyncCheckedListBox`):** Cada carpeta seleccionada en la lista muestra su estado visual en tiempo real en la columna derecha de su fila sin alterar las rutas de archivo:
+  - `[ 🔄 Sincronizando... ]`: Anima el spinner circular de Google Drive sobre la carpeta activa.
+  - `[ ✔ Al día (Drive) ]`: Píldora verde con verificación al finalizar la transferencia con éxito.
+  - `[ ⏳ En cola... ]`: Indicador en espera para las carpetas pendientes.
+- **Widget de cabecera:** En la barra superior de la columna de origen se activa un spinner maestro que indica en vivo: `☁ Drive: nombre_carpeta` o `💾 Respaldando: nombre_carpeta`.
+
 ---
 
 ## 🚀 Compilación y Ejecución
