@@ -99,6 +99,14 @@ Guarda y recarga automáticamente al iniciar:
 - **Auto-Sync a la nube:** Replica archivos modificados al instante vía conexiones cifradas HTTPS sin consumir RAM constante.
 - **Seguridad de tokens:** Las credenciales y tokens se almacenan en `tools/rclone.conf` protegido y excluido de Git.
 
+### 7. Inicio Automático con Windows y Segundo Plano (*System Tray*)
+- **Casilla `🚀 Iniciar con Windows (segundo plano)`:** Registra la aplicación en el Registro de Windows (`HKCU\Software\Microsoft\Windows\CurrentVersion\Run`) con el parámetro `--minimized` para que arranque invisible al encender la PC.
+- **Casilla `🗕 Quedar en segundo plano al cerrar la ventana [X]`:** Al hacer clic en la `X` de la ventana, la aplicación no se cierra; se oculta en la bandeja de notificación junto al reloj de Windows (con globo de aviso).
+- **Ícono en la Bandeja del Sistema (`NotifyIcon`):**
+  - **Doble clic:** Restaura y trae la ventana principal al frente.
+  - **Clic derecho (Menú contextual):** Ofrece las opciones `📂 Abrir Sincronizador`, `▶ Sincronizar ahora` y `❌ Salir definitivamente`.
+  - **Combinación con Auto-Sync:** Permite que tus carpetas se sincronicen en tiempo real de forma 100% silenciosa en segundo plano sin ocupar espacio en la barra de tareas.
+
 ### 7. Menú Desplegable con Historial de Acceso Rápido e Inicio Limpio
 - **Inicio limpio y despejado:** Al abrir la aplicación, las listas y cajas comienzan completamente vacías sin forzar proyectos residuales.
 - **ComboBox con Historial (`▼`):** Los campos de Origen y Destino cuentan con menú desplegable y autocompletado inteligente con el historial de rutas recientes.
