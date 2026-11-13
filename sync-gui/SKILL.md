@@ -76,9 +76,12 @@ Usa colas iterativas `Queue<string>` en lugar de recursión para evitar `StackOv
 
 ### 3. Persistencia Automática de Configuración (`sync_config.txt`)
 Guarda y recarga automáticamente al iniciar:
-- Carpeta origen y carpeta destino.
-- Selección exacta de casillas marcadas con `[✔]`.
-- Modos seleccionados (Actualizar, Espejo, Excluir dev, Auto-Sync).
+- Carpeta origen y carpeta destino principales.
+- Lista completa de destinos configurados (discos externos y Google Drive) con sus casillas `[✔]`.
+- Todas las subcarpetas marcadas con `[✔]`.
+- Modos seleccionados (Actualizar, Espejo, Excluir dev, Auto-Sync, Iniciar con Windows, Minimizar a la bandeja).
+- **Auto-precarga del Explorador:** Al abrir el programa o cambiar a la pestaña del explorador, precarga de inmediato los datos del último respaldo sin requerir volver a seleccionar rutas.
+- **Protección de inicialización:** Bloqueo de sobreescritura (`isLoadingSettings`) durante el arranque para evitar que eventos prematuros vacíen la configuración guardada.
 
 ### 4. Vigilancia en Vivo y Auto-Sync (`FileSystemWatcher`)
 - **Vigilante en destino:** Detecta cuando se crean, renombran o borran carpetas en el disco externo y refresca la lista derecha en tiempo real.
