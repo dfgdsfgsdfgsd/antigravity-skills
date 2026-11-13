@@ -101,6 +101,12 @@ Guarda y recarga automáticamente al iniciar:
 - **Carga instantánea al seleccionar:** Al elegir cualquier carpeta del desplegable, se cargan sus subcarpetas de inmediato.
 - **Botón `[🗑 Vaciar]`:** Permite resetear y vaciar la lista de origen en cualquier momento con un solo clic.
 
+### 8. Botón de Estado de Conexión Nube y Prevención Anti-Bloqueo
+- **Botón Dinámico de Estado:** Ubicado en la cabecera superior de la columna de destinos, muestra en tiempo real `[🟢 Nube: En línea]`, `[🟡 Nube: Sin cuenta]` o `[🔴 Nube: Sin conexión]`.
+- **Diagnóstico con 1 Clic:** Al pulsar el botón, comprueba la conectividad instantánea contra el endpoint HTTP 204 de Google en segundo plano sin congelar la interfaz.
+- **Prevención Anti-Bloqueo:** Al iniciar una sincronización hacia la nube, si no hay internet se detiene inmediatamente con una advertencia explicativa, evitando que la aplicación quede "pensando" o congelada indefinidamente.
+- **Timeouts estrictos:** Llamadas a rclone con `--contimeout 5s --timeout 15s --retries 2` para abortar limpiamente en caso de cortes repentinos de red.
+
 ---
 
 ## 🚀 Compilación y Ejecución
