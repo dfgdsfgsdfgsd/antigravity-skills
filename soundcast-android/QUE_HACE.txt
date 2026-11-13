@@ -1,0 +1,36 @@
+==============================================================================
+SKILL: /soundcast-android (App Nativa Android para Streaming de Audio PC)
+==============================================================================
+
+¿QUÉ HACE?
+Crea, repara o compila la aplicación nativa para teléfonos Android (APK)
+para recibir todo el audio de la computadora en tiempo real por WiFi con
+ultra baja latencia (~15 a 25ms), auto-detección por red y reproducción
+continua en segundo plano (con pantalla bloqueada).
+
+CARACTERÍSTICAS PRINCIPALES:
+- AudioTrack Nativo: Reproducción directa PCM 16-bit a 48.000 Hz estéreo.
+- Auto-Detección WiFi (Zero-Config): Localiza la PC por UDP broadcast (puerto 5002).
+- Reproducción en Segundo Plano: Foreground Service con WakeLock y WifiLock.
+- Cierre Inteligente: Se apaga automáticamente al deslizar o cerrar la app.
+- Control en Notificación: Botón "Detener" directo en la barra de Android.
+- Compatibilidad Total: Soporte desde Android 5.0 hasta Android 15 (MultiDex).
+- Compilación en la Nube: Genera el APK en GitHub Actions sin instalar Android Studio.
+
+COMANDOS PRINCIPALES:
+- /soundcast-android  : Activa la skill para crear o reparar el cliente Android.
+- /audio-pc-android   : Alias directo.
+- /apk-audio          : Alias secundario.
+
+ESTRUCTURA DEL PROYECTO ANDROID:
+- app/src/main/java/.../AudioPlayerEngine.kt  : Motor AudioTrack de baja latencia.
+- app/src/main/java/.../AudioStreamService.kt : Foreground Service con controles.
+- app/src/main/java/.../DiscoveryClient.kt    : Búsqueda UDP broadcast.
+- app/src/main/java/.../MainActivity.kt       : Interfaz con volumen hasta 200%.
+- app/debug.keystore                          : Clave de firma permanente.
+- .github/workflows/build-apk.yml             : Compilador en la nube y Releases.
+
+REQUISITOS:
+- Dispositivo Android 5.0 o superior (ej. Moto G4, Samsung, Xiaomi, Motorola).
+- Repositorio en GitHub para compilación automática del APK.
+==============================================================================

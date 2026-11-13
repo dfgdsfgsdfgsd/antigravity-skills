@@ -1,0 +1,11 @@
+==============================================================================
+SKILL: /audio-pc-android (Alias de /soundcast-android)
+==============================================================================
+
+¿QUÉ HACE?
+Alias directo de /soundcast-android. Crea, repara o compila la app Android nativa
+(AudioTrack + WebSockets + UDP broadcast) para recibir el audio de la PC.
+
+CONSULTA:
+C:\Users\Daniel\.gemini\config\skills\soundcast-android\QUE_HACE.txt
+==============================================================================
