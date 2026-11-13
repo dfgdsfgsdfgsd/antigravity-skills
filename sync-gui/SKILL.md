@@ -91,6 +91,7 @@ Guarda y recarga automáticamente al iniciar:
 
 ### 6. Sincronización en la Nube con Google Drive (Sin Cliente de Escritorio)
 - **Botón `[☁ Google Drive]`:** Inicia el asistente de vinculación OAuth2 abriendo el navegador predeterminado para iniciar sesión en Google y otorgar acceso.
+- **Sincronización Diferencial Estricta (`--update --modify-window 2s --fast-list`):** Compara tamaño y fecha con tolerancia de 2s para evitar re-subir archivos idénticos debido a diferencias de precisión entre Windows NTFS y la API de Google Drive. Solo sube archivos genuinamente nuevos o modificados, omitiendo los que ya están al día con 0 bytes de transferencia.
 - **Gestión transparente:** Añade `[☁ Drive] gdrive:/Backups_Proyectos` a la lista de destinos, permitiendo marcar casillas para respaldar localmente y en la nube en una sola corrida.
 - **Auto-Sync a la nube:** Replica archivos modificados al instante vía conexiones cifradas HTTPS sin consumir RAM constante.
 - **Seguridad de tokens:** Las credenciales y tokens se almacenan en `tools/rclone.conf` protegido y excluido de Git.
