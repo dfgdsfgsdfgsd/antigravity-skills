@@ -145,3 +145,6 @@ Guarda y recarga automáticamente al iniciar:
 5. **Cero Parpadeo en Listas WinForms (`WM_ERASEBKGND` e Invalidación Selectiva):**
    - Para eliminar el parpadeo blanco nativo en controles `ListBox`/`CheckedListBox`, interceptar el mensaje Win32 `0x0014 (WM_ERASEBKGND)` en `WndProc` asignando `m.Result = (IntPtr)1`.
    - Nunca ejecutar temporizadores de repintado continuo (`this.Invalidate()`) sobre la lista completa: invalidar únicamente el rectángulo exacto de la fila modificada (`this.Invalidate(GetItemRectangle(index))`) cuando cambie su estado.
+6. **Transición Garantizada de Estados Visuales (`operations == 0` y Sweep Final):**
+   - Cuando una carpeta no requiere transferencias (`operations == 0` por estar ya al día), llamar a `SetFolderState(src, FolderSyncState.Completed)` antes del `continue` del bucle para no dejarla atascada en "Sincronizando...".
+   - Al terminar el worker (`Worker_RunWorkerCompleted`), realizar un barrido final confirmando todas las carpetas marcadas como `✔ Al día`.
