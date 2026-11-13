@@ -95,6 +95,12 @@ Guarda y recarga automáticamente al iniciar:
 - **Auto-Sync a la nube:** Replica archivos modificados al instante vía conexiones cifradas HTTPS sin consumir RAM constante.
 - **Seguridad de tokens:** Las credenciales y tokens se almacenan en `tools/rclone.conf` protegido y excluido de Git.
 
+### 7. Menú Desplegable con Historial de Acceso Rápido e Inicio Limpio
+- **Inicio limpio y despejado:** Al abrir la aplicación, las listas y cajas comienzan completamente vacías sin forzar proyectos residuales.
+- **ComboBox con Historial (`▼`):** Los campos de Origen y Destino cuentan con menú desplegable y autocompletado inteligente con el historial de rutas recientes.
+- **Carga instantánea al seleccionar:** Al elegir cualquier carpeta del desplegable, se cargan sus subcarpetas de inmediato.
+- **Botón `[🗑 Vaciar]`:** Permite resetear y vaciar la lista de origen en cualquier momento con un solo clic.
+
 ---
 
 ## 🚀 Compilación y Ejecución
