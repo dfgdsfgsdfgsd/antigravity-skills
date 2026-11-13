@@ -142,3 +142,6 @@ Guarda y recarga automáticamente al iniciar:
    - Para que los elementos como `clbSources` o botones no queden tapados por otros paneles, usar `BringToFront()` o envolver en un `TableLayoutPanel`.
 4. **Filtro de desarrollo obligatorio:**
    - Omitir `.venv`, `node_modules`, `.git`, `__pycache__` por defecto para evitar saturar el disco copiando millones de archivos innecesarios.
+5. **Cero Parpadeo en Listas WinForms (`WM_ERASEBKGND` e Invalidación Selectiva):**
+   - Para eliminar el parpadeo blanco nativo en controles `ListBox`/`CheckedListBox`, interceptar el mensaje Win32 `0x0014 (WM_ERASEBKGND)` en `WndProc` asignando `m.Result = (IntPtr)1`.
+   - Nunca ejecutar temporizadores de repintado continuo (`this.Invalidate()`) sobre la lista completa: invalidar únicamente el rectángulo exacto de la fila modificada (`this.Invalidate(GetItemRectangle(index))`) cuando cambie su estado.
