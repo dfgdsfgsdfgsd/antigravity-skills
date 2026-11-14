@@ -1,0 +1,28 @@
+================================================================================
+                    /editor-video-go (Alias: /video-go)
+================================================================================
+
+¿QUÉ HACE?
+Crea y orquesta un motor de edición de video de alto rendimiento y automatización
+desarrollado en lenguaje Go (Golang) respaldado por FFmpeg y ffprobe.
+Proporciona arquitectura concurrente con Goroutines (Worker Pool), API REST,
+herramienta CLI y una suite web oscura embebida dentro de un único binario portable.
+
+CAPACIDADES PRINCIPALES:
+1. Generación de Reels y Shorts (9:16 vertical) con desenfoque de fondo dinámico.
+2. Recorte de clips por frame exacto (reencode) o instantáneo por keyframe (-c copy).
+3. Concatenación inteligente de secuencias de video.
+4. Inspección técnica de metadatos (resolución, códecs, FPS, bitrate) con ffprobe.
+5. Cola concurrente asíncrona para procesar videos en segundo plano sin bloquear.
+6. Frontend web completo incrustado en el binario final vía //go:embed.
+
+COMANDOS Y EJEMPLOS DE USO:
+- /editor-video-go            : Genera o adapta el motor multimedia en Go.
+- /video-go                  : Alias directo de activación.
+
+COMANDOS DE CONSOLA SOPORTADOS POR EL MOTOR:
+- editor-auto-go server       : Inicia la API REST y la interfaz web en localhost:8080.
+- editor-auto-go probe <file> : Extrae los metadatos técnicos en JSON.
+- editor-auto-go reel ...     : Convierte cualquier video a formato vertical para redes.
+- editor-auto-go trim ...     : Extrae un fragmento de video por tiempo.
+================================================================================

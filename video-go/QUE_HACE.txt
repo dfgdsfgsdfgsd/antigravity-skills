@@ -1,0 +1,12 @@
+================================================================================
+                    /video-go (Alias de /editor-video-go)
+================================================================================
+
+¿QUÉ HACE?
+Alias directo de /editor-video-go.
+Orquesta un motor de edición de video en Go (Golang) con FFmpeg, worker pool
+concurrente, API REST, CLI y UI web embebida.
+
+Documentación principal:
+C:\Users\Daniel\.gemini\config\skills\editor-video-go\SKILL.md
+================================================================================
