@@ -1,0 +1,34 @@
+====================================================================
+  /proponer-mejoras - AUDITORÍA Y PROPUESTAS DE MEJORA PARA APPS
+====================================================================
+
+¿QUÉ HACE?
+Analiza en profundidad cualquier proyecto, aplicación o script del espacio
+de trabajo, detecta áreas de mejora y presenta un catálogo clasificado de
+3 a 5 propuestas de alto impacto en Experiencia de Usuario (UI/UX),
+Rendimiento, Resiliencia y Automatización, con tips técnicos de
+implementación listos para ejecutar.
+
+CARACTERÍSTICAS PRINCIPALES:
+1. Escaneo Automático del Stack:
+   Identifica lenguaje, framework, modelo de concurrencia y persistencia
+   (C#, Python, Node/Electron, Go, etc.).
+2. Matriz de 4 Ejes:
+   Clasifica mejoras en UX, Rendimiento, Resiliencia (anti-pérdida de datos)
+   y Automatización (Plug & Play, eventos, segundo plano).
+3. Tips Técnicos de 0 Dependencias:
+   Aporta la API, mensaje de Windows o patrón exacto para implementar la
+   mejora sin agregar dependencias pesadas.
+4. Listo para Selección con 1 Clic:
+   El usuario puede responder "la 1 y la 3" o "todas" y la ejecución inicia
+   inmediatamente.
+
+COMANDOS DE ACTIVACIÓN:
+  /proponer-mejoras
+  /mejoras
+  /auditar-mejoras
+  /tips-app
+
+COMPATIBILIDAD:
+  Cualquier lenguaje o framework en Windows, Linux o macOS.
+====================================================================

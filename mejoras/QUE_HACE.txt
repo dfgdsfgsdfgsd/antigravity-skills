@@ -1,0 +1,8 @@
+====================================================================
+  /mejoras - AUDITORÍA Y PROPUESTAS DE MEJORA PARA APPS (ALIAS)
+====================================================================
+
+¿QUÉ HACE?
+Alias oficial de /proponer-mejoras. Consulta proponer-mejoras/QUE_HACE.txt
+para la descripción técnica y comandos completos.
+====================================================================
