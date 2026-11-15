@@ -130,6 +130,13 @@ Guarda y recarga automáticamente al iniciar:
   - `[ ⏳ En cola... ]`: Indicador en espera para las carpetas pendientes.
 - **Widget de cabecera:** En la barra superior de la columna de origen se activa un spinner maestro que indica en vivo: `☁ Drive: nombre_carpeta` o `💾 Respaldando: nombre_carpeta`.
 
+### 10. Multi-Destino en Explorador, AccountChooser y Desvinculación Limpia
+- **Vista Multi-Destino en Explorador:** Muestra en una sola tabla la comparación de carpetas locales contra múltiples destinos físicos y en la nube (`(Todos los destinos)`). Para Google Drive muestra tamaño en nube (`X,XX GB (☁ Nube)`) o estado pendiente si aún no se ha sincronizado.
+- **Apertura de Cuenta Exacta en Navegador:** Para destinos Google Drive (`[☁ Drive]`), el botón `Abrir Destino` genera la URL oficial de Google AccountChooser (`https://accounts.google.com/AccountChooser?Email=<email>&continue=https%3A%2F%2Fdrive.google.com%2Fdrive%2Fmy-drive`) para abrir automáticamente la cuenta correspondiente sin solapamientos entre perfiles.
+- **Resolución Inteligente de Rutas de Origen:** El botón `Abrir Origen` detecta dinámicamente la ruta a través del ítem seleccionado en la lista comparativa, el nivel jerárquico actual (*drill-down*) o el campo de origen activo, garantizando apertura inmediata en el Explorador de Windows.
+- **Sistema de Desvinculación de Carpetas:** Permite desvincular carpetas de origen o destinos agregados mediante menús contextuales (clic derecho) y la tecla `Supr` (`Delete`), actualizando automáticamente la interfaz y el archivo de persistencia `sync_config.txt`.
+- **Bandeja del Sistema con 1 Solo Clic:** Clic izquierdo en el ícono de notificación de la bandeja minimiza o restaura la ventana al instante sin obligar a usar menús.
+
 ---
 
 ## 🚀 Compilación y Ejecución

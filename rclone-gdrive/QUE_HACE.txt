@@ -1,0 +1,8 @@
+====================================================================
+  /rclone-gdrive - GESTIÓN Y SINCRONIZACIÓN DE GOOGLE DRIVE (ALIAS)
+====================================================================
+
+¿QUÉ HACE?
+Alias oficial de /rclone-drive. Consulta rclone-drive/QUE_HACE.txt
+para la descripción técnica y comandos completos.
+====================================================================

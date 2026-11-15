@@ -18,8 +18,12 @@ CARACTERÍSTICAS PRINCIPALES:
    subir de nivel.
 4. Auto-Sync Continuo: Vigilancia en vivo con FileSystemWatcher que respalda
    cambios automáticamente al guardar un archivo.
-5. Memoria Optimizada: Escanea más de 750.000 archivos con <15 MB de RAM.
-6. Persistencia Total: Recuerda rutas, carpetas marcadas y opciones al abrir.
+5. Multi-Destino y Nube: Respaldo simultáneo a discos locales, pendrives USB
+   y múltiples cuentas de Google Drive con selector AccountChooser en navegador.
+6. Desvinculación Limpia: Menús contextuales y tecla Supr para desvincular
+   orígenes o destinos con sincronización automática en sync_config.txt.
+7. Memoria Optimizada: Escanea más de 750.000 archivos con <15 MB de RAM.
+8. Persistencia Total: Recuerda rutas, carpetas marcadas y opciones al abrir.
 
 COMANDO DE ACTIVACIÓN:
   /sync-gui

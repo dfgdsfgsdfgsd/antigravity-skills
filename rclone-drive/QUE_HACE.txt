@@ -1,0 +1,34 @@
+====================================================================
+  /rclone-drive - GESTIÓN Y SINCRONIZACIÓN DE GOOGLE DRIVE CON RCLONE
+====================================================================
+
+¿QUÉ HACE?
+Orquesta, automatiza y sincroniza carpetas y archivos locales hacia
+múltiples cuentas de Google Drive sin instalar la aplicación pesada oficial
+de Google Drive. Utiliza el binario nativo portable de rclone, soporta
+múltiples cuentas en paralelo, aperturas directas en navegador con
+perfil exacto (AccountChooser) y sincronización diferencial ultra-rápida.
+
+CARACTERÍSTICAS PRINCIPALES:
+1. Sin cliente oficial de Google Drive: Funciona con un binario portable
+   de rclone (~60 MB) que no consume CPU ni memoria cuando está inactivo.
+2. Soporte Multi-Cuenta: Gestiona n cuentas simultáneas (gdrive1, gdrive2, etc.)
+   enlazando cada una a carpetas remotas específicas.
+3. Apertura de Cuenta Exacta en Navegador:
+   Genera URLs con https://accounts.google.com/AccountChooser?Email=...
+   para abrir directamente la cuenta de Google correspondiente sin
+   conflictos de sesión.
+4. Sincronización Diferencial Estricta:
+   Usa flags óptimos (--update, --modify-window 2s, --fast-list) que
+   evitan duplicar archivos o re-subir gigabytes no modificados.
+5. Cálculo Inteligente de Estado:
+   Inspecciona tamaño y estado remoto en la nube sin ralentizar la interfaz.
+
+COMANDOS DE ACTIVACIÓN:
+  /rclone-drive
+  /rclone-gdrive
+  /google-drive-sync
+
+COMPATIBILIDAD:
+  Windows 10, 11 (x64 / x86), Linux, macOS con binario rclone.exe.
+====================================================================
