@@ -137,6 +137,13 @@ Guarda y recarga automáticamente al iniciar:
 - **Sistema de Desvinculación de Carpetas:** Permite desvincular carpetas de origen o destinos agregados mediante menús contextuales (clic derecho) y la tecla `Supr` (`Delete`), actualizando automáticamente la interfaz y el archivo de persistencia `sync_config.txt`.
 - **Bandeja del Sistema con 1 Solo Clic:** Clic izquierdo en el ícono de notificación de la bandeja minimiza o restaura la ventana al instante sin obligar a usar menús.
 
+### 11. Plug & Play USB, Papelera de Seguridad, Espacio en Disco, Filtro y Pausa
+- **Auto-Detección Plug & Play (`WM_DEVICECHANGE`):** Detecta cuando se inserta un pendrive o disco externo USB conocido y lanza el respaldo de inmediato sin intervención manual.
+- **Filtro de Estados en Explorador (`cmbStatusFilter`):** Menú desplegable para aislar instantáneamente archivos modificados/nuevos, faltantes en destino o al día (100%).
+- **Papelera de Seguridad / Historial (`_historial/`):** Conserva versiones previas fechadas antes de sobrescribir o eliminar archivos locales o remotos (usando `--backup-dir` en rclone).
+- **Barra Visual de Espacio Disponible:** Dibuja el porcentaje y gigabytes libres en tiempo real para cualquier unidad física o cuota de Google Drive seleccionada.
+- **Botón de Pausa y Límite de Velocidad:** Permite pausar y reanudar transferencias en vivo, y limitar el ancho de banda de subida a la nube (`--bwlimit 1M..10M`).
+
 ---
 
 ## 🚀 Compilación y Ejecución
