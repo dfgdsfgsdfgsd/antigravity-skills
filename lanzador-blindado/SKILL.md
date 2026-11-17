@@ -26,10 +26,11 @@ Su propósito es **erradicar para siempre el cierre prematuro y la corrupción d
 | Defecto | Síntoma en Consola | Causa Técnica | Solución Obligatoria |
 | :--- | :--- | :--- | :--- |
 | **1. Saltos Unix LF (`\n`)** | `"65001" no se reconoce`, `"e" no se reconoce`, ventana se cierra en 10ms. | `cmd.exe` busca offsets de bytes basados en `\r\n`. Con `\n`, trunca las primeras letras de cada comando. | **Forzar CRLF (`\r\n`) binario** al guardar el archivo. |
-| **2. Falta de `pause` o bucle** | La ventana parpadea y desaparece al terminar la ejecución o al fallar. | El proceso por lotes finaliza su última línea y el OS cierra el proceso `cmd.exe`. | Añadir `pause` final y envolver menús en bucles `:menu ... goto menu`. |
-| **3. Variables vacías sin comillas** | `La sintaxis del comando no es correcta.` | Si el usuario presiona Enter vacío en `set /p opt=`, `if %opt%==1` se evalúa como `if ==1`. | Siempre encomillar variables: `if "%opt%"=="1"`. |
-| **4. Apertura bloqueante** | El navegador nunca abre o abre antes de tiempo con `ERR_CONNECTION_REFUSED`. | `start http://...` se pone DESPUÉS del servidor (que nunca termina), o antes sin timeout. | Apertura asíncrona no-bloqueante con `timeout 2`. |
-| **5. Trampa de inicio de Streamlit** | El script se congela esperando `Email: ` de bienvenida. | Streamlit bloquea la consola pidiendo email en el primer run si no hay config headless. | Pasar `--server.headless true` y configurar credentials. |
+| **2. UTF-8 con BOM (`EF BB BF`)** | `'ï»¿@echo' no se reconoce`, se imprimen comandos en crudo. | La marca BOM rompe la primera línea de `cmd.exe` provocando que `@echo off` falle. | Guardar siempre en **UTF-8 SIN BOM** (`UTF8Encoding($false)`). |
+| **3. Comando `cls` en menús** | No se ven las opciones, solo aparece la última línea del prompt. | `cls` envía carácter Form Feed (`\x0c`) que en varias terminales de Windows hace scroll hacia abajo u oculta las opciones. | **No usar `cls` en bucles de menú**, separar con líneas vacías. |
+| **4. Falta de `pause` o bucle** | La ventana parpadea y desaparece al terminar la ejecución o al fallar. | El proceso por lotes finaliza su última línea y el OS cierra el proceso `cmd.exe`. | Añadir `pause` final y envolver menús en bucles `:menu ... goto menu`. |
+| **5. Variables vacías sin comillas** | `La sintaxis del comando no es correcta.` | Si el usuario presiona Enter vacío en `set /p opt=`, `if %opt%==1` se evalúa como `if ==1`. | Siempre encomillar variables: `if "%opt%"=="1"`. |
+| **6. Apertura bloqueante** | El navegador nunca abre o abre antes de tiempo con `ERR_CONNECTION_REFUSED`. | `start http://...` se pone DESPUÉS del servidor (que nunca termina), o antes sin timeout. | Apertura asíncrona no-bloqueante con `timeout 2`. |
 
 ---
 
