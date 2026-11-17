@@ -5,19 +5,24 @@
 ¿QUÉ HACE?
 Proporciona la arquitectura de referencia, protocolos de integración y directivas de
 persistencia para unificar herramientas de creación de Reels en una suite completa
-(detección semántica de mejores momentos en podcasts + editor visual interactivo 9:16)
-basada en FastAPI, FFmpeg, Vosk y Canvas.
+(detección semántica de mejores momentos en podcasts + recorte inteligente de silencios
++ subtítulos dinámicos palabra por palabra estilo TikTok/Hormozi + editor visual 9:16)
+basada en FastAPI, FFmpeg, Whisper, Vosk y Canvas.
 
 CAPACIDADES PRINCIPALES:
-1. Arquitectura FastAPI unificada que sirve dos módulos web independientes (/ y /editor).
-2. Persistencia bidireccional contra pérdida de datos (projects_db.json en disco y
-   localStorage en navegador) que recuerda videos subidos y clips tras recargas o navegación.
-3. Telemetría de subida y procesamiento en tiempo real (XHR progress, estado de extracción
-   de audio WAV mono 16kHz y polling de transcripción con Vosk).
-4. Flujo de curaduría con checklist ([✓] Revisado) para previsualizar clips en simulador
+1. Subtítulos dinámicos estilo TikTok / Hormozi: scripts ASS 1080x1920 con animación
+   palabra por palabra, zoom y color de impacto, más sincronización en vivo en el simulador.
+2. Recorte automático de silencios (Jump Cuts con FFmpeg) calibrado a -25dB con
+   margen de 0.08s y botón de previsualización instantánea.
+3. Motor dual de transcripción: OpenAI Whisper (faster-whisper) para puntuación exacta
+   y marcas palabra por palabra, o Vosk para ultra baja latencia 100% offline.
+4. Arquitectura FastAPI unificada que sirve dos módulos web independientes (/ y /editor).
+5. Persistencia bidireccional contra pérdida de datos (projects_db.json en disco y
+   localStorage en navegador) que recuerda videos subidos y clips tras recargas.
+6. Flujo de curaduría con checklist ([✓] Revisado) para previsualizar clips en simulador
    móvil y enviarlos de forma individual o masiva al editor de plantillas.
-5. Reproducción de audio desmuteado al 100% de volumen en el editor de plantillas.
-6. Rutas seguras contra desarmado de CSS mediante <base href="/editor/"> y endpoints espejo.
+7. Reproducción de audio desmuteado al 100% de volumen en el editor de plantillas.
+8. Rutas seguras contra desarmado de CSS mediante <base href="/editor/"> y endpoints espejo.
 
 COMANDOS Y EJEMPLOS DE USO:
 - /suite-reels              : Aplica o audita la arquitectura unificada de la suite de reels.
