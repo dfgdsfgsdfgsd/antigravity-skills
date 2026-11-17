@@ -1,6 +1,6 @@
 # 📚 Catálogo Maestro de Skills de Antigravity
 
-> **Total de herramientas maestras:** 27 skills consolidadas  
+> **Total de herramientas maestras:** 31 skills consolidadas  
 > **Repositorio de respaldo:** [github.com/dfgdsfgsdfgsd/antigravity-skills](https://github.com/dfgdsfgsdfgsd/antigravity-skills)  
 > **Comando de consulta rápida:** `/catalogo`
 
@@ -9,10 +9,10 @@
 ## 🗂️ Índice por Familias Funcionales
 
 1. [🐙 Control de Versiones & Git](#1--control-de-versiones--git) (10 herramientas)
-2. [🚀 Automatización, Servidores & GUI](#2--automatización-servidores--gui) (4 herramientas)
+2. [🚀 Automatización, Servidores & GUI](#2--automatización-servidores--gui) (5 herramientas)
 3. [🔍 Diagnóstico, Análisis & Estructura](#3--diagnóstico-análisis--estructura) (3 herramientas)
-4. [🎨 Frontend, DOM & Multimedia](#4--frontend-dom--multimedia) (3 herramientas)
-5. [🧹 Mantenimiento, Copias & Disco](#5--mantenimiento-copias--disco) (3 herramientas)
+4. [🎨 Frontend, DOM & Multimedia](#4--frontend-dom--multimedia) (7 herramientas)
+5. [🧹 Mantenimiento, Copias & Disco](#5--mantenimiento-copias--disco) (4 herramientas)
 6. [🧠 Meta-Skills, Aprendizaje & Documentación](#6--meta-skills-aprendizaje--documentación) (4 herramientas)
 
 ---
@@ -60,6 +60,10 @@
 
 | Comando Principal | Alias Reconocidos | ¿Qué hace? |
 | :--- | :--- | :--- |
+| **`/cortar-silencios`** | `/jump-cuts`, `/auto-silence` | Detección y recorte automático de silencios y pausas muertas (Jump Cuts) en videos y podcasts con FFmpeg mediante auto-calibración adaptativa de decibelios y margen de seguridad anti-mutilación de palabras. |
+| **`/suite-reels`** | `/suite-reels-ia`, `/unificar-reels` | Suite completa de Reels y podcasts: transcripción semántica (Whisper/Vosk/Gemini), corte de silencios, subtítulos palabra por palabra (TikTok/Hormozi) y editor visual 9:16. |
+| **`/editor-video-go`** | `/video-go`, `/motor-video-go` | Motor de edición de video en Go (Golang) con FFmpeg, worker pool concurrente, API REST y UI web. |
+| **`/transmitir-audio`** | `/audio-pc`, `/soundcast` | Transmite el audio de la PC al celular en tiempo real por WiFi sin apps externas usando captura WASAPI y WebSockets. |
 | **`/anti-estela`** | `/anti-ghosting` | Elimina estelas fantasma y screen tearing en animaciones DOM Chromium aislando capas GPU (`translateZ`). |
 | **`/ventana-flotante`** | `/flotante` | Paneles flotantes arrastrables y acoplables a márgenes con persistencia en localStorage. |
 | **`/reparar-downloader`**| `/fix-ytdlp` | Repara aplicaciones Next.js/Turbopack con yt-dlp/youtube-dl-exec (descargas infinitas o binarios vacíos). |
