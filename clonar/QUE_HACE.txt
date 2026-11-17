@@ -1,0 +1,13 @@
+================================================================================
+                    /clonar (Alias de /clonar-repo)
+================================================================================
+
+¿QUÉ HACE?
+Alias directo de /clonar-repo. Clona cualquier repositorio de GitHub, detecta
+su stack (Streamlit, Gradio, FastAPI, Flask, Node, Vite), resuelve sus dependencias
+y genera automáticamente un lanzador iniciar.bat de 1 clic con apertura no-bloqueante
+del navegador.
+
+COMANDOS Y EJEMPLOS DE USO:
+- /clonar <url-github>
+================================================================================

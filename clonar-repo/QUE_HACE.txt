@@ -1,0 +1,24 @@
+================================================================================
+                    /clonar-repo (Alias: /clonar, /clone-run, /repo-lanzador)
+================================================================================
+
+¿QUÉ HACE?
+Clona cualquier repositorio de GitHub, analiza de inmediato su código fuente para detectar
+su stack (Streamlit, Gradio, FastAPI, Flask, Vite, Next.js, HTML), resuelve sus dependencias
+y genera un archivo iniciar.bat de 1 clic que abre el navegador y levanta el servidor sin
+necesidad de teclear comandos en la consola.
+
+CAPACIDADES PRINCIPALES:
+1. Clonación automática vía git clone en la ruta de trabajo deseada.
+2. Detección inteligente de entrypoints (app.py, main.py, webui.py, scripts dev).
+3. Configuración automática de puertos (Streamlit 8501, Gradio 7860, FastAPI 8000, Vite 5173, etc.).
+4. Generación de iniciar.bat con verificación de dependencias (pip / npm) y apertura
+   no-bloqueante del navegador web.
+5. Inclusión de directiva pause final para diagnóstico de errores sin cierre abrupto.
+6. Auto-documentación del repositorio en el índice de proyectos.
+
+COMANDOS Y EJEMPLOS DE USO:
+- /clonar-repo https://github.com/user/repo : Clona el repo y genera su lanzador iniciar.bat.
+- /clonar https://github.com/user/repo      : Alias corto para clonar y preparar lanzador.
+- /clone-run                                : Alias de clonación con inicio rápido.
+================================================================================
