@@ -1,0 +1,26 @@
+================================================================================
+                    /suite-reels (Alias: /suite-reels-ia, /unificar-reels)
+================================================================================
+
+¿QUÉ HACE?
+Proporciona la arquitectura de referencia, protocolos de integración y directivas de
+persistencia para unificar herramientas de creación de Reels en una suite completa
+(detección semántica de mejores momentos en podcasts + editor visual interactivo 9:16)
+basada en FastAPI, FFmpeg, Vosk y Canvas.
+
+CAPACIDADES PRINCIPALES:
+1. Arquitectura FastAPI unificada que sirve dos módulos web independientes (/ y /editor).
+2. Persistencia bidireccional contra pérdida de datos (projects_db.json en disco y
+   localStorage en navegador) que recuerda videos subidos y clips tras recargas o navegación.
+3. Telemetría de subida y procesamiento en tiempo real (XHR progress, estado de extracción
+   de audio WAV mono 16kHz y polling de transcripción con Vosk).
+4. Flujo de curaduría con checklist ([✓] Revisado) para previsualizar clips en simulador
+   móvil y enviarlos de forma individual o masiva al editor de plantillas.
+5. Reproducción de audio desmuteado al 100% de volumen en el editor de plantillas.
+6. Rutas seguras contra desarmado de CSS mediante <base href="/editor/"> y endpoints espejo.
+
+COMANDOS Y EJEMPLOS DE USO:
+- /suite-reels              : Aplica o audita la arquitectura unificada de la suite de reels.
+- /suite-reels-ia           : Alias principal de la suite.
+- /unificar-reels           : Alias para fusionar proyectos de podcast y editor de reels.
+================================================================================
