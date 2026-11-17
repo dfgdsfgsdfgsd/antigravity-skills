@@ -1,6 +1,6 @@
 # 📚 Catálogo Maestro de Skills de Antigravity
 
-> **Total de herramientas maestras:** 31 skills consolidadas  
+> **Total de herramientas maestras:** 32 skills consolidadas  
 > **Repositorio de respaldo:** [github.com/dfgdsfgsdfgsd/antigravity-skills](https://github.com/dfgdsfgsdfgsd/antigravity-skills)  
 > **Comando de consulta rápida:** `/catalogo`
 
@@ -12,7 +12,7 @@
 2. [🚀 Automatización, Servidores & GUI](#2--automatización-servidores--gui) (5 herramientas)
 3. [🔍 Diagnóstico, Análisis & Estructura](#3--diagnóstico-análisis--estructura) (3 herramientas)
 4. [🎨 Frontend, DOM & Multimedia](#4--frontend-dom--multimedia) (7 herramientas)
-5. [🧹 Mantenimiento, Copias & Disco](#5--mantenimiento-copias--disco) (4 herramientas)
+5. [🧹 Mantenimiento, Copias & Disco](#5--mantenimiento-copias--disco) (5 herramientas)
 6. [🧠 Meta-Skills, Aprendizaje & Documentación](#6--meta-skills-aprendizaje--documentación) (4 herramientas)
 
 ---
@@ -74,6 +74,7 @@
 
 | Comando Principal | Alias Reconocidos | ¿Qué hace? |
 | :--- | :--- | :--- |
+| **`/limitar-cpu`** | `/eco-cpu`, `/control-nucleos`, `/cpu-threads` | Diagnostica, audita y limita el consumo de CPU en procesos de IA (Whisper, PyTorch) y renderizado con FFmpeg para evitar saturación al 100%, congelamientos de Windows y sobrecalentamiento. |
 | **`/sync-gui`** | `/sincronizador-gui`, `/sincronizador` | Sincronizador gráfico de carpetas y discos en C# con panel dual 50/50, Auto-Sync en tiempo real y explorador con drill-down. |
 | **`/copiar-proyecto`** | `/copiar` | Copia proyectos completos entre discos mostrando barra de progreso visual, velocidad y ETA en tiempo real. |
 | **`/liberar-disco`** | `/disco-100` | Diagnostica disco al 100%, mata procesos zombis en segundo plano y optimiza cuellos de botella HDD/USB. |

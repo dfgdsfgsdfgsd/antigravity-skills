@@ -1,0 +1,17 @@
+================================================================================
+                    /eco-cpu - CONTROL DE NÚCLEOS Y MODO ECO
+================================================================================
+
+[¿QUÉ HACE?]
+Alias de /limitar-cpu. Diagnostica, audita y limita el consumo de CPU en
+proyectos de IA y renderizado para evitar la saturación al 100% y que la PC
+se congele o levante temperatura.
+
+[COMANDO DE ACTIVACIÓN]
+- /eco-cpu
+- /limitar-cpu
+- /control-nucleos
+
+Consulta la guía completa en:
+C:\Users\Daniel\.gemini\config\skills\limitar-cpu\SKILL.md
+================================================================================

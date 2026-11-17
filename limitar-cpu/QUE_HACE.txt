@@ -1,0 +1,26 @@
+================================================================================
+                    /limitar-cpu - CONTROL DE NÚCLEOS Y MODO ECO
+================================================================================
+
+[¿QUÉ HACE?]
+Diagnostica, audita y limita el consumo de CPU en proyectos de Inteligencia
+Artificial (Whisper, PyTorch, CTranslate2), renderizado con FFmpeg y cómputo
+matemático. Evita la saturación al 100%, reduce temperaturas y previene
+que Windows o el navegador se traben o congelen.
+
+[COMANDO DE ACTIVACIÓN]
+- /limitar-cpu
+- /eco-cpu
+- /control-nucleos
+- /cpu-threads
+
+[STACK REQUERIDO]
+- Python 3.8+ / Windows / Batch .bat
+- Compatible con Whisper, faster-whisper, PyTorch, NumPy, FFmpeg
+
+[CARACTERÍSTICAS TÉCNICAS]
+1. Diagnóstico de núcleos: Detecta núcleos lógicos y calcula el perfil óptimo (Eco 35%, Equilibrado 50%, Turbo 65%).
+2. Prioridad de proceso Windows: Baja la prioridad a BELOW_NORMAL vía Win32 API sin instalar librerías externas.
+3. Bloqueo de hilos matemáticos: Contiene OpenMP, MKL y BLAS para evitar desbordes de CPU.
+4. UI Selector: Plantilla lista para integrar selectores de modo Eco en frontend web.
+================================================================================
