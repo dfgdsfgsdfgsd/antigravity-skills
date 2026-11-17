@@ -29,15 +29,18 @@ Inspeccionar la raíz del proyecto buscando archivos ejecutables de inicio habit
 
 ### Paso 2: Análisis de Calidad y Anti-Bloqueo
 Si se detecta uno o más scripts de inicio, inspeccionar su código contra la **Matriz de Salud del Lanzador**:
-1. 🌐 **Apertura de Navegador:** ¿Invoca la URL local del proyecto (`start http://localhost:<puerto>` o similar)?
-2. ⏱️ **Orden de Ejecución (Anti-Bloqueo):**
+1. 🔤 **Saltos de Línea Windows CRLF (`\r\n`):**
+   - ❌ **Defectuoso (Unix LF):** El script tiene solo `\n`. Provoca que `cmd.exe` trunque comandos (`"65001" no se reconoce...`) y se cierre en milisegundos.
+   - ✅ **Saludable (Windows CRLF):** Contiene `\r\n` (CRLF) explícito en cada línea.
+2. 🌐 **Apertura de Navegador:** ¿Invoca la URL local del proyecto (`start http://localhost:<puerto>` o similar)?
+3. ⏱️ **Orden de Ejecución (Anti-Bloqueo):**
    - ❌ **Bloqueante (Defectuoso):** Invoca el comando principal del servidor (ej. `python app.py` o `npm run dev`) ANTES de llamar a abrir el navegador. Dado que el servidor no termina, la línea de apertura del navegador jamás se ejecuta.
    - ✅ **No Bloqueante (Saludable):** Programa la apertura asíncrona ANTES del servidor:
      ```bat
      start "" cmd /c "timeout /t 2 /nobreak >nul && start http://localhost:<puerto>"
      ```
-3. 📦 **Validación de Entorno/Dependencias:** ¿Comprueba existencia de `node_modules` o `requirements.txt` antes de iniciar?
-4. 🛑 **Protección contra Cierre Abrupto:** ¿Contiene `pause` al final para permitir ver mensajes de error en caso de fallo?
+4. 📦 **Validación de Entorno/Dependencias:** ¿Comprueba existencia de `node_modules` o `requirements.txt` antes de iniciar?
+5. 🛑 **Protección contra Cierre Abrupto:** ¿Contiene `pause` al final para permitir ver mensajes de error en caso de fallo?
 
 ### Paso 3: Diagnóstico y Reparación
 - **Escenario A: Sin Lanzador:**

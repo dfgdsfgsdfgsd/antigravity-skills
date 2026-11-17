@@ -1,0 +1,11 @@
+===============================================================================
+  /anti-cierre-bat - Alias de /lanzador-blindado
+===============================================================================
+
+¿QUÉ HACE?
+Alias directo de /lanzador-blindado.
+Audita, genera y repara scripts .bat en Windows garantizando saltos de línea CRLF (\r\n), UTF-8 y protección anti-cierre repentino.
+
+COMANDO PRINCIPAL:
+- /anti-cierre-bat (o /lanzador-blindado, /bat-blindado)
+===============================================================================

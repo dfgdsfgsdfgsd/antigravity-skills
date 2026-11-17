@@ -1,0 +1,23 @@
+===============================================================================
+  /lanzador-blindado (/bat-blindado, /anti-cierre-bat) - Lanzadores .BAT Indestructibles
+===============================================================================
+
+¿QUÉ HACE?
+Audita, genera y repara scripts .bat en Windows garantizando:
+1. Saltos de línea CRLF (\r\n) obligatorios (evita truncado de comandos y error 65001).
+2. Codificación UTF-8 limpia con 'chcp 65001 >nul'.
+3. Ubicación automática en carpeta local con 'cd /d "%~dp0"'.
+4. Apertura asíncrona no-bloqueante del navegador web con timeout prudencial.
+5. Protección anti-cierre con pausas, bucles :menu y captura de %ERRORLEVEL%.
+
+COMANDOS Y ALIAS:
+- /lanzador-blindado
+- /bat-blindado
+- /anti-cierre-bat
+- /reparar-bat
+
+EJEMPLO DE USO:
+- "el .bat se cierra de inmediato al hacer doble clic"
+- "genera un lanzador blindado para este proyecto"
+- "repara todos los .bat de esta carpeta para que no se cierren"
+===============================================================================

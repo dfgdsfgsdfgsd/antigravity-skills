@@ -39,6 +39,7 @@
 | Comando Principal | Alias Reconocidos | ¿Qué hace? |
 | :--- | :--- | :--- |
 | **`/lanzador`** | `/run`, `/arrancar`, `/play` | Detecta el stack (Node, Vite, Next, Flask, etc.), crea `iniciar.bat`, instala dependencias y abre el navegador automáticamente. |
+| **`/lanzador-blindado`** | `/bat-blindado`, `/anti-cierre-bat`, `/reparar-bat` | Audita, genera y repara archivos .bat en Windows garantizando saltos de línea CRLF (\r\n), UTF-8 y protección anti-cierre repentino. |
 | **`/tutor-lanzador`** | `/aprender-lanzador`, `/tutor-run` | Genera `iniciar_tutor.bat` didáctico para aprender comandos reales (pip, npm, start, puertos) con tips paso a paso y opciones [S/N]. |
 | **`/verificar-lanzador`** | `/chequear-lanzador`, `/audit-lanzador` | Audita si el proyecto tiene lanzador (.bat/.sh), si abre el navegador automáticamente de forma no-bloqueante, y repara o genera scripts de inicio. |
 | **`/gui-dual`** | `/interfaz-dual` | Transforma scripts de Python en suites visuales modernas (Web Flask + Ventana nativa PyWebView con HTML/Tailwind y carpeta `out/`). |
