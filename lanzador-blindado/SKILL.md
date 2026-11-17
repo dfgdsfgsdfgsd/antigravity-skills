@@ -27,10 +27,11 @@ Su propósito es **erradicar para siempre el cierre prematuro y la corrupción d
 | :--- | :--- | :--- | :--- |
 | **1. Saltos Unix LF (`\n`)** | `"65001" no se reconoce`, `"e" no se reconoce`, ventana se cierra en 10ms. | `cmd.exe` busca offsets de bytes basados en `\r\n`. Con `\n`, trunca las primeras letras de cada comando. | **Forzar CRLF (`\r\n`) binario** al guardar el archivo. |
 | **2. UTF-8 con BOM (`EF BB BF`)** | `'ï»¿@echo' no se reconoce`, se imprimen comandos en crudo. | La marca BOM rompe la primera línea de `cmd.exe` provocando que `@echo off` falle. | Guardar siempre en **UTF-8 SIN BOM** (`UTF8Encoding($false)`). |
-| **3. Comando `cls` en menús** | No se ven las opciones, solo aparece la última línea del prompt. | `cls` envía carácter Form Feed (`\x0c`) que en varias terminales de Windows hace scroll hacia abajo u oculta las opciones. | **No usar `cls` en bucles de menú**, separar con líneas vacías. |
-| **4. Falta de `pause` o bucle** | La ventana parpadea y desaparece al terminar la ejecución o al fallar. | El proceso por lotes finaliza su última línea y el OS cierra el proceso `cmd.exe`. | Añadir `pause` final y envolver menús en bucles `:menu ... goto menu`. |
-| **5. Variables vacías sin comillas** | `La sintaxis del comando no es correcta.` | Si el usuario presiona Enter vacío en `set /p opt=`, `if %opt%==1` se evalúa como `if ==1`. | Siempre encomillar variables: `if "%opt%"=="1"`. |
-| **6. Apertura bloqueante** | El navegador nunca abre o abre antes de tiempo con `ERR_CONNECTION_REFUSED`. | `start http://...` se pone DESPUÉS del servidor (que nunca termina), o antes sin timeout. | Apertura asíncrona no-bloqueante con `timeout 2`. |
+| **3. Dependencias no comprobadas** | `ModuleNotFoundError: No module named '...'` al elegir una opción. | El script o subcarpeta (`backend/`) requiere librerías (`requirements.txt`) que no se validaron antes de ejecutar. | **Guarda pre-flight obligatoria:** validar con `python -c "import ..."` o `pip install -r ...`. |
+| **4. Comando `cls` en menús** | No se ven las opciones, solo aparece la última línea del prompt. | `cls` envía carácter Form Feed (`\x0c`) que en varias terminales de Windows hace scroll hacia abajo u oculta las opciones. | **No usar `cls` en bucles de menú**, separar con líneas vacías. |
+| **5. Falta de `pause` o bucle** | La ventana parpadea y desaparece al terminar la ejecución o al fallar. | El proceso por lotes finaliza su última línea y el OS cierra el proceso `cmd.exe`. | Añadir `pause` final y envolver menús en bucles `:menu ... goto menu`. |
+| **6. Variables vacías sin comillas** | `La sintaxis del comando no es correcta.` | Si el usuario presiona Enter vacío en `set /p opt=`, `if %opt%==1` se evalúa como `if ==1`. | Siempre encomillar variables: `if "%opt%"=="1"`. |
+| **7. Apertura bloqueante** | El navegador nunca abre o abre antes de tiempo con `ERR_CONNECTION_REFUSED`. | `start http://...` se pone DESPUÉS del servidor (que nunca termina), o antes sin timeout. | Apertura asíncrona no-bloqueante con `timeout 2`. |
 
 ---
 
@@ -55,7 +56,26 @@ cd /d "%~dp0"
 - `cd /d "%~dp0"`: Garantiza que la terminal se ubique en la carpeta del script sin importar si se ejecutó desde un acceso directo, disco secundario (`D:`) o System32.
 - `chcp 65001 >nul`: Codificación UTF-8 para emojis y acentos.
 
-### Paso 3: Patrón Anti-Bloqueo de Navegador
+### Paso 3: Guarda Pre-flight de Dependencias Faltantes
+Todo lanzador debe auditar si existen dependencias requeridas (incluso en subcarpetas como `backend/` o `client/`):
+```bat
+REM Verificación previa de dependencias críticas
+python -c "import flask_cors, pysubs2" >nul 2>&1
+if %ERRORLEVEL% NEQ 0 (
+    echo [*] Detectadas dependencias faltantes. Instalando automaticamente...
+    if exist "requirements.txt" pip install -r requirements.txt
+    if exist "backend\requirements.txt" pip install -r backend\requirements.txt
+)
+```
+Si es un proyecto Node.js:
+```bat
+if not exist "node_modules" (
+    echo [*] Instalando modulos npm por primera vez...
+    call npm install
+)
+```
+
+### Paso 4: Patrón Anti-Bloqueo de Navegador
 Para aplicaciones web (Flask, FastAPI, Streamlit, Vite, Next.js), programar la apertura asíncrona ANTES de iniciar el proceso bloqueante:
 ```bat
 echo [*] Abriendo navegador en http://localhost:<PUERTO> ...
