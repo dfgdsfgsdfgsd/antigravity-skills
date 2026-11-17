@@ -1,0 +1,17 @@
+================================================================================
+                    /jump-cuts - JUMP CUTS INTELIGENTES CON FFMPEG
+================================================================================
+
+[¿QUÉ HACE?]
+Alias de /cortar-silencios. Detecta y elimina silencios, respiraciones largas y
+pausas muertas en cualquier archivo de video o podcast mediante Jump Cuts
+sincronizados de audio y video con auto-calibración adaptativa en decibelios.
+
+[COMANDO DE ACTIVACIÓN]
+- /jump-cuts
+- /cortar-silencios
+- /auto-silence
+
+Consulta la guía completa en:
+C:\Users\Daniel\.gemini\config\skills\cortar-silencios\SKILL.md
+================================================================================

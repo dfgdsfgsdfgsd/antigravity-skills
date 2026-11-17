@@ -1,0 +1,29 @@
+================================================================================
+                    /cortar-silencios - JUMP CUTS INTELIGENTES CON FFMPEG
+================================================================================
+
+[¿QUÉ HACE?]
+Detecta y elimina silencios, respiraciones largas y pausas muertas en cualquier
+archivo de video o podcast mediante Jump Cuts sincronizados de audio y video.
+Resuelve de forma definitiva el problema de los pisos de ruido ambiental mediante
+auto-calibración adaptativa en decibelios (volumedetect) y protección de palabras.
+
+[COMANDO DE ACTIVACIÓN]
+- /cortar-silencios
+- /jump-cuts
+- /auto-silence
+
+[STACK REQUERIDO]
+- Python 3.9+
+- FFmpeg instalado en el PATH (Windows / Linux / macOS)
+
+[CARACTERÍSTICAS TÉCNICAS]
+1. Auto-calibración adaptativa: Analiza en 0.15s el volumen promedio y calcula el
+   umbral óptimo sin depender de valores fijos arbitrarios.
+2. Padding anti-mutilación (70ms): Preserva el ataque y declive natural de las
+   palabras evitando cortes robóticos.
+3. Fallback progresivo: Búsqueda de rescate inteligente si un clip largo no
+   registra silencios a la primera pasada.
+4. Resiliencia en Windows: Manejo seguro de locks de archivo (WinError 32)
+   en entornos web FastAPI / Flask.
+================================================================================
