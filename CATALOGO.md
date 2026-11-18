@@ -62,6 +62,7 @@
 | :--- | :--- | :--- |
 | **`/cortar-silencios`** | `/jump-cuts`, `/auto-silence` | Detección y recorte automático de silencios y pausas muertas (Jump Cuts) en videos y podcasts con FFmpeg mediante auto-calibración adaptativa de decibelios y margen de seguridad anti-mutilación de palabras. |
 | **`/suite-reels`** | `/suite-reels-ia`, `/unificar-reels` | Suite completa de Reels y podcasts: transcripción semántica (Whisper/Vosk/Gemini), corte de silencios, subtítulos palabra por palabra (TikTok/Hormozi) y editor visual 9:16. |
+| **`/layout-reels`** | `/plantillas-reels`, `/diseno-reels` | Orquestación, conmutación dinámica y renderizado de plantillas y disposiciones 9:16 (Clásico vs Textos Arriba + Video Abajo) con sincronización simulador DOM y FFmpeg/PIL. |
 | **`/editor-video-go`** | `/video-go`, `/motor-video-go` | Motor de edición de video en Go (Golang) con FFmpeg, worker pool concurrente, API REST y UI web. |
 | **`/transmitir-audio`** | `/audio-pc`, `/soundcast` | Transmite el audio de la PC al celular en tiempo real por WiFi sin apps externas usando captura WASAPI y WebSockets. |
 | **`/anti-estela`** | `/anti-ghosting` | Elimina estelas fantasma y screen tearing en animaciones DOM Chromium aislando capas GPU (`translateZ`). |

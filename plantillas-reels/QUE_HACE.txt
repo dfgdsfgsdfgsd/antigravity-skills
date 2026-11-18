@@ -1,0 +1,9 @@
+==============================================================================
+   /plantillas-reels (Alias de /layout-reels)
+==============================================================================
+
+¿QUÉ HACE?
+- Alias directo del comando /layout-reels.
+- Conmuta y renderiza plantillas de video 9:16 (Clásico vs Textos Arriba + Video Abajo).
+- Documentación principal en C:\Users\Daniel\.gemini\config\skills\layout-reels\SKILL.md
+==============================================================================

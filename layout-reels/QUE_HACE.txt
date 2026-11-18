@@ -1,0 +1,31 @@
+==============================================================================
+   /layout-reels : MOTOR DE PLANTILLAS Y DISPOSICIONES 9:16 (DOM + FFMPEG)
+==============================================================================
+
+¿QUÉ HACE?
+- Orquesta y conmuta dinámicamente disposiciones y plantillas de video vertical 9:16:
+  1. Diseño Clásico (Título arriba a 40px, Video al centro a 160px, Pie abajo a 490px).
+  2. Diseño Textos Arriba (Título a 30px, Gancho apilado a 95px, Video abajo a 250px).
+  3. Diseño Doble Video (Video superior a 20px, Título a 295px, Video inferior a 360px).
+- Sincroniza en tiempo real las coordenadas del simulador web interactivo con el
+  motor de renderizado FFmpeg/PIL mediante factor de escala 2x (360x640 -> 720x1280).
+- Adapta automáticamente los subtítulos dinámicos palabra por palabra al borde inferior
+  del video en cualquier posición.
+- Protege las coordenadas contra sanitizaciones accidentales y preserva el estado en localStorage.
+
+STACK COMPATIBLE:
+- Python (FastAPI, PIL / Pillow)
+- FFmpeg (libass)
+- Frontend Web (JavaScript Vanilla, HTML5 Video, Canvas)
+
+COMANDOS RELACIONADOS:
+- /layout-reels (Comando principal)
+- /plantillas-reels (Alias directo)
+- /diseno-reels (Alias rápido)
+- /suite-reels (Suite completa de Reels)
+
+ARCHIVOS CLAVE:
+- static/editor/app.js (Simulador interactivo, switchActiveScreenLayout, drag & drop)
+- static/editor/index.html (Conmutador rápido de layouts y selector de plantillas)
+- engine/canvas_renderer.py (Motor de renderizado FFmpeg, máscaras PIL y subtítulos ASS)
+==============================================================================
