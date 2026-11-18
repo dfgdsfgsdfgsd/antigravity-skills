@@ -1,11 +1,11 @@
 ---
 name: layout-reels
-description: Orquestación, conmutación dinámica y renderizado de plantillas y disposiciones 9:16 (Clásico, Textos Arriba, Doble Video) con sincronización bidireccional entre simulador interactivo DOM y motor FFmpeg/PIL con subtítulos adaptativos. Alias: /plantillas-reels, /diseno-reels
+description: Orquestación, conmutación dinámica y renderizado de plantillas y disposiciones 9:16 (Clásico, Textos Arriba, Doble Video) con sincronización bidireccional entre simulador interactivo DOM y motor FFmpeg/PIL con subtítulos adaptativos y preservación multi-clip. Alias: /plantillas-reels, /diseno-reels
 ---
 
 # /layout-reels - Motor de Plantillas y Disposiciones Dinámicas 9:16 (DOM + FFmpeg)
 
-Esta skill define la arquitectura, matemática de escalado y sincronización bidireccional para gestionar disposiciones visuales en videos verticales (Reels/TikToks/Shorts 9:16), garantizando alternancia instantánea entre múltiples modelos de plantilla (Clásico, Textos Arriba, Doble Video) sin pérdida de datos y con renderizado idéntico entre el simulador web interactivo y la exportación final con FFmpeg.
+Esta skill define la arquitectura, matemática de escalado y sincronización bidireccional para gestionar disposiciones visuales en videos verticales (Reels/TikToks/Shorts 9:16), garantizando alternancia instantánea entre múltiples modelos de plantilla (Clásico, Textos Arriba, Doble Video) **sin pérdida de clips** y con renderizado idéntico entre el simulador web interactivo y la exportación final con FFmpeg.
 
 ---
 
@@ -51,16 +51,14 @@ $$\text{scale} = \frac{\text{canvasWidth}_{\text{export}}}{\text{canvasWidth}_{\
 
 ---
 
-## 🔄 2. Conmutación Dinámica de Layouts en el Frontend
+## 🔄 2. Conmutación Dinámica y Preservación Multi-Clip
 
-La alternancia entre layouts debe realizarse sin recargar la página ni destruir el contenido ya escrito o los clips cargados:
+El mayor riesgo al cambiar de disposición es que el editor cargue un archivo de plantilla en blanco y destruya los clips analizados por la IA. Para evitarlo, se aplica el principio de **Desacoplamiento entre Contenido y Geometría**:
 
 ```javascript
-function switchActiveScreenLayout(targetLayout) {
-    if (!currentProject || !currentProject.screens) return;
-    const screenData = currentProject.screens[currentProject.activeScreenIndex];
+// 1. Modificar únicamente geometría y visibilidad, preservando clips, textos y subtítulos
+function applyLayoutToScreen(screenData, targetLayout) {
     if (!screenData) return;
-
     screenData.layout = targetLayout;
     if (!screenData.positions) screenData.positions = {};
 
@@ -71,19 +69,46 @@ function switchActiveScreenLayout(targetLayout) {
         screenData.showHeaderCard = true;
         screenData.showFooterCard = true;
     } else {
-        // Layout clásico por defecto
         screenData.positions.header = { top: "40px", left: "20px" };
         screenData.positions.media = { top: "160px", left: "20px" };
         screenData.positions.footer = { top: "490px", left: "20px" };
         screenData.showHeaderCard = true;
         screenData.showFooterCard = true;
     }
+}
+
+// 2. Conmutar en lote todas las pantallas del proyecto
+function switchActiveScreenLayout(targetLayout) {
+    if (!currentProject || !currentProject.screens) return;
+    currentTemplateName = targetLayout;
+
+    // Aplicar a TODAS las pantallas del proyecto para mantener todos los clips intactos
+    currentProject.screens.forEach(scr => applyLayoutToScreen(scr, targetLayout));
 
     renderScreens();
-    selectScreen(currentProject.activeScreenIndex);
+    selectScreen(currentProject.activeScreenIndex || 0);
     syncLayoutButtonsUI();
+    if (projectSelect) projectSelect.value = (targetLayout === "textos_arriba") ? "textos_arriba" : "default";
     saveTemplateQuietly();
 }
+```
+
+### Intercepción del Selector de Plantillas (`#project-select`)
+Si el usuario selecciona una disposición desde el desplegable, nunca debe sobreescribirse el proyecto con una pantalla vacía:
+
+```javascript
+projectSelect.addEventListener("change", (e) => {
+    const selected = e.target.value;
+    if (selected === "textos_arriba" || selected === "default") {
+        switchActiveScreenLayout(selected);
+    } else {
+        if (confirm(`¿Quieres cargar la plantilla "${selected}"?`)) {
+            loadTemplateData(selected);
+        } else {
+            projectSelect.value = currentTemplateName;
+        }
+    }
+});
 ```
 
 ---
@@ -121,12 +146,16 @@ if sub_pos == "bottom":
 
 ## 🛡️ 4. Protocolo Anti-Regresión para Diseños y Plantillas
 
-1. **Guarda de Posiciones Sanitizadas:**
-   - **Peligro:** Forzar por código que `footer.top` sea siempre mayor que `media.top + 320`.
-   - **Solución:** Comprobar siempre si la pantalla tiene `layout === "textos_arriba"`. En dicho diseño, el footer va *arriba* del video (`95px` vs `250px`), por lo que nunca debe empujarse al fondo.
-2. **Previsualización Inmediata en Pausa:**
-   - Al marcar `[✓] Subtítulos en Vivo`, no esperar a que ocurra un evento `timeupdate` (que solo dispara cuando el video corre). Renderizar inmediatamente el primer bloque de palabras o badge demostrativo en `currentTime = 0`.
-3. **Persistencia Dual (1-Clic):**
-   - Permitir cambiar de diseño tanto desde un `<select>` de plantillas guardadas como mediante botones de acceso rápido (`[ Clásico ]` y `[ Textos Arriba ]`), guardando siempre el estado en `localStorage` con `saveTemplateQuietly()`.
-4. **Export Payload Íntegro:**
-   - Enviar siempre `videoTop`, `videoLeft`, `headerStyle` y `footerStyle` con sus posiciones reales de DOM al endpoint `/api/export-video`, evitando valores fijos en el backend.
+1. **Guarda de Preservación Multi-Clip:**
+   - **Peligro:** Cambiar de plantilla y vaciar el array `currentProject.screens` a una sola pantalla (`[createTopStackedScreen(0)]`).
+   - **Solución:** Comprobar siempre si existen clips (`s.mediaSrc`). Si existen, solo mutar `positions` y `layout` con `applyLayoutToScreen`, jamás reasignar el array completo.
+2. **Auto-Restauración desde Backend (`/api/projects/latest`):**
+   - Si por error de navegación o caché local el proyecto queda con 1 sola pantalla vacía sin videos, el frontend debe consultar el backend automáticamente y rehidratar los clips analizados conservando el diseño seleccionado.
+3. **Botón de Recuperación Rápida (`#restore-clips-btn`):**
+   - Disponer siempre de un botón accesible en la barra superior para restaurar en 1 clic los clips originales del video analizado.
+4. **Guarda de Posiciones Sanitizadas:**
+   - No forzar `footer.top > media.top` cuando `layout === "textos_arriba"`. En dicho diseño, el footer va *arriba* del video (`95px` vs `250px`).
+5. **Previsualización Inmediata en Pausa:**
+   - Al marcar `[✓] Subtítulos en Vivo`, no esperar a `timeupdate`. Renderizar inmediatamente el primer bloque de palabras en `currentTime = 0`.
+6. **Export Payload Íntegro:**
+   - Enviar siempre `videoTop`, `videoLeft`, `headerStyle` y `footerStyle` reales desde el DOM a `/api/export-video`.
