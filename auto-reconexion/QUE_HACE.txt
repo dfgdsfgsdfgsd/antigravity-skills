@@ -1,0 +1,26 @@
+========================================================================
+SKILL: /auto-reconexion (Alias: /reconectar-stream, /reconnect-ws)
+========================================================================
+
+¿QUÉ HACE?
+Audita e implementa patrones de auto-reconexión resiliente y tolerancia
+a la latencia en redes Wi-Fi para conexiones WebSocket y streaming en vivo
+(audio, telemetría y datos bidireccionales).
+
+BENEFICIOS:
+1. Elimina desconexiones falsas por micro-latencia Wi-Fi (timeout elástico de 5s).
+2. Clientes Web (móviles y PC) auto-reconectan al recuperar señal o desbloquear pantalla.
+3. Clientes Android en segundo plano preservan estado Foreground y reintentan en corrutinas.
+4. Previene bucles de reconexión saturantes mediante escalonamiento suave (1.5s - 4s).
+
+STACKS SOPORTADOS:
+- Go / Gorilla WebSocket (Servidor backend)
+- JavaScript / Web Audio API (Navegadores móviles y desktop)
+- Kotlin / OkHttp (Android Services y AudioTrack)
+- Node.js / ws (Servidores o clientes Node)
+
+COMANDOS DISPONIBLES:
+  /auto-reconexion    - Audita e implementa la auto-reconexión en el proyecto
+  /reconectar-stream  - Alias rápido
+  /reconnect-ws       - Alias rápido
+========================================================================

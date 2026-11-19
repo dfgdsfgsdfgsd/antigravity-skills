@@ -1,0 +1,13 @@
+========================================================================
+SKILL: /reconectar-stream (Alias directo de /auto-reconexion)
+========================================================================
+
+¿QUÉ HACE?
+Alias directo de /auto-reconexion.
+Audita e implementa patrones de auto-reconexión resiliente y tolerancia
+a la latencia en redes Wi-Fi para conexiones WebSocket y streaming en vivo
+(audio, telemetría y datos bidireccionales).
+
+Ver documentación principal en:
+  C:\Users\Daniel\.gemini\config\skills\auto-reconexion\SKILL.md
+========================================================================
