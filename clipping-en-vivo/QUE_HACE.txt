@@ -1,0 +1,29 @@
+================================================================================
+                    /clipping-en-vivo (Alias: /subiclip-live)
+================================================================================
+
+¿QUÉ HACE?
+Esta skill orquesta y despliega una suite completa de clipping en tiempo real para
+transmisiones en vivo (YouTube Live, Twitch, Kick), permitiendo capturar clips con
+un solo atajo de teclado (F9) en caliente, reencuadrarlos a 9:16 vertical siguiendo
+rostros con IA, transcribir subtítulos sincronizados y generar copys virales.
+
+--------------------------------------------------------------------------------
+CARACTERÍSTICAS TÉCNICAS:
+--------------------------------------------------------------------------------
+1. Conexión de stream en vivo con yt-dlp soportando HLS con audio y video separados.
+2. Captura instantánea con hotkey F9 de los últimos 30-90 segundos vía FFmpeg.
+3. Auto-reframe 9:16 con Face Tracking suavizado exponencialmente.
+4. Subtítulos palabra por palabra con faster-whisper.
+5. Generación de títulos, hooks, copys y hashtags con variedad estricta de emojis.
+6. Renderizado vertical 1080x1920 con FFmpeg.
+7. Lanzador blindado iniciar.bat con protección anti-cierre y puerto 8505.
+
+--------------------------------------------------------------------------------
+COMANDOS RELACIONADOS:
+--------------------------------------------------------------------------------
+/clipping-en-vivo  -> Activa o audita la suite de clipping en directo.
+/subiclip-live     -> Alias directo del motor.
+/clip-caliente     -> Alias rápido para captura y recorte.
+
+================================================================================
