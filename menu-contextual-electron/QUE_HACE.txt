@@ -1,0 +1,35 @@
+================================================================================
+                    /menu-contextual-electron (Alias: /clic-derecho-electron)
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+Habilita el menú contextual nativo de Windows (clic derecho) en aplicaciones de
+escritorio Electron, permitiendo Pegar, Copiar, Cortar, Deshacer y Seleccionar
+todo sin necesidad de instalar librerías o paquetes npm externos.
+
+--------------------------------------------------------------------------------
+CARACTERÍSTICAS TÉCNICAS:
+--------------------------------------------------------------------------------
+1. CERO DEPENDENCIAS NPM:
+   Utiliza directamente las clases Menu y MenuItem nativas del módulo 'electron'.
+
+2. DETECCIÓN AUTOMÁTICA DE CAMPOS EDITABLES:
+   Usa params.isEditable para mostrar opciones de edición (Pegar, Cortar, Deshacer)
+   únicamente cuando el usuario hace clic sobre inputs o textareas.
+
+3. SOPORTE DE SELECCIÓN DE TEXTO:
+   Detecta params.selectionText para permitir copiar fragmentos de texto en
+   cualquier parte de la interfaz.
+
+--------------------------------------------------------------------------------
+COMANDOS DE ACTIVACIÓN:
+--------------------------------------------------------------------------------
+- /menu-contextual-electron
+- /clic-derecho-electron
+- /context-menu-electron
+
+--------------------------------------------------------------------------------
+STACK COMPATIBLE:
+--------------------------------------------------------------------------------
+Node.js / Electron (Windows, macOS, Linux).
+================================================================================

@@ -1,0 +1,8 @@
+================================================================================
+                    /clic-derecho-electron (Alias de /menu-contextual-electron)
+================================================================================
+
+Este comando es un alias directo de /menu-contextual-electron.
+Consulta la ficha técnica completa en:
+C:\Users\Daniel\.gemini\config\skills\menu-contextual-electron\QUE_HACE.txt
+================================================================================
