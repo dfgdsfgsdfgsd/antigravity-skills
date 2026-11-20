@@ -1,0 +1,11 @@
+================================================================================
+                    ELECTRON-BLINDADO (Alias de /blindar-electron)
+================================================================================
+¿QUÉ HACE?
+Blindaje integral para aplicaciones Electron y Node.js en Windows contra colisiones
+de puerto (EADDRINUSE), procesos zombis de FFmpeg/Python y doble apertura mediante
+SingleInstanceLock y auto-liberación de sockets.
+
+Documentación principal:
+C:\Users\Daniel\.gemini\config\skills\blindar-electron\SKILL.md
+================================================================================

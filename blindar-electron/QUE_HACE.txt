@@ -1,0 +1,24 @@
+================================================================================
+                    BLINDAR-ELECTRON (/electron-blindado)
+================================================================================
+¿QUÉ HACE?
+Blindaje integral para aplicaciones Electron y Node.js en Windows contra colisiones
+de puerto (EADDRINUSE), procesos zombis de FFmpeg/Python y doble apertura mediante
+SingleInstanceLock y auto-liberación de sockets.
+
+STACK COMPATIBLE:
+- Electron (v18 a v34+)
+- Node.js (v16 a v24+)
+- Windows (PowerShell / CMD)
+
+COMANDOS DISPONIBLES:
+- /blindar-electron    (Comando principal)
+- /electron-blindado   (Alias)
+- /anti-eaddrinuse     (Alias)
+
+BENEFICIOS:
+1. Elimina ventanas duplicadas enfocando la ventana activa existente.
+2. Auto-recupera puertos ocupados en <600ms sin crasheos en la UI.
+3. Liquida procesos hijos y nietos (FFmpeg, Python) con 'taskkill /F /T'.
+4. Limpieza preventiva en el lanzador 'iniciar.bat' sin trampas de CMD.
+================================================================================
