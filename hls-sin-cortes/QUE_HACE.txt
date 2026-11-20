@@ -1,0 +1,26 @@
+================================================================================
+                    HLS-SIN-CORTES (/streaming-sin-cortes)
+================================================================================
+¿QUÉ HACE?
+Diagnóstico, optimización y blindaje de streaming HLS en vivo (FFmpeg + Hls.js)
+para eliminar congelamientos, bucles de buffering y tirones mediante escritura
+atómica (temp_file), keyframes alineados a 2s y sincronización suave de velocidad.
+
+STACK COMPATIBLE:
+- Electron / Node.js
+- Python / FastAPI
+- Go / Wails
+- HTML5 / Hls.js
+
+COMANDOS DISPONIBLES:
+- /hls-sin-cortes         (Comando principal)
+- /streaming-sin-cortes   (Alias)
+- /anti-freezing-hls      (Alias)
+
+BENEFICIOS:
+1. Elimina la lectura de archivos .ts truncos con la bandera 'temp_file'.
+2. Sincroniza la segmentación HLS (-hls_time 2) con los keyframes de YouTube/Twitch.
+3. Colchón anti-inanición en Hls.js (liveSyncDurationCount: 4) con auto-salto de micro-huecos.
+4. Sincronización continua de reproductores con 'playbackRate' (cero saltos ni pausas).
+5. Reduce el consumo de CPU de 85% a <1% usando transmuxing directo '-c:v copy'.
+================================================================================

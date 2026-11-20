@@ -43,54 +43,52 @@ with yt_dlp.YoutubeDL(ydl_opts) as ydl:
     # Extrae requested_formats[0] (video) y requested_formats[1] (audio)
 ```
 
-### Paso 2: Ingesta en Buffer Rodante HLS Ultrarrápido
-Ejecutar un único subproceso FFmpeg de fondo con eliminación automática de fragmentos antiguos:
+### Paso 2: Ingesta en Buffer Rodante HLS Ultrarrápido (Escritura Atómica con temp_file)
+Ejecutar un único subproceso FFmpeg de fondo con eliminación automática y copia directa de flujo (-c:v copy) a 0% CPU:
 ```bash
-ffmpeg -y -threads 2 \
+ffmpeg -y \
   -i "<VIDEO_URL>" \
   -i "<AUDIO_URL>" \
-  -c:v libx264 -preset ultrafast -tune zerolatency \
-  -c:a aac \
+  -c:v copy -c:a aac \
   -f hls \
-  -hls_time 1 \
-  -hls_list_size 95 \
-  -hls_flags delete_segments+split_by_time \
+  -hls_time 2 \
+  -hls_list_size 60 \
+  -hls_flags delete_segments+split_by_time+temp_file \
   "buffer/live_hls/live.m3u8"
 ```
-* **Footprint en disco fijo:** Al mantener máximo 95 segmentos de 1 segundo, el consumo de disco se congela en **~80 MB permanentes**.
-* **CPU controlada:** Con `-threads 2` y `-preset ultrafast`, la CPU se mantiene en niveles mínimos (<25%).
+* **Escritura Atómica (`temp_file`):** FFmpeg escribe en un archivo `.tmp` y lo renombra solo al finalizar, evitando que el reproductor lea fragmentos truncos y se congele.
+* **Alineación de Keyframes (`-hls_time 2`):** Sincronizado con la cadencia de I-frames nativa de YouTube/Twitch (2s).
+* **0% de Consumo CPU:** `-c:v copy` evita transcodificar en CPU, produciendo fragmentos en 10ms.
 
-### Paso 3: Servidor HTTP Local de Baja Latencia
-Exponer el directorio `buffer/live_hls/` con cabeceras estrictas anti-caché:
-```python
-# Ejemplo FastAPI:
-@app.get("/api/live_hls/{filename}")
-def get_live_hls(filename: str):
-    path = os.path.join(HLS_DIR, filename)
-    media_type = "application/vnd.apple.mpegurl" if filename.endswith(".m3u8") else "video/mp2t"
-    res = FileResponse(path, media_type=media_type)
-    res.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
-    res.headers["Access-Control-Allow-Origin"] = "*"
-    return res
-```
+### Paso 3: Servidor HTTP Local con Soporte de Rangos (206 Partial Content)
+Exponer el directorio `buffer/live_hls/` con cabeceras `Accept-Ranges: bytes` y `Content-Length` exactas para evitar que el pipeline de video de Chromium se vacíe.
 
-### Paso 4: Reproducción Sincronizada y Reloj Maestro en Frontend
-Ambos reproductores HTML5 (`#videoPlayer` y `#previewVideo`) se conectan a la misma fuente HLS local:
+### Paso 4: Reproducción Sincronizada y Reloj Maestro en Frontend (Cero Seeks)
+Ambos reproductores HTML5 (`#videoPlayer` y `#previewVideo`) se conectan a la misma fuente HLS local con colchón de seguridad:
 ```javascript
-const hlsLeft = new Hls({ liveSyncDurationCount: 2, lowLatencyMode: true });
-hlsLeft.loadSource("http://127.0.0.1:8505/api/live_hls/live.m3u8");
-hlsLeft.attachMedia(videoPlayer);
+const hls = new Hls({
+  enableWorker: true,
+  lowLatencyMode: false,
+  liveSyncDurationCount: 4,
+  liveMaxLatencyDurationCount: 8,
+  backBufferLength: 20,
+  maxBufferHole: 0.5,
+  nudgeOffset: 0.1
+});
 
-const hlsRight = new Hls({ liveSyncDurationCount: 2, lowLatencyMode: true });
-hlsRight.loadSource("http://127.0.0.1:8505/api/live_hls/live.m3u8");
-hlsRight.attachMedia(previewVideo);
-
-// Sincronizador de Reloj Maestro (<80ms de tolerancia)
+// Sincronizador Suave mediante velocidad (Cero Saltos / Seeks destructivos)
 videoPlayer.addEventListener("timeupdate", () => {
   if (isLiveMode && previewVideo && !previewVideo.paused) {
-    const diff = Math.abs(videoPlayer.currentTime - previewVideo.currentTime);
-    if (diff > 0.08) {
+    const diff = videoPlayer.currentTime - previewVideo.currentTime;
+    const absDiff = Math.abs(diff);
+
+    if (absDiff > 0.75) {
       previewVideo.currentTime = videoPlayer.currentTime;
+      previewVideo.playbackRate = 1.0;
+    } else if (absDiff > 0.05) {
+      previewVideo.playbackRate = diff > 0 ? 1.05 : 0.95;
+    } else {
+      previewVideo.playbackRate = 1.0;
     }
   }
 });

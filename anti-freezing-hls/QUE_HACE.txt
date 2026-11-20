@@ -1,0 +1,11 @@
+================================================================================
+                    ANTI-FREEZING-HLS (Alias de /hls-sin-cortes)
+================================================================================
+¿QUÉ HACE?
+Diagnóstico, optimización y blindaje de streaming HLS en vivo (FFmpeg + Hls.js)
+para eliminar congelamientos, bucles de buffering y tirones mediante escritura
+atómica (temp_file), keyframes alineados a 2s y sincronización suave de velocidad.
+
+Documentación principal:
+C:\Users\Daniel\.gemini\config\skills\hls-sin-cortes\SKILL.md
+================================================================================
