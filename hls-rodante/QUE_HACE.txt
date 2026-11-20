@@ -1,0 +1,8 @@
+================================================================================
+                    /hls-rodante (Alias de /buffer-rodante-hls)
+================================================================================
+
+Este comando es un alias directo de /buffer-rodante-hls.
+Consulta la ficha técnica completa en:
+C:\Users\Daniel\.gemini\config\skills\buffer-rodante-hls\QUE_HACE.txt
+================================================================================

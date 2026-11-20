@@ -1,0 +1,41 @@
+================================================================================
+                    /buffer-rodante-hls (Alias: /hls-rodante)
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+Captura transmisiones en vivo remotas (YouTube Live, Twitch, Kick) en un buffer
+rodante local HLS de ultrabaja latencia mediante un único proceso FFmpeg,
+sincronizando múltiples reproductores a 0ms de retraso y permitiendo cortar
+clips en caliente en solo 0.2 segundos sin re-codificación.
+
+--------------------------------------------------------------------------------
+CARACTERÍSTICAS TÉCNICAS:
+--------------------------------------------------------------------------------
+1. BUFFER CIRCULAR EN DISCO:
+   Mantiene como máximo 95 segmentos de 1 segundo (hls_list_size 95), con
+   eliminación automática de trozos viejos (delete_segments).
+   Consumo máximo en disco: ~80 MB fijos (sin crecimiento indefinido).
+
+2. SINCRONIZACIÓN PERFECTA (0 MS):
+   Tanto la vista panorámica 16:9 como el simulador móvil 9:16 leen del mismo
+   servidor HTTP local vía Hls.js con un reloj maestro que bloquea desfases
+   mayores a 80 milisegundos.
+
+3. CORTE INSTANTÁNEO CON STREAM COPY (-c copy):
+   Al presionar F9 o detener una grabación, toma los últimos N fragmentos .ts
+   del buffer local y los une en 0.2 segundos sin tocar el CPU ni esperar
+   descargas de red.
+
+--------------------------------------------------------------------------------
+COMANDOS DE ACTIVACIÓN:
+--------------------------------------------------------------------------------
+- /buffer-rodante-hls
+- /hls-rodante
+- /stream-sincronizado
+
+--------------------------------------------------------------------------------
+STACK COMPATIBLE:
+--------------------------------------------------------------------------------
+Multi-stack: Python (FastAPI/Flask), Node.js (Electron/Express), Rust (Tauri).
+Requisitos: FFmpeg 5.0+ en PATH y yt-dlp.
+================================================================================
