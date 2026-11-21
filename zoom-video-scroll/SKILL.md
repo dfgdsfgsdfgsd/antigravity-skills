@@ -328,3 +328,8 @@ function initVideoZoom(wrapperEl, videoEl, badgeEl) {
    - Para que `e.preventDefault()` cancele el scroll vertical de la ventana o panel en navegadores modernos, el listener `wheel` debe declararse con `{ passive: false }`.
 3. **Cero Reflow en V-Sync:**
    - Todas las actualizaciones de posición deben canalizarse a través de `requestAnimationFrame`. Nunca actualizar estilos directamente en ráfagas de `mousemove` a 1000Hz.
+4. **Prevención de Franjas Negras en Flexbox (`flex-shrink: 0` y `object-fit: cover`):**
+   - Si el contenedor del visor es un elemento flex hijo (`flex-direction: column`), por defecto tiene `flex-shrink: 1`. Cuando la altura disponible de la ventana es menor a la requerida, el motor de flexbox aplasta la altura del visor, rompiendo la proporción `aspect-ratio: 16 / 9` (deformándolo a un rectángulo 2:1 o 18:9) y generando dos franjas negras (*pillarboxing*) a los lados.
+   - Para erradicar las franjas negras al 100%:
+     - Añadir obligatoriamente `flex-shrink: 0; width: 100%; aspect-ratio: 16 / 9;` en el contenedor `.video-container`.
+     - Establecer `object-fit: cover;` en la etiqueta `<video>` para garantizar ajuste perfecto de borde a borde.
