@@ -68,6 +68,7 @@
 | **`/anti-estela`** | `/anti-ghosting` | Elimina estelas fantasma y screen tearing en animaciones DOM Chromium aislando capas GPU (`translateZ`). |
 | **`/ventana-flotante`** | `/flotante` | Paneles flotantes arrastrables y acoplables a márgenes con persistencia en localStorage. |
 | **`/espectro-audio`** | `/visualizador-audio`, `/matriz-led-audio` | Suite de visualizadores de audio en tiempo real en Canvas (DAW Matriz LED de 48 bandas, VFD Ice White, VU clásico y Oscilógrafo temporal con scroll continuo) con Web Audio API, picos flotantes y paletas multitema. |
+| **`/zoom-video-scroll`** | `/zoom-video`, `/zoom-scroll` | Zoom focal interactivo con la rueda del ratón (Scroll), paneo por arrastre y restablecimiento instantáneo en video, 100% optimizado para GPUs integradas y CPUs livianas sin tarjeta gráfica dedicada. |
 | **`/reparar-downloader`**| `/fix-ytdlp` | Repara aplicaciones Next.js/Turbopack con yt-dlp/youtube-dl-exec (descargas infinitas o binarios vacíos). |
 
 ---

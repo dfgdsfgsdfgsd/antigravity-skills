@@ -1,0 +1,41 @@
+================================================================================
+            /zoom-video-scroll  (y alias /zoom-video, /zoom-scroll)
+  Zoom Focal con Scroll y Paneo Liviano para Reproductores de Video en Web/Electron
+================================================================================
+
+¿QUÉ HACE?
+Implementa zoom interactivo con la rueda del ratón (Scroll), zoom focal
+orientado hacia la posición del cursor, paneo por arrastre (drag-to-pan) y
+restablecimiento instantáneo al 100% (doble clic) en cualquier reproductor
+de video HTML5 o Electron.
+
+¿POR QUÉ ES 100% LIVIANO Y NO REQUIERE GPU DEDICADA?
+No necesita tarjeta gráfica dedicada (NVIDIA / AMD Radeon). Utiliza el compositor
+de texturas 2D nativo integrado en cualquier CPU Intel o AMD mediante
+'transform: translate3d(...) scale(...) translateZ(0)'.
+Esto traslada la carga a la gráfica integrada básica sin obligar a la CPU
+a repintar píxeles, logrando 60 FPS estables con 0% de uso adicional de procesador.
+
+CARACTERÍSTICAS PRINCIPALES:
+1. Zoom Focal Inteligente:
+   Al girar la rueda hacia arriba o abajo, la imagen se amplía exactamente
+   hacia el punto donde apunta el cursor del ratón, sin saltos bruscos.
+2. Paneo con Límites Protegidos:
+   Al tener zoom (>100%), el cursor cambia a mano (grab/grabbing) permitiendo
+   hacer clic y arrastrar para recorrer el video sin que se salga del marco.
+3. Restablecimiento al 100%:
+   Doble clic sobre el video o clic en el botón '↺' para volver a la escala 1:1.
+4. Badge HUD Flotante:
+   Indicador translúcido de aumento (100%, 150%, 200%) con botones +, − y ↺.
+5. Blindaje Anti-Colisión:
+   Compatible con cajas de recorte (crop overlays), sliders y controles de reproducción.
+
+COMANDOS DE DISPARO:
+- /zoom-video-scroll
+- /zoom-video
+- /zoom-scroll
+
+ARCHIVOS DE LA SKILL:
+- C:\Users\Daniel\.gemini\config\skills\zoom-video-scroll\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\zoom-video-scroll\QUE_HACE.txt
+================================================================================

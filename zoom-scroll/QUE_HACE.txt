@@ -1,0 +1,10 @@
+================================================================================
+                    /zoom-scroll  (Alias de /zoom-video-scroll)
+  Zoom Focal con Scroll y Paneo Liviano para Reproductores de Video en Web/Electron
+================================================================================
+
+Este comando es un alias directo de /zoom-video-scroll.
+
+Consulte la ficha completa en:
+C:\Users\Daniel\.gemini\config\skills\zoom-video-scroll\QUE_HACE.txt
+================================================================================
