@@ -67,6 +67,7 @@
 | **`/transmitir-audio`** | `/audio-pc`, `/soundcast` | Transmite el audio de la PC al celular en tiempo real por WiFi sin apps externas usando captura WASAPI y WebSockets. |
 | **`/anti-estela`** | `/anti-ghosting` | Elimina estelas fantasma y screen tearing en animaciones DOM Chromium aislando capas GPU (`translateZ`). |
 | **`/ventana-flotante`** | `/flotante` | Paneles flotantes arrastrables y acoplables a márgenes con persistencia en localStorage. |
+| **`/espectro-audio`** | `/visualizador-audio`, `/matriz-led-audio` | Suite de visualizadores de audio en tiempo real en Canvas (DAW Matriz LED de 48 bandas, VFD Ice White, VU clásico y Oscilógrafo temporal con scroll continuo) con Web Audio API, picos flotantes y paletas multitema. |
 | **`/reparar-downloader`**| `/fix-ytdlp` | Repara aplicaciones Next.js/Turbopack con yt-dlp/youtube-dl-exec (descargas infinitas o binarios vacíos). |
 
 ---

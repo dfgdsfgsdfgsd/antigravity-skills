@@ -1,0 +1,32 @@
+==============================================================================
+   /espectro-audio - ANALIZADORES DE ESPECTRO EN TIEMPO REAL (WEB AUDIO API)
+==============================================================================
+
+[¿QUÉ HACE?]
+Implementa una suite integral de visualización acústica en tiempo real (FFT y
+Time-Domain PCM) en Canvas a 60 FPS conectada a reproductores multimedia HTML5.
+
+Ofrece 5 modos visuales de grado estudio:
+1. DAW Matriz LED (48 bandas divididas en 20 micro-bloques = 960 celdas LED).
+2. Barras DAW Neón (48 columnas continuas de alta resolución).
+3. VFD Mini-LED Ice White (16 bandas panorámicas en blanco hielo y base verde).
+4. Matriz LED Hardware (10 bandas clásicas de ecualizador vintage RGB).
+5. Oscilógrafo Temporal con Scroll Continuo (forma de onda verde neón síncrona
+   al video con aguja naranja y escala métrica de presión y tiempo).
+
+[CARACTERÍSTICAS TÉCNICAS]
+• Detección Acústica Real: Conexión mediante AudioContext + createAnalyser(512).
+• Sin Eco: Desvinculación de reproductores dobles con GainNode intermedio.
+• 5 Paletas de Color: Classic Studio, Cyberpunk, Gold Sunset, Matrix, Ice.
+• Tasa de Picos (Peak Decay): Lento (1.2s), Medio (0.6s), Rápido (0.2s), Apagados.
+• Anti-Regresión: Prevención de TDZ, polyfill de roundRect y soporte HiDPI/Retina.
+• Persistencia: Guarda todas las preferencias del usuario en localStorage.
+
+[COMANDOS Y ALIAS]
+• /espectro-audio
+• /visualizador-audio
+• /matriz-led-audio
+
+[COMPATIBILIDAD]
+Electron (Node/Chromium), Web pura (FastAPI, Flask, Express, Next.js, HTML5).
+==============================================================================

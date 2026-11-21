@@ -1,0 +1,11 @@
+==============================================================================
+   /visualizador-audio (Alias de /espectro-audio)
+==============================================================================
+
+[¿QUÉ HACE?]
+Alias directo de /espectro-audio. Implementa visualizadores acústicos en tiempo
+real (DAW Matriz LED, VFD Ice White, VU clásico y Oscilógrafo Temporal).
+
+Consulta la documentación completa en:
+C:\Users\Daniel\.gemini\config\skills\espectro-audio\SKILL.md
+==============================================================================
