@@ -1,6 +1,6 @@
 ---
 name: espectro-audio
-description: Arquitectura y suite de visualizadores de audio en tiempo real (FFT, Matriz LED 48 bandas, VFD Ice White, VU clasico y Oscilografo con scroll continuo) mediante Web Audio API para Electron y Web. Alias: /visualizador-audio, /matriz-led-audio
+description: Arquitectura y suite de visualizadores de audio en tiempo real (FFT, Onda Podcast SoundCloud, Matriz LED 48 bandas, VFD Ice White, VU clasico y Oscilografo con scroll continuo) mediante Web Audio API para Electron y Web. Alias: /visualizador-audio, /matriz-led-audio
 ---
 
 # /espectro-audio - Suite de Espectro y Visualizadores de Audio en Tiempo Real
@@ -74,9 +74,15 @@ function initWebAudioAnalyser(mediaElement) {
 
 ---
 
-## 🎨 Los 5 Modos de Visualización
+## 🎨 Los 6 Modos de Visualización
 
-### 1. `daw_led_matrix` (DAW Matriz LED de 48 Bandas Segmentadas)
+### 1. `podcast_wave` (🎙️ Onda Simétrica Podcast / SoundCloud)
+- **Diseño estético de alta gama:** Ondas simétricas centradas en el eje horizontal medio (`centerY = h / 2`) con extremos completamente redondeados (cápsulas / pills con `ctx.roundRect`).
+- **Gradiente vertical cálido:** Puntas magenta / violeta (`#b83280`, `#db2777`) que transicionan suavemente a rosa coral (`#fb7185`) y un núcleo central dorado melocotón / ámbar (`#fbbf24`), idéntico al estilo moderno de notas de voz y SoundCloud.
+- **Densidad:** 64 columnas dinámicas con suavizado reactivo a frecuencias vocales y musicales.
+- **Adaptabilidad:** Sincronizado dinámicamente con las 5 paletas de color.
+
+### 2. `daw_led_matrix` (🎛️ DAW Matriz LED de 48 Bandas Segmentadas)
 - **Densidad:** 48 columnas fijas de espectro completo (20Hz a 16kHz).
 - **Celdas:** Cada columna dividida en 20 micro-bloques rectangulares LED (960 celdas totales).
 - **Profundidad:** Las celdas inactivas permanecen visiblemente tenues (`#07180e`, `#1b1605`, `#220609`), creando el efecto de pantalla matricial física de estudio.
