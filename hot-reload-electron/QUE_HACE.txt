@@ -1,0 +1,10 @@
+================================================================================
+             /hot-reload-electron  (Alias de /auto-reload-electron)
+   Hot Reload y Auto-Relaunch Nativo para Aplicaciones Electron en Windows
+================================================================================
+
+Este comando es un alias directo de /auto-reload-electron.
+
+Consulte la ficha completa en:
+C:\Users\Daniel\.gemini\config\skills\auto-reload-electron\QUE_HACE.txt
+================================================================================

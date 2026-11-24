@@ -43,6 +43,7 @@
 | **`/tutor-lanzador`** | `/aprender-lanzador`, `/tutor-run` | Genera `iniciar_tutor.bat` didáctico para aprender comandos reales (pip, npm, start, puertos) con tips paso a paso y opciones [S/N]. |
 | **`/verificar-lanzador`** | `/chequear-lanzador`, `/audit-lanzador` | Audita si el proyecto tiene lanzador (.bat/.sh), si abre el navegador automáticamente de forma no-bloqueante, y repara o genera scripts de inicio. |
 | **`/gui-dual`** | `/interfaz-dual` | Transforma scripts de Python en suites visuales modernas (Web Flask + Ventana nativa PyWebView con HTML/Tailwind y carpeta `out/`). |
+| **`/auto-reload-electron`** | `/electron-reload`, `/hot-reload-electron`, `/reiniciar-electron` | Hot reload instantáneo de interfaz (~200ms) y auto-reinicio de proceso en Electron sin dependencias externas pesadas ni bloqueos de puerto. |
 
 ---
 

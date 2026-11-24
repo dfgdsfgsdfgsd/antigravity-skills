@@ -1,0 +1,30 @@
+================================================================================
+             /auto-reload-electron  (y alias /electron-reload, /hot-reload-electron)
+   Hot Reload y Auto-Relaunch Nativo para Aplicaciones Electron en Windows
+================================================================================
+
+¿QUÉ HACE?
+Elimina la necesidad de cerrar y abrir manualmente una aplicación de Electron
+durante el desarrollo. Vigila los cambios en el código fuente y actúa de
+forma inteligente según el tipo de archivo:
+1. Cambios de UI (HTML/CSS/JS en renderer/): Recarga la ventana en caliente en ~200ms.
+2. Cambios de Proceso Principal (main.js, preload.js): Reinicia automáticamente la
+   aplicación en Windows (app.relaunch()) liberando el cerrojo de instancia única.
+3. Recarga Manual: Habilita F5 y Ctrl+R directamente en la ventana.
+
+VENTAJAS CLAVE:
+- Cero dependencias npm externas: 100% nativo con fs.watch.
+- No mata el proceso innecesariamente cuando solo se edita diseño o frontend.
+- Filtro anti-ráfagas (debounce de 200ms) para evitar bucles al guardar.
+- Exclusión segura de carpetas temporales, búferes HLS y logs.
+
+COMANDOS DE DISPARO:
+- /auto-reload-electron
+- /electron-reload
+- /hot-reload-electron
+- /reiniciar-electron
+
+ARCHIVOS DE LA SKILL:
+- C:\Users\Daniel\.gemini\config\skills\auto-reload-electron\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\auto-reload-electron\QUE_HACE.txt
+================================================================================
