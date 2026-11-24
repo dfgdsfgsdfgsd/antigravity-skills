@@ -1,0 +1,33 @@
+==============================================================================
+   /pdf-a-docx-ocr - SUITE CONVERSORA DE PDF A DOCX CON OCR NATIVO
+==============================================================================
+
+¿QUÉ HACE ESTA SKILL?
+- Crea, audita y repara aplicaciones para convertir PDFs (digitales o escaneados)
+  a documentos Microsoft Word (.docx) 100% editables.
+- Utiliza el motor OCR nativo de Windows (Windows.Media.Ocr vía winocr),
+  eliminando la necesidad de Tesseract externo o descargas pesadas de modelos.
+- Implementa Modo Híbrido Inteligente: extrae texto digital nativo si existe, o
+  aplica OCR a 300 DPI si la página es una imagen o fotocopia escaneada.
+- Reconstruye párrafos naturales evitando líneas cortadas renglón por renglón.
+- Incluye interfaz gráfica de escritorio moderna en CustomTkinter con cola de
+  lotes, barra de progreso y lanzador blindado iniciar.bat.
+
+COMANDOS DE DISPARO:
+  /pdf-a-docx-ocr
+  /pdf-ocr
+  /ocr-pdf
+
+STACK TECNOLÓGICO:
+  - Python 3.10+ (PyMuPDF, python-docx, winocr, Pillow, CustomTkinter)
+  - API Nativa Windows.Media.Ocr (Windows 10/11)
+  - Lanzador blindado Windows (.bat con UTF-8 y CRLF)
+
+ARCHIVOS GENERADOS POR DEFECTO:
+  - app.py (GUI moderna con CustomTkinter)
+  - converter.py (Orquestador de conversión y CLI)
+  - ocr_engine.py (Motor OCR nativo y reconstructor de párrafos)
+  - iniciar.bat (Lanzador blindado 1-clic con anti-cierre)
+  - requirements.txt (Dependencias mínimas de Python)
+  - README.md (Guía completa de usuario)
+==============================================================================

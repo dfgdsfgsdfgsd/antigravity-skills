@@ -1,0 +1,11 @@
+==============================================================================
+   /pdf-ocr - ALIAS DE /pdf-a-docx-ocr
+==============================================================================
+
+Esta skill es un alias directo de /pdf-a-docx-ocr.
+Convierte PDFs (digitales o escaneados) a documentos Word (.docx) editables
+usando OCR nativo de Windows (Windows.Media.Ocr) sin necesidad de Tesseract.
+
+Ver detalles completos en:
+C:\Users\Daniel\.gemini\config\skills\pdf-a-docx-ocr\QUE_HACE.txt
+==============================================================================
