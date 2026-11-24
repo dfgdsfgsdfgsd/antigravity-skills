@@ -43,63 +43,64 @@ Dentro del archivo `main.js`, añade la función `setupAutoReload()` y vincúlal
 ```javascript
 // --- Auto-Reload y Auto-Relaunch Nativo ---
 function setupAutoReload() {
-  const watchTargets = [
-    { targetPath: path.join(__dirname, 'renderer'), isMain: false },
-    { targetPath: path.join(__dirname, 'preload.js'), isMain: true },
-    { targetPath: path.join(__dirname, 'main.js'), isMain: true }
-  ];
-
   let debounceTimer = null;
 
-  watchTargets.forEach(({ targetPath, isMain }) => {
-    if (!fs.existsSync(targetPath)) return;
+  try {
+    fs.watch(__dirname, { recursive: true }, (eventType, filename) => {
+      if (!filename) return;
 
-    try {
-      fs.watch(targetPath, { recursive: true }, (eventType, filename) => {
-        if (!filename) return;
+      const norm = filename.replace(/\\/g, '/');
 
-        // Ignorar temporales, logs, descargas o búferes
-        if (
-          filename.includes('.tmp') ||
-          filename.includes('buffer') ||
-          filename.includes('node_modules') ||
-          filename.endsWith('.log')
-        ) {
-          return;
-        }
+      // Ignorar directorios de datos, temporales, logs y git
+      if (
+        norm.startsWith('.git') ||
+        norm.startsWith('node_modules') ||
+        norm.startsWith('buffer') ||
+        norm.startsWith('exports') ||
+        norm.includes('.tmp') ||
+        norm.endsWith('.log') ||
+        norm === 'package-lock.json'
+      ) {
+        return;
+      }
 
-        clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(() => {
-          console.log(`[Auto-Reload] Modificación detectada en ${filename} (${eventType}).`);
+      // Solo vigilar extensiones de código relevantes
+      const isCodeFile = norm.endsWith('.js') || norm.endsWith('.html') || norm.endsWith('.css') || norm.endsWith('.json');
+      if (!isCodeFile) return;
 
-          if (isMain || filename.endsWith('main.js') || filename.endsWith('preload.js')) {
-            console.log('[Auto-Reload] 🔄 Reiniciando aplicación Electron por cambios en el proceso principal...');
-            
-            // 1. Limpieza de subprocesos si aplica (FFmpeg, Python, etc.)
-            if (typeof stopLiveHls === 'function') stopLiveHls();
+      clearTimeout(debounceTimer);
+      debounceTimer = setTimeout(() => {
+        console.log(`[Auto-Reload] 📝 Modificación detectada en ${norm} (${eventType}).`);
 
-            // 2. Liberar cerrojo de instancia única para permitir la apertura del nuevo proceso
-            if (typeof gotTheLock !== 'undefined' && gotTheLock) {
-              try { app.releaseSingleInstanceLock(); } catch (e) {}
-            }
+        const isMainProcess = norm === 'main.js' || norm === 'preload.js' || norm === 'package.json';
 
-            // 3. Relanzar y salir limpiamente
-            app.relaunch();
-            app.exit(0);
-          } else {
-            console.log('[Auto-Reload] ⚡ Recargando interfaz de usuario (Renderer)...');
-            if (mainWindow && !mainWindow.isDestroyed()) {
-              mainWindow.webContents.reloadIgnoringCache();
-            }
+        if (isMainProcess) {
+          console.log('[Auto-Reload] 🔄 Reiniciando aplicación Electron por cambios en el proceso principal...');
+          
+          // 1. Limpieza de subprocesos si aplica (FFmpeg, Python, etc.)
+          if (typeof stopLiveHls === 'function') stopLiveHls();
+
+          // 2. Liberar cerrojo de instancia única para permitir la apertura del nuevo proceso
+          if (typeof gotTheLock !== 'undefined' && gotTheLock) {
+            try { app.releaseSingleInstanceLock(); } catch (e) {}
           }
-        }, 200);
-      });
-    } catch (err) {
-      console.warn('[Auto-Reload] Advertencia al vigilar ruta:', targetPath, err.message);
-    }
-  });
 
-  console.log('[Auto-Reload] Vigilando cambios en renderer/, preload.js y main.js...');
+          // 3. Relanzar y salir limpiamente
+          app.relaunch();
+          app.exit(0);
+        } else {
+          console.log('[Auto-Reload] ⚡ Recargando interfaz de usuario (Renderer)...');
+          if (mainWindow && !mainWindow.isDestroyed()) {
+            mainWindow.webContents.reloadIgnoringCache();
+          }
+        }
+      }, 200);
+    });
+
+    console.log('[Auto-Reload] Vigilando cambios en tiempo real en todo el proyecto...');
+  } catch (err) {
+    console.warn('[Auto-Reload] Advertencia al activar watcher global:', err.message);
+  }
 }
 ```
 
