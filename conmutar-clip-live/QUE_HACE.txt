@@ -1,0 +1,35 @@
+================================================================================
+             /conmutar-clip-live  (y alias /clip-a-live, /hls-mp4-switch)
+  Conmutación Segura entre Clips MP4 y Streaming HLS en Vivo en HTML5 Video
+================================================================================
+
+¿QUÉ HACE?
+Resuelve y previene los congelamientos de pantalla, cuelgues de buffer y
+pantallas negras que ocurren al alternar entre la reproducción de un clip
+grabado (.mp4 local) y una transmisión en directo (.m3u8 con Hls.js) sobre
+un mismo visor <video>.
+
+¿POR QUÉ OCURRE EL CONGELAMIENTO?
+1. Colisión de fuentes: La propiedad 'src' del MP4 queda en memoria y choca
+   con la fijación del 'MediaSource' de Hls.js.
+2. Desincronización del minutero: El reloj del directo intenta hacer seek a un
+   segundo alto (ej: segundo 400) sobre un clip de 30 segundos o sobre un buffer
+   que aún no termina de cargar, congelando el decodificador.
+
+SOLUCIÓN APLICADA:
+1. Purga atómica de 6 pasos en <video> (pause, removeAttribute src, src='', load).
+2. Desconexión segura de Hls.js (stopLoad, detachMedia, destroy).
+3. Sincronización diferida mediante evento MANIFEST_PARSED.
+4. Guarda de seguridad en V-Sync (readyState >= 2 && !seeking).
+5. 3 vías de retorno accesibles en la UI (pestañas, botón volver, toggle en bandeja).
+
+COMANDOS DE DISPARO:
+- /conmutar-clip-live
+- /clip-a-live
+- /hls-mp4-switch
+- /toggle-live-clip
+
+ARCHIVOS DE LA SKILL:
+- C:\Users\Daniel\.gemini\config\skills\conmutar-clip-live\SKILL.md
+- C:\Users\Daniel\.gemini\config\skills\conmutar-clip-live\QUE_HACE.txt
+================================================================================

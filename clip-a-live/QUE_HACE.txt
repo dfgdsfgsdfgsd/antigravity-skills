@@ -1,0 +1,10 @@
+================================================================================
+               /clip-a-live  (Alias de /conmutar-clip-live)
+  Conmutación Segura entre Clips MP4 y Streaming HLS en Vivo en HTML5 Video
+================================================================================
+
+Este comando es un alias directo de /conmutar-clip-live.
+
+Consulte la ficha completa en:
+C:\Users\Daniel\.gemini\config\skills\conmutar-clip-live\QUE_HACE.txt
+================================================================================
