@@ -1,0 +1,28 @@
+====================================================================
+  /kill-switch-electron - DESACTIVACIÓN REMOTA Y KILL SWITCH ELECTRON
+====================================================================
+
+¿QUÉ HACE?
+Implementa un sistema de control de licencias y desactivación remota
+a la distancia para aplicaciones Electron en Windows sin servidores
+propios, utilizando un archivo JSON gratuito alojado en GitHub o Gist.
+
+CARACTERÍSTICAS PRINCIPALES:
+1. Apagado Global: Suspende la aplicación a todos los usuarios con un clic.
+2. Bloqueo Selectivo: Suspende máquinas individuales mediante Machine ID único.
+3. Actualización Forzada: Bloquea versiones antiguas descontinuadas.
+4. Pantalla de Bloqueo Infranqueable: Modal con desenfoque de fondo que
+   impide la interacción y muestra el Machine ID para soporte técnico.
+5. Persistencia Anti-Bypass: Si la máquina ya fue bloqueada, permanece
+   bloqueada aunque el usuario corte el cable de red o desconecte el WiFi.
+6. Auto-Desbloqueo: Al remover el bloqueo en GitHub, la app se reactiva sola.
+
+STACK COMPATIBLE:
+- Node.js + Electron (Windows, macOS, Linux).
+- Repositorio GitHub o GitHub Gist (Público o Secreto).
+
+COMANDOS:
+- /kill-switch-electron
+- /desactivar-remoto
+- /licencia-remota
+====================================================================

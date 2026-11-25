@@ -1,0 +1,13 @@
+====================================================================
+  /desactivar-remoto - ALIAS DE /kill-switch-electron
+====================================================================
+
+¿QUÉ HACE?
+Alias directo de /kill-switch-electron.
+Implementa un sistema de control de licencias y desactivación remota
+a la distancia para aplicaciones Electron en Windows sin servidores
+propios, utilizando un archivo JSON gratuito alojado en GitHub o Gist.
+
+Para más información, consulta:
+C:\Users\Daniel\.gemini\config\skills\kill-switch-electron\QUE_HACE.txt
+====================================================================
