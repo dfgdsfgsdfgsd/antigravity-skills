@@ -1,3 +1,3 @@
 @echo off
-title Copiando: tts -> tts - Progreso en Tiempo Real
-powershell.exe -ExecutionPolicy Bypass -NoProfile -File "C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\scripts\copiar_con_progreso.ps1" -Origen "H:\receta 1\visados\tts" -Destino "D:\Proyectos\tts" -Hilos 16
+title Copiando: vivo 2 -> vivo 2a - Progreso en Tiempo Real
+powershell.exe -ExecutionPolicy Bypass -NoProfile -File "C:\Users\Daniel\.gemini\config\skills\copiar-proyecto\scripts\copiar_con_progreso.ps1" -Origen "D:\Proyectos\vivo 2" -Destino "D:\Proyectos\vivo 2a" -Hilos 16

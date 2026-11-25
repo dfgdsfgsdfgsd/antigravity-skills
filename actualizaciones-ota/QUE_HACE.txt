@@ -1,0 +1,13 @@
+================================================================================
+          SKILL: /actualizaciones-ota (Alias de /ota-telemetria-electron)
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+----------------------
+Alias directo de /ota-telemetria-electron.
+Configura e implementa el motor de auto-actualizaciones remotas OTA con electron-builder
+y electron-updater para desplegar nuevas versiones a todos los usuarios automáticamente.
+
+COMANDO PRINCIPAL:
+------------------
+/ota-telemetria-electron

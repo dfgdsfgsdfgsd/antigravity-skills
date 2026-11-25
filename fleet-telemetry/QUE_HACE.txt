@@ -1,0 +1,13 @@
+================================================================================
+          SKILL: /fleet-telemetry (Alias de /ota-telemetria-electron)
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+----------------------
+Alias directo de /ota-telemetria-electron.
+Implementa el sistema de telemetría de distribución para medir cuántas máquinas únicas
+tienen instalada la aplicación, cantidad de sesiones y tiempo de actividad.
+
+COMANDO PRINCIPAL:
+------------------
+/ota-telemetria-electron

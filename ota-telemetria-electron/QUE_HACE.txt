@@ -1,0 +1,30 @@
+================================================================================
+          SKILL: /ota-telemetria-electron (Telemetría de Flota & OTA)
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+----------------------
+Implementa la arquitectura integral para distribuir aplicaciones Electron en Windows:
+1. Genera un Machine ID anónimo y único por computadora (%APPDATA%) para saber cuántas máquinas reales usan el software sin duplicar por reinstalación.
+2. Emite latidos periódicos (heartbeats) en segundo plano con sesiones, horas de uso y versiones.
+3. Despliega actualizaciones automáticas remotas (OTA) mediante electron-updater y electron-builder: descarga en segundo plano y se instala en 3 segundos al reiniciar.
+
+COMANDOS Y ALIAS:
+-----------------
+- /ota-telemetria-electron
+- /actualizaciones-ota
+- /fleet-telemetry
+- /telemetria-electron
+
+STACK COMPATIBLE:
+-----------------
+- Node.js 18+ / Electron 28+
+- electron-builder + electron-updater
+- Windows (Instaladores NSIS x64)
+
+ARCHIVOS QUE IMPLEMENTA:
+------------------------
+- telemetry.js: Generador de ID único de hardware sha256 y latidos HTTP.
+- updater.js: Gestor de estados de actualización remota e IPC con la UI.
+- package.json: Configuración de compilación NSIS, latest.yml y canal de releases.
+- compilar_instalador.bat: Script de 1 clic para generar el instalador y metadatos.
