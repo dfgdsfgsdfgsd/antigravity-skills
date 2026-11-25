@@ -1,0 +1,29 @@
+====================================================================
+/reproductores-sincronizados (Alias: /dual-player-sync, /camara-autonoma)
+Sincronización Dual de Video (Zero Seeks) y Cámara Autónoma Steadicam
+====================================================================
+
+¿QUÉ HACE?
+Sincroniza dos reproductores de video HTML5 en paralelo (16:9 y 9:16)
+eliminando el efecto "terremoto" mediante modulación imperceptible de
+playbackRate (1.04x / 0.96x), mueve el recuadro de recorte de forma
+autónoma a 60 FPS con filtro Steadicam para seguir rostros memorizados,
+y mantiene activa la onda de audio (Web Audio API) sin generar eco.
+
+PROBLEMAS QUE RESUELVE:
+1. Elimina la vibración y tartamudeo cuando dos videos intentan sincronizarse con currentTime.
+2. Suaviza la trayectoria de la cámara inteligente 9:16 eliminando el ruido de detección facial.
+3. Evita que la onda de audio quede plana al reproducir clips del búfer manteniendo un bus unificado.
+
+STACK COMPATIBLE:
+- Electron / Node.js
+- HTML5 Media Elements (<video>)
+- Web Audio API (AnalyserNode, FFT 512)
+- CSS Aceleración GPU (translateZ)
+
+COMANDOS RELACIONADOS:
+- /reproductores-sincronizados : Especificación técnica y código modular
+- /dual-player-sync           : Alias directo
+- /camara-autonoma            : Alias directo
+- /conmutar-clip-live         : Conmutación segura entre clips y HLS en vivo
+====================================================================

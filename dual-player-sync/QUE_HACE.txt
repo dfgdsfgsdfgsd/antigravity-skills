@@ -1,0 +1,8 @@
+====================================================================
+/dual-player-sync (Alias de /reproductores-sincronizados)
+Sincronización Dual de Video (Zero Seeks) y Cámara Autónoma Steadicam
+====================================================================
+
+Consulta la especificación técnica completa en:
+../reproductores-sincronizados/QUE_HACE.txt
+====================================================================
