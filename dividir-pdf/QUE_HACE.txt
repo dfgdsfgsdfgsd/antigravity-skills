@@ -1,0 +1,9 @@
+==============================================================================
+   /dividir-pdf (Alias de /cortar-pdf) - SUITE VISUAL DE DIVISIÓN DE PDFS
+==============================================================================
+
+Esta skill es un alias directo de /cortar-pdf.
+
+Consulta la documentación técnica completa en:
+C:\Users\Daniel\.gemini\config\skills\cortar-pdf\SKILL.md
+==============================================================================
