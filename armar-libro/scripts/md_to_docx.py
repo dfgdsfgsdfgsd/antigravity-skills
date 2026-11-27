@@ -1,5 +1,9 @@
 import sys
 import re
+import os
+import base64
+import tempfile
+import urllib.request
 from pathlib import Path
 from docx import Document
 from docx.shared import Inches, Pt, RGBColor
@@ -46,6 +50,23 @@ def format_inline(paragraph, text):
         else:
             paragraph.add_run(token)
 
+def render_mermaid_to_png(mermaid_code):
+    try:
+        clean_code = mermaid_code.strip()
+        encoded = base64.b64encode(clean_code.encode('utf-8')).decode('ascii')
+        url = f"https://mermaid.ink/img/{encoded}"
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        with urllib.request.urlopen(req, timeout=12) as resp:
+            data = resp.read()
+            if data and len(data) > 100:
+                tmp = tempfile.NamedTemporaryFile(delete=False, suffix='.png')
+                tmp.write(data)
+                tmp.close()
+                return tmp.name
+    except Exception as e:
+        print(f"Aviso: No se pudo renderizar Mermaid online ({e}), usando modo texto.", file=sys.stderr)
+    return None
+
 def convert_md_to_docx(md_path, docx_path=None):
     md_file = Path(md_path)
     if not md_file.exists():
@@ -69,9 +90,11 @@ def convert_md_to_docx(md_path, docx_path=None):
     lines = md_file.read_text(encoding='utf-8').splitlines()
 
     in_code_block = False
+    code_lang = ""
     code_lines = []
     in_table = False
     table_lines = []
+    temp_images_to_clean = []
 
     def flush_table():
         nonlocal in_table, table_lines
@@ -98,8 +121,8 @@ def convert_md_to_docx(md_path, docx_path=None):
                     if j < col_count:
                         cell = table.cell(i, j)
                         p = cell.paragraphs[0]
-                        p.paragraph_format.space_before = Pt(3)
-                        p.paragraph_format.space_after = Pt(3)
+                        p.paragraph_format.space_before = Pt(2)
+                        p.paragraph_format.space_after = Pt(2)
                         format_inline(p, cell_text)
                         if i == 0:
                             set_cell_background(cell, "F1F5F9")
@@ -110,10 +133,63 @@ def convert_md_to_docx(md_path, docx_path=None):
         in_table = False
 
     def flush_code():
-        nonlocal in_code_block, code_lines
+        nonlocal in_code_block, code_lines, code_lang
         if not code_lines:
             in_code_block = False
+            code_lang = ""
             return
+
+        # Si es un bloque de Mermaid, intentar renderizar la imagen PNG o usar diagrama local
+        if code_lang == 'mermaid':
+            mermaid_src = "\n".join(code_lines)
+            png_path = None
+            is_temp = False
+
+            # 1. Búsqueda inteligente de diagramas locales de alta resolución
+            diagrams_dir = md_file.parent / "assets" / "diagrams"
+            if ("license_lock" in mermaid_src or "Anti-Bypass" in mermaid_src or "Bypass" in mermaid_src) and (diagrams_dir / "diagrama_antibypass.png").exists():
+                png_path = str(diagrams_dir / "diagrama_antibypass.png")
+            elif ("Separación" in mermaid_src or "Distribución Pública" in mermaid_src or "Consola" in mermaid_src or "control.json" in mermaid_src and "doPost" in mermaid_src) and (diagrams_dir / "diagrama_dominios.png").exists():
+                png_path = str(diagrams_dir / "diagrama_dominios.png")
+            elif ("Directo Remoto" in mermaid_src or "Buffer Rodante" in mermaid_src or "F9" in mermaid_src) and (diagrams_dir / "diagrama_clipping_hls.png").exists():
+                png_path = str(diagrams_dir / "diagrama_clipping_hls.png")
+            elif ("GitHub Gist" in mermaid_src or "Topología" in mermaid_src or "Arquitectura General" in mermaid_src) and (diagrams_dir / "diagrama_topologia.png").exists():
+                png_path = str(diagrams_dir / "diagrama_topologia.png")
+
+            # 2. Si no se encontró diagrama predefinido local, intentar renderizar online
+            if not png_path:
+                png_path = render_mermaid_to_png(mermaid_src)
+                if png_path:
+                    is_temp = True
+
+            if png_path and os.path.exists(png_path):
+                try:
+                    p_img = doc.add_paragraph()
+                    p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    p_img.paragraph_format.space_before = Pt(10)
+                    p_img.paragraph_format.space_after = Pt(2)
+                    run_img = p_img.add_run()
+                    run_img.add_picture(png_path, width=Inches(5.8))
+
+                    p_cap = doc.add_paragraph()
+                    p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    p_cap.paragraph_format.space_before = Pt(2)
+                    p_cap.paragraph_format.space_after = Pt(12)
+                    r_cap = p_cap.add_run("📊 Diagrama Visual de Arquitectura de Flujo")
+                    r_cap.italic = True
+                    r_cap.font.name = "Arial"
+                    r_cap.font.size = Pt(8.5)
+                    r_cap.font.color.rgb = RGBColor(100, 116, 139)
+
+                    if is_temp:
+                        temp_images_to_clean.append(png_path)
+                    code_lines = []
+                    in_code_block = False
+                    code_lang = ""
+                    return
+                except Exception as ex:
+                    print(f"Aviso: Falló inserción de imagen ({ex}), fallback a texto.", file=sys.stderr)
+
         code_p = doc.add_paragraph()
         code_p.paragraph_format.space_before = Pt(4)
         code_p.paragraph_format.space_after = Pt(4)
@@ -125,6 +201,7 @@ def convert_md_to_docx(md_path, docx_path=None):
             run.font.color.rgb = RGBColor(40, 50, 60)
         code_lines = []
         in_code_block = False
+        code_lang = ""
 
     for line in lines:
         stripped = line.strip()
@@ -137,6 +214,7 @@ def convert_md_to_docx(md_path, docx_path=None):
                 if in_table:
                     flush_table()
                 in_code_block = True
+                code_lang = stripped[3:].strip().lower()
                 code_lines = []
             continue
 
@@ -155,6 +233,38 @@ def convert_md_to_docx(md_path, docx_path=None):
         # 3. Líneas en blanco
         if not stripped:
             continue
+
+        # 3.1 Imágenes Markdown: ![alt](path)
+        img_match = re.match(r'^!\[(.*?)\]\((.*?)\)$', stripped)
+        if img_match:
+            caption = img_match.group(1).strip()
+            raw_path = img_match.group(2).strip()
+            img_file = Path(raw_path)
+            if not img_file.is_absolute():
+                img_file = md_file.parent / raw_path
+
+            if img_file.exists():
+                try:
+                    p_img = doc.add_paragraph()
+                    p_img.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                    p_img.paragraph_format.space_before = Pt(10)
+                    p_img.paragraph_format.space_after = Pt(2)
+                    run_img = p_img.add_run()
+                    run_img.add_picture(str(img_file), width=Inches(5.8))
+
+                    if caption:
+                        p_cap = doc.add_paragraph()
+                        p_cap.alignment = WD_ALIGN_PARAGRAPH.CENTER
+                        p_cap.paragraph_format.space_before = Pt(2)
+                        p_cap.paragraph_format.space_after = Pt(12)
+                        r_cap = p_cap.add_run(f"📊 {caption}")
+                        r_cap.italic = True
+                        r_cap.font.name = "Arial"
+                        r_cap.font.size = Pt(8.5)
+                        r_cap.font.color.rgb = RGBColor(100, 116, 139)
+                    continue
+                except Exception as ex_img:
+                    print(f"Aviso: Error insertando imagen {img_file} ({ex_img})", file=sys.stderr)
 
         # 4. Separadores horizontales ---
         if re.match(r'^-{3,}$', stripped) or re.match(r'^\*{3,}$', stripped):
@@ -241,6 +351,15 @@ def convert_md_to_docx(md_path, docx_path=None):
         alt_file = docx_file.with_stem(docx_file.stem + "_actualizado")
         doc.save(str(alt_file))
         print(f"Aviso: '{docx_file.name}' está abierto en Word. Se guardó copia actualizada en: {alt_file.name}")
+
+    # Limpiar imágenes temporales
+    for tmp_img in temp_images_to_clean:
+        try:
+            if os.path.exists(tmp_img):
+                os.remove(tmp_img)
+        except Exception:
+            pass
+
     return True
 
 if __name__ == '__main__':
