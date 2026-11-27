@@ -108,6 +108,29 @@ flowchart TD
 
 ---
 
+## 📦 Plantillas Reutilizables Embebidas (Replicación en 1 Clic)
+
+Esta skill incluye un paquete completo de archivos base en `templates/` listos para copiarse directamente al directorio raíz de cualquier nuevo proyecto:
+
+| Archivo Plantilla | Destino en Proyecto | Función |
+| :--- | :--- | :--- |
+| `templates/telemetry.js` | `./telemetry.js` | Generador de Machine ID + Heartbeats periódicos a Google Sheets. |
+| `templates/license_control.js` | `./license_control.js` | Contador diario de usos + Verificador Gist + Anti-Bypass. |
+| `templates/google_apps_script.js` | Pegar en Apps Script | Webhook `doPost(e)` + Función `disenarHojaAutomatica()`. |
+| `templates/admin.html` | `./admin/admin.html` | Consola privada del creador para activar licencias PRO y Kill Switch. |
+| `templates/integration_snippet.js` | Guía de referencia | Código listo para pegar en `main.js`, `preload.js` y `renderer.js`. |
+
+### 🚀 Procedimiento de Replicación Automática en Otro Proyecto:
+Cuando el usuario ejecute `/distribuir-app` o `/monetizar` en un proyecto nuevo y elija la opción de replicar o una de las opciones modulares:
+1. Copiar los archivos correspondientes desde `C:\Users\Daniel\.gemini\config\skills\distribuir-app\templates\` hacia el workspace activo.
+2. Solicitar al usuario únicamente dos URLs:
+   - Su URL de Google Apps Script (para guardarla en `telemetry_url.txt`).
+   - Su URL de GitHub Gist `control.json` (para guardarla en `control_url.txt`).
+3. Integrar los IPC handlers de `integration_snippet.js` en el `main.js` y `preload.js` de la aplicación.
+4. ¡Listo! La nueva app queda 100% protegida, monetizada y conectada a la telemetría en menos de 1 minuto.
+
+---
+
 ## 🛡️ Protocolo de Seguridad y Anti-Regresión
 
 1. **Separación de Dominios:** El cliente final solo contiene peticiones de lectura (`GET` a Gist y `POST` a Apps Script). El token de administración (`PAT`) jamás se empaqueta en el ejecutable del cliente.

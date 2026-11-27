@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel de Administración - SubiClip Live</title>
+  <style>
+    :root {
+      --bg: #0c0f17;
+      --card-bg: #151a26;
+      --card-border: #232c3f;
+      --accent: #6366f1;
+      --accent-hover: #4f46e5;
+      --danger: #ef4444;
+      --danger-hover: #dc2626;
+      --success: #10b981;
+      --text-main: #f1f5f9;
+      --text-muted: #94a3b8;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text-main);
+      padding: 20px;
+      line-height: 1.5;
+    }
+
+    .container { max-width: 900px; margin: 0 auto; }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-badge {
+      background: linear-gradient(135deg, #6366f1, #a855f7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 14px;
+      letter-spacing: 0.5px;
+    }
+    h1 { font-size: 22px; font-weight: 700; }
+    .subtitle { font-size: 13px; color: var(--text-muted); }
+
+    .grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+    @media (min-width: 768px) {
+      .grid-2 { grid-template-columns: 1fr 1fr; }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .form-group { margin-bottom: 16px; }
+    label { display: block; font-size: 13px; color: var(--text-muted); margin-bottom: 6px; }
+    input[type="text"], input[type="password"], textarea {
+      width: 100%;
+      background: #090c12;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: var(--text-main);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    input:focus, textarea:focus { border-color: var(--accent); }
+    textarea { resize: vertical; min-height: 70px; font-family: inherit; }
+
+    .switch-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #090c12;
+      border: 1px solid var(--card-border);
+      padding: 14px 18px;
+      border-radius: 10px;
+    }
+    .switch-info h3 { font-size: 15px; font-weight: 600; }
+    .switch-info p { font-size: 12px; color: var(--text-muted); }
+
+    .toggle {
+      position: relative;
+      width: 56px;
+      height: 30px;
+    }
+    .toggle input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: var(--danger);
+      transition: 0.3s;
+      border-radius: 30px;
+    }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 22px;
+      width: 22px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      transition: 0.3s;
+      border-radius: 50%;
+    }
+    input:checked + .slider { background-color: var(--success); }
+    input:checked + .slider:before { transform: translateX(26px); }
+
+    .btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+    .btn-danger { background: var(--danger); }
+    .btn-danger:hover { background: var(--danger-hover); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+    }
+    .btn-outline:hover { background: #1c2436; border-color: #3b4763; }
+    .btn-block { width: 100%; justify-content: center; }
+
+    .machine-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 220px;
+      overflow-y: auto;
+      margin-top: 10px;
+      padding-right: 4px;
+    }
+    .machine-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #090c12;
+      border: 1px solid var(--card-border);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+    .machine-del-btn {
+      background: none;
+      border: none;
+      color: var(--danger);
+      cursor: pointer;
+      font-size: 14px;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .machine-del-btn:hover { background: rgba(239,68,68,0.15); }
+
+    .status-banner {
+      padding: 12px 16px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .status-banner.success { display: block; background: rgba(16,185,129,0.15); border: 1px solid var(--success); color: #34d399; }
+    .status-banner.error { display: block; background: rgba(239,68,68,0.15); border: 1px solid var(--danger); color: #f87171; }
+    .status-banner.info { display: block; background: rgba(99,102,241,0.15); border: 1px solid var(--accent); color: #818cf8; }
+
+    .sync-actions { display: flex; gap: 12px; margin-top: 24px; flex-wrap: wrap; }
+    .pill { display: inline-block; font-size: 11px; padding: 2px 8px; border-radius: 12px; font-weight: 600; }
+    .pill-green { background: rgba(16,185,129,0.2); color: #34d399; }
+    .pill-red { background: rgba(239,68,68,0.2); color: #f87171; }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo-area">
+      <div class="logo-badge">SUBICLIP ADMIN</div>
+      <div>
+        <h1>Centro de Mando del Creador</h1>
+        <p class="subtitle">Control remoto de licencias, Kill Switch y observabilidad de flota</p>
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-outline" onclick="openSheets()">📊 Abrir Google Sheets</button>
+    </div>
+  </header>
+
+  <div id="statusBanner" class="status-banner"></div>
+
+  <!-- CONFIGURACIÓN API GITHUB -->
+  <div class="card" style="margin-bottom: 20px;">
+    <div class="card-title">🔑 Configuración de Conexión Privada</div>
+    <div class="grid grid-2">
+      <div class="form-group">
+        <label>GitHub Personal Access Token (PAT con permiso "gist")</label>
+        <input type="password" id="githubToken" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+      </div>
+      <div class="form-group">
+        <label>Gist ID de control.json</label>
+        <input type="text" id="gistId" placeholder="Ej: 8b7d9c1234567890abcdef">
+      </div>
+    </div>
+    <div class="form-group">
+      <label>URL de Hoja de Google Sheets (Telemetría)</label>
+      <input type="text" id="sheetsUrl" placeholder="https://docs.google.com/spreadsheets/d/...">
+    </div>
+    <div style="display:flex; gap: 10px;">
+      <button class="btn btn-outline" onclick="saveConfig()">💾 Guardar Configuración Local</button>
+      <button class="btn" onclick="fetchGistData()">🔄 Cargar Estado Actual desde GitHub</button>
+    </div>
+  </div>
+
+  <!-- CONTROL DE LICENCIAS Y KILL SWITCH -->
+  <div class="grid grid-2">
+    <!-- COLUMNA 1: KILL SWITCH GLOBAL & PARÁMETROS -->
+    <div class="card">
+      <div class="card-title">🚨 Interruptor Maestro (Kill Switch Global)</div>
+
+      <div class="switch-container">
+        <div class="switch-info">
+          <h3 id="switchLabelText">APLICACIÓN ACTIVA</h3>
+          <p id="switchSubText">Todas las máquinas autorizadas pueden usar el software</p>
+        </div>
+        <label class="toggle">
+          <input type="checkbox" id="globalActiveToggle" checked onchange="updateSwitchVisuals()">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="form-group" style="margin-top: 18px;">
+        <label>Versión Mínima Requerida</label>
+        <input type="text" id="minVersionInput" value="1.0.0" placeholder="Ej: 1.0.0">
+      </div>
+
+      <div class="form-group">
+        <label>Mensaje de Soporte / Aviso al Bloquear</label>
+        <textarea id="lockMessageInput" placeholder="Mensaje visible para el usuario si se bloquea la app"></textarea>
+      </div>
+    </div>
+
+    <!-- COLUMNA 2: LISTA NEGRA (MÁQUINAS BLOQUEADAS) -->
+    <div class="card">
+      <div class="card-title">🚫 Bloqueo Selectivo por Machine ID</div>
+      
+      <div class="form-group">
+        <label>Agregar Machine ID a Lista Negra</label>
+        <div style="display:flex; gap: 8px;">
+          <input type="text" id="newMachineIdInput" placeholder="subi_xxxx_yyyy">
+          <button class="btn btn-danger" onclick="addBlockedMachine()">Bloquear</button>
+        </div>
+      </div>
+
+      <label>Máquinas Bloqueadas Actualmente (<span id="blockedCount">0</span>)</label>
+      <div id="machineList" class="machine-list">
+        <!-- Renderizado dinámico -->
+      </div>
+    </div>
+  </div>
+
+  <!-- COLUMNA 3: LICENCIAS PRO (SIN MARCA DE AGUA) -->
+  <div class="card" style="margin-top: 20px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:16px;">
+      <div class="card-title" style="margin-bottom:0;">⭐ Licencias PRO (Sin Marca de Agua Viral)</div>
+      <button id="promoBtn" class="btn btn-outline" style="border-color:#f59e0b; color:#fbbf24;" onclick="toggleOpenHousePromo()">
+        🎉 Activar Modo Puertas Abiertas (PRO Global)
+      </button>
+    </div>
+
+    <div id="promoBanner" style="display:none; background:rgba(245,158,11,0.15); border:1px solid #f59e0b; padding:12px 16px; border-radius:8px; margin-bottom:16px; color:#fde68a; font-size:13px;">
+      ✨ <strong>¡MODO PUERTAS ABIERTAS ACTIVO (*)!</strong> Todas las máquinas del mundo están autorizadas como PRO sin marca de agua.
+    </div>
+
+    <div class="grid grid-2">
+      <div class="form-group">
+        <label>Asignar Licencia PRO a Machine ID</label>
+        <div style="display:flex; gap: 8px;">
+          <input type="text" id="newProMachineIdInput" placeholder="subi_xxxx_yyyy">
+          <button class="btn" style="background:#10b981;" onclick="addProMachine()">⭐ Asignar PRO</button>
+        </div>
+      </div>
+      <div>
+        <label>Máquinas con Licencia PRO Activa (<span id="proCount">0</span>)</label>
+        <div id="proMachineList" class="machine-list">
+          <!-- Renderizado dinámico -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTÓN DE PUBLICACIÓN -->
+  <div class="sync-actions">
+    <button class="btn btn-block" style="padding: 16px; font-size: 16px;" onclick="publishGistChanges()">
+      🚀 PUBLICAR CAMBIOS EN GITHUB GIST (ACTUALIZAR FLOTA EN VIVO)
+    </button>
+  </div>
+</div>
+
+<script>
+  let state = {
+    global_active: true,
+    min_allowed_version: "1.0.0",
+    blocked_machines: [],
+    pro_machines: [],
+    message: "Tu acceso ha sido desactivado temporalmente. Contacta al soporte para regularizar tu licencia."
+  };
+
+  // Cargar configuración guardada al iniciar
+  window.addEventListener('DOMContentLoaded', () => {
+    loadSavedConfig();
+  });
+
+  function showBanner(text, type = 'info') {
+    const banner = document.getElementById('statusBanner');
+    banner.textContent = text;
+    banner.className = `status-banner ${type}`;
+    banner.style.display = 'block';
+    setTimeout(() => {
+      if (type !== 'error') banner.style.display = 'none';
+    }, 5000);
+  }
+
+  function extractGistId(val) {
+    if (!val) return '';
+    const str = String(val).trim();
+    const match = str.match(/([a-f0-9]{32})/i);
+    return match ? match[1] : str;
+  }
+
+  function saveConfig() {
+    const token = document.getElementById('githubToken').value.trim();
+    const rawGistId = document.getElementById('gistId').value.trim();
+    const gistId = extractGistId(rawGistId);
+    document.getElementById('gistId').value = gistId;
+    const sheetsUrl = document.getElementById('sheetsUrl').value.trim();
+
+    localStorage.setItem('subiclip_admin_token', token);
+    localStorage.setItem('subiclip_admin_gist', gistId);
+    localStorage.setItem('subiclip_admin_sheets', sheetsUrl);
+
+    showBanner('✅ Configuración guardada en tu navegador de forma segura.', 'success');
+  }
+
+  function loadSavedConfig() {
+    const token = localStorage.getItem('subiclip_admin_token') || '';
+    const gistId = localStorage.getItem('subiclip_admin_gist') || '18ff89471910c6dabd3f93d90c6d1120';
+    const sheetsUrl = localStorage.getItem('subiclip_admin_sheets') || 'https://docs.google.com/spreadsheets/d/11A_iMTGFSrnQV5tG8UF9VJKGWLLT6WhkWz4uUBrYTdc/edit';
+
+    if (token) document.getElementById('githubToken').value = token;
+    if (gistId) document.getElementById('gistId').value = extractGistId(gistId);
+    if (sheetsUrl) document.getElementById('sheetsUrl').value = sheetsUrl;
+
+    if (gistId) {
+      fetchGistData();
+    }
+  }
+
+  function openSheets() {
+    const url = document.getElementById('sheetsUrl').value.trim();
+    if (url) {
+      window.open(url, '_blank');
+    } else {
+      alert('Por favor configura la URL de tu Google Sheets primero.');
+    }
+  }
+
+  function updateSwitchVisuals() {
+    const checked = document.getElementById('globalActiveToggle').checked;
+    const label = document.getElementById('switchLabelText');
+    const sub = document.getElementById('switchSubText');
+
+    if (checked) {
+      label.textContent = 'APLICACIÓN ACTIVA';
+      label.style.color = '#34d399';
+      sub.textContent = 'Todas las máquinas autorizadas pueden usar el software';
+    } else {
+      label.textContent = 'KILL SWITCH ACTIVADO (SUSPENDIDA)';
+      label.style.color = '#f87171';
+      sub.textContent = '¡Toda la flota mundial se congelará en el próximo ciclo!';
+    }
+  }
+
+  function renderBlockedMachines() {
+    const list = document.getElementById('machineList');
+    list.innerHTML = '';
+    document.getElementById('blockedCount').textContent = state.blocked_machines.length;
+
+    if (state.blocked_machines.length === 0) {
+      list.innerHTML = '<div style="color:var(--text-muted); font-size:13px; padding:10px 0;">No hay máquinas bloqueadas. Todo normal.</div>';
+      return;
+    }
+
+    state.blocked_machines.forEach(mid => {
+      const item = document.createElement('div');
+      item.className = 'machine-item';
+      item.innerHTML = `
+        <span>${mid}</span>
+        <button class="machine-del-btn" onclick="removeBlockedMachine('${mid}')" title="Desbloquear">🗑️ Desbloquear</button>
+      `;
+      list.appendChild(item);
+    });
+  }
+
+  function addBlockedMachine() {
+    const input = document.getElementById('newMachineIdInput');
+    const mid = input.value.trim();
+    if (!mid) return;
+
+    if (state.blocked_machines.includes(mid)) {
+      alert('Ese Machine ID ya se encuentra en la lista negra.');
+      return;
+    }
+
+    state.blocked_machines.push(mid);
+    input.value = '';
+    renderBlockedMachines();
+    showBanner(`Máquina ${mid} agregada a la lista negra pendiente de publicación.`, 'info');
+  }
+
+  function removeBlockedMachine(mid) {
+    state.blocked_machines = state.blocked_machines.filter(m => m !== mid);
+    renderBlockedMachines();
+    showBanner(`Máquina ${mid} eliminada de la lista negra pendiente de publicación.`, 'info');
+  }
+
+  function toggleOpenHousePromo() {
+    if (!state.pro_machines) state.pro_machines = [];
+    const isOpen = state.pro_machines.includes('*');
+    if (isOpen) {
+      state.pro_machines = state.pro_machines.filter(m => m !== '*');
+      showBanner('Modo Puertas Abiertas desactivado. Pendiente de publicar.', 'info');
+    } else {
+      state.pro_machines.unshift('*');
+      showBanner('🎉 ¡Modo Puertas Abiertas activado! Todas las máquinas serán PRO.', 'success');
+    }
+    renderProMachines();
+  }
+
+  function renderProMachines() {
+    const list = document.getElementById('proMachineList');
+    list.innerHTML = '';
+    document.getElementById('proCount').textContent = (state.pro_machines || []).length;
+
+    const isPromo = (state.pro_machines || []).includes('*');
+    const promoBanner = document.getElementById('promoBanner');
+    const promoBtn = document.getElementById('promoBtn');
+
+    if (isPromo) {
+      if (promoBanner) promoBanner.style.display = 'block';
+      if (promoBtn) {
+        promoBtn.innerHTML = '❌ Desactivar Modo Puertas Abiertas';
+        promoBtn.style.background = '#dc2626';
+        promoBtn.style.color = '#ffffff';
+        promoBtn.style.borderColor = '#dc2626';
+      }
+    } else {
+      if (promoBanner) promoBanner.style.display = 'none';
+      if (promoBtn) {
+        promoBtn.innerHTML = '🎉 Activar Modo Puertas Abiertas (PRO Global)';
+        promoBtn.style.background = 'transparent';
+        promoBtn.style.color = '#fbbf24';
+        promoBtn.style.borderColor = '#f59e0b';
+      }
+    }
+
+    if (!state.pro_machines || state.pro_machines.length === 0) {
+      list.innerHTML = '<div style="color:var(--text-muted); font-size:13px; padding:10px 0;">No hay licencias PRO asignadas. Todos exportan con marca de agua viral.</div>';
+      return;
+    }
+
+    state.pro_machines.forEach(mid => {
+      const item = document.createElement('div');
+      item.className = 'machine-item';
+      const label = mid === '*' ? '<strong style="color:#fbbf24;">🎉 MODO GLOBAL (*)</strong>' : `<strong style="color:#10b981;">⭐ PRO:</strong> ${mid}`;
+      item.innerHTML = `
+        <span>${label}</span>
+        <button class="machine-del-btn" onclick="removeProMachine('${mid}')" title="Revocar PRO">🗑️ Quitar PRO</button>
+      `;
+      list.appendChild(item);
+    });
+  }
+
+  function addProMachine() {
+    const input = document.getElementById('newProMachineIdInput');
+    const mid = input.value.trim();
+    if (!mid) return;
+
+    if (!state.pro_machines) state.pro_machines = [];
+    if (state.pro_machines.includes(mid)) {
+      alert('Ese Machine ID ya tiene licencia PRO asignada.');
+      return;
+    }
+
+    state.pro_machines.push(mid);
+    input.value = '';
+    renderProMachines();
+    showBanner(`Máquina ${mid} agregada a lista PRO pendiente de publicación.`, 'success');
+  }
+
+  function removeProMachine(mid) {
+    state.pro_machines = (state.pro_machines || []).filter(m => m !== mid);
+    renderProMachines();
+    showBanner(`Licencia PRO revocada para ${mid} pendiente de publicación.`, 'info');
+  }
+
+  async function fetchGistData() {
+    const rawGistId = document.getElementById('gistId').value.trim();
+    const gistId = extractGistId(rawGistId);
+    if (gistId) document.getElementById('gistId').value = gistId;
+    const token = document.getElementById('githubToken').value.trim();
+
+    if (!gistId) {
+      showBanner('Ingresa el Gist ID para cargar los datos.', 'error');
+      return;
+    }
+
+    showBanner('Consultando GitHub Gist...', 'info');
+
+    try {
+      const headers = { 'Accept': 'application/vnd.github.v3+json' };
+      if (token) headers['Authorization'] = `token ${token}`;
+
+      const res = await fetch(`https://api.github.com/gists/${gistId}`, { headers });
+      if (!res.ok) throw new Error(`HTTP ${res.status}: ${res.statusText}`);
+
+      const data = await res.json();
+      const filename = Object.keys(data.files).find(f => f.endsWith('.json')) || Object.keys(data.files)[0];
+      const content = JSON.parse(data.files[filename].content);
+
+      state = {
+        global_active: content.global_active !== false,
+        min_allowed_version: content.min_allowed_version || "1.0.0",
+        blocked_machines: Array.isArray(content.blocked_machines) ? content.blocked_machines : [],
+        pro_machines: Array.isArray(content.pro_machines) ? content.pro_machines : [],
+        message: content.message || ""
+      };
+
+      document.getElementById('globalActiveToggle').checked = state.global_active;
+      document.getElementById('minVersionInput').value = state.min_allowed_version;
+      document.getElementById('lockMessageInput').value = state.message;
+
+      updateSwitchVisuals();
+      renderBlockedMachines();
+      renderProMachines();
+      showBanner('✅ Datos cargados exitosamente desde GitHub Gist.', 'success');
+    } catch (err) {
+      console.error(err);
+      showBanner(`Error al consultar GitHub: ${err.message}`, 'error');
+    }
+  }
+
+  async function publishGistChanges() {
+    const rawGistId = document.getElementById('gistId').value.trim();
+    const gistId = extractGistId(rawGistId);
+    if (gistId) document.getElementById('gistId').value = gistId;
+    const token = document.getElementById('githubToken').value.trim();
+
+    if (!gistId || !token) {
+      showBanner('Se requiere el Token de GitHub y el Gist ID para publicar cambios.', 'error');
+      alert('Para publicar cambios en GitHub necesitas ingresar tu GitHub Token con permiso "gist".');
+      return;
+    }
+
+    // Actualizar estado desde el formulario
+    state.global_active = document.getElementById('globalActiveToggle').checked;
+    state.min_allowed_version = document.getElementById('minVersionInput').value.trim();
+    state.message = document.getElementById('lockMessageInput').value.trim();
+
+    showBanner('Enviando actualización a GitHub API...', 'info');
+
+    try {
+      // 1. Obtener nombre del archivo dentro del Gist
+      const getRes = await fetch(`https://api.github.com/gists/${gistId}`, {
+        headers: {
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github.v3+json'
+        }
+      });
+      if (!getRes.ok) throw new Error(`Error al leer Gist: ${getRes.statusText}`);
+      const gistData = await getRes.json();
+      const targetFilename = Object.keys(gistData.files).find(f => f.endsWith('.json')) || 'control.json';
+
+      // 2. Preparar payload con actualización atómica
+      const payload = {
+        description: `SubiClip Live License Control - ${new Date().toISOString()}`,
+        files: {
+          [targetFilename]: {
+            content: JSON.stringify(state, null, 2)
+          }
+        }
+      };
+
+      // 3. Emitir PATCH a la API de GitHub
+      const patchRes = await fetch(`https://api.github.com/gists/${gistId}`, {
+        method: 'PATCH',
+        headers: {
+          'Authorization': `token ${token}`,
+          'Content-Type': 'application/json',
+          'Accept': 'application/vnd.github.v3+json'
+        },
+        body: JSON.stringify(payload)
+      });
+
+      if (!patchRes.ok) throw new Error(`Error en PATCH: ${patchRes.statusText}`);
+
+      showBanner('🎉 ¡CAMBIOS PUBLICADOS CON ÉXITO! La flota recibirá la actualización en su próximo chequeo.', 'success');
+      alert('¡Publicación exitosa! El archivo de control en GitHub Gist ha sido actualizado.');
+    } catch (err) {
+      console.error(err);
+      showBanner(`Error al publicar: ${err.message}`, 'error');
+      alert(`Error al publicar en GitHub: ${err.message}`);
+    }
+  }
+</script>
+
+</body>
+</html>
