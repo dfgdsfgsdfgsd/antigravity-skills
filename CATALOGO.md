@@ -98,8 +98,19 @@
 
 ---
 
+## 7. 🚀 Distribución, Telemetría & Monetización
+
+| Comando Principal | Alias Reconocidos | ¿Qué hace? |
+| :--- | :--- | :--- |
+| **`/distribuir-app`** | `/distribucion`, `/monetizar`, `/telemetria-menu` | Menú interactivo de 5 módulos: Telemetría a Google Sheets ($0), Freemium (3 clips/día + marcas de agua), Kill Switch/Licencias PRO en Gist, Suite Completa y Libros Técnicos en Word con diagramas incrustados. |
+| **`/ota-telemetria-electron`** | `/actualizaciones-ota`, `/fleet-telemetry`, `/telemetria-electron` | Telemetría de flota con Machine ID persistente en %APPDATA% y auto-actualizaciones silenciosas (OTA) con electron-builder. |
+| **`/kill-switch-electron`** | `/desactivar-remoto`, `/licencia-remota` | Sistema de desactivación remota, control de licencias y bloqueo selectivo por Machine ID con persistencia anti-bypass en Windows. |
+
+---
+
 ## 🎯 Guía Rápida: "¿Qué comando uso si quiero...?"
 
+- **...monetizar, poner límites diarios o medir el uso de mi app?** ➔ `/distribuir-app` o `/monetizar`
 - **...iniciar un servidor sin tocar la consola?** ➔ `/run` o `/lanzador`
 - **...entender qué hace una carpeta o proyecto nuevo?** ➔ `/que-hace` o `/explicar`
 - **...guardar y respaldar todo mi trabajo?** ➔ `/sync` o `/guardar`
