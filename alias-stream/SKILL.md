@@ -201,3 +201,6 @@ function saveStreamHistory(name, url) {
 4. **Atenuación de Fondo (Anti-Recorte de Videos por GPU):**
    - Si la interfaz contiene reproductores `<video>` (16:9 o 9:16 vertical), un modal con baja opacidad proyecta el video como un parche rectangular cortado detrás de la tarjeta.
    - Para resolverlo, usar opacidad al 90% (`background: rgba(10, 14, 20, 0.90); backdrop-filter: blur(10px);`) y pausar los videos de fondo al abrir el modal, reanudándolos al cerrar.
+5. **Filtrado y Validación Temprana de URLs en Tiempo Real:**
+   - Bloquear el almacenamiento y procesamiento de enlaces arbitrarios o no compatibles (ej. sitios web planos o texto basura).
+   - Validar que el dominio corresponda estrictamente a plataformas compatibles (YouTube Live, Twitch, Kick o flujos directos `.m3u8`/RTMP), proporcionando feedback visual dinámico (`🔴 YouTube`, `🟣 Twitch`, `🟢 Kick`) antes de invocar los extractores de backend (`yt-dlp`).
