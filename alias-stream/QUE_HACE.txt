@@ -1,0 +1,31 @@
+================================================================================
+                    SKILL: /alias-stream (Gestión de Streams)
+================================================================================
+
+¿QUÉ HACE ESTA SKILL?
+--------------------------------------------------------------------------------
+Implementa una arquitectura de interfaz moderna para aplicaciones de streaming 
+y reproductores multimedia que permite:
+1. Reemplazar URLs crudas largas de YouTube/Twitch/Kick por nombres y alias amigables.
+2. Abrir un modal ultra rápido (0ms, sin animaciones lentas) con desenfoque de fondo.
+3. Detectar automáticamente URLs copiadas en el portapapeles y pre-pegarlas al instante.
+4. Mantener la separación de datos entre URL real (`dataset.url`) y alias visual (`value`).
+5. Blindar los estados visuales para que los botones de "Directo" nunca aparezcan si
+   no hay una transmisión real conectada.
+
+COMANDOS DISPONIBLES:
+--------------------------------------------------------------------------------
+- /alias-stream
+- /stream-alias
+- /url-amigable
+
+STACK COMPATIBLE:
+--------------------------------------------------------------------------------
+- Electron (Node.js + Chromium)
+- Frontend Web Vanilla (HTML5, CSS3, JavaScript)
+- Tauri / WebViews
+
+UBICACIÓN DE LA SKILL:
+--------------------------------------------------------------------------------
+C:\Users\Daniel\.gemini\config\skills\alias-stream\SKILL.md
+================================================================================

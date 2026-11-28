@@ -1,0 +1,8 @@
+================================================================================
+                    SKILL: /stream-alias (Alias de /alias-stream)
+================================================================================
+
+Este comando es un alias directo de /alias-stream.
+Ver documentación principal en:
+C:\Users\Daniel\.gemini\config\skills\alias-stream\SKILL.md
+================================================================================
