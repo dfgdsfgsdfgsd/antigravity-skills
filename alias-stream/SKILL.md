@@ -204,3 +204,6 @@ function saveStreamHistory(name, url) {
 5. **Filtrado y Validación Temprana de URLs en Tiempo Real:**
    - Bloquear el almacenamiento y procesamiento de enlaces arbitrarios o no compatibles (ej. sitios web planos o texto basura).
    - Validar que el dominio corresponda estrictamente a plataformas compatibles (YouTube Live, Twitch, Kick o flujos directos `.m3u8`/RTMP), proporcionando feedback visual dinámico (`🔴 YouTube`, `🟣 Twitch`, `🟢 Kick`) antes de invocar los extractores de backend (`yt-dlp`).
+6. **Gestión y Eliminación de Historial de Enlaces:**
+   - Brindar en la ventana modal una lista interactiva de las transmisiones guardadas.
+   - Cada enlace debe tener su botón individual de papelera (`🗑️`) para borrarlo de `localStorage` y del autocompletado en `<datalist>`, más un botón para limpiar el historial completo.
