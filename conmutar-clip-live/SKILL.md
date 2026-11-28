@@ -141,3 +141,6 @@ Garantiza al usuario al menos 3 formas inmediatas de regresar al directo:
 2. **Guarda en `timeupdate` de Clips:**
    - Las funciones que actualizan subtítulos o barras de progreso de clips deben abortar inmediatamente si `mode !== 'clip'`:
      `if (currentMode !== 'clip') return;`
+3. **Sincronización Dual de Placeholders (Anti-Pantalla Tapada Inicial):**
+   - Cuando la app inicia en frío sin transmisión conectada y el usuario reproduce directamente un clip del búfer, `switchToClip` **debe ocultar obligatoriamente los placeholders de ambos paneles** (`videoPlaceholder.style.display = 'none'`, `phonePlaceholder.style.display = 'none'`) y activar ambos reproductores (`videoPlayer.style.display = 'block'`, `previewVideo.style.display = 'block'`). De lo contrario, el placeholder 16:9 ("Ningún directo conectado") se superpone sobre el video del clip.
+   - Al conmutar de regreso a Live (`switchToLive`), si no hay transmisión activa (`!liveMediaUrl`), restaurar ambos placeholders (`display = 'flex'`) y ocultar los reproductores (`display = 'none'`).
