@@ -1,0 +1,25 @@
+==============================================================================
+SKILL: /paneo-dinamico (Alias: /camara-manual, /paneo-camara)
+==============================================================================
+
+¿QUÉ HACE?
+Implementa la arquitectura completa de encuadre manual continuo (Modo Camarógrafo)
+para streaming y generación de clips verticales (16:9 a 9:16):
+1. Muestrea las coordenadas del encuadre manual cada 80ms durante el directo.
+2. Extrae y persiste la trayectoria de cámara en disco (traj_<clip_id>.json).
+3. Reproduce el paneo a 60 FPS con filtro estabilizador Steadicam en el DOM.
+4. Renderiza el movimiento en el video final MP4 con expresiones matemáticas dinámicas en FFmpeg.
+5. Blindaje integral contra bloqueos de archivo en Windows (EBUSY / EPERM).
+
+¿CUÁNDO USARLA?
+- Cuando necesites registrar el movimiento manual de cámara del usuario mientras graba.
+- Cuando quieras que el recorte 9:16 siga suavemente la acción sin saltos bruscos.
+- Cuando la eliminación de archivos de video en Windows falle por estar retenidos por el navegador.
+
+STACK COMPATIBLE:
+Node.js, Electron, JavaScript (DOM / HTML5 Video), Python (FFmpeg wrapper).
+
+ARCHIVOS CLAVE:
+- SKILL.md: Especificación técnica y fórmulas matemáticas completas.
+- QUE_HACE.txt: Esta ficha descriptiva rápida.
+==============================================================================

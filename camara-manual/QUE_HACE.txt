@@ -1,0 +1,6 @@
+==============================================================================
+SKILL: /camara-manual (Alias de /paneo-dinamico)
+==============================================================================
+Consulta la documentación principal en:
+C:\Users\Daniel\.gemini\config\skills\paneo-dinamico\SKILL.md
+==============================================================================
