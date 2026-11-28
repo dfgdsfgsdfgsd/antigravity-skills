@@ -198,3 +198,6 @@ function saveStreamHistory(name, url) {
    - Si el campo del nombre se deja vacío, autogenerar un nombre legible derivado del dominio (ej: `Directo youtube.com`) en lugar de dejar el campo en blanco.
 3. **Soporte de Entrada Directa:**
    - Si el usuario tipea o pega directamente una URL cruda en el campo principal sin usar el modal, la función `connectStream` debe detectarlo y procesarlo con normalidad.
+4. **Atenuación de Fondo (Anti-Recorte de Videos por GPU):**
+   - Si la interfaz contiene reproductores `<video>` (16:9 o 9:16 vertical), un modal con baja opacidad proyecta el video como un parche rectangular cortado detrás de la tarjeta.
+   - Para resolverlo, usar opacidad al 90% (`background: rgba(10, 14, 20, 0.90); backdrop-filter: blur(10px);`) y pausar los videos de fondo al abrir el modal, reanudándolos al cerrar.
