@@ -36,7 +36,11 @@ function getDailyUsageFile() {
 }
 
 function getTodayString() {
-  return new Date().toISOString().split('T')[0]; // "YYYY-MM-DD"
+  const d = new Date();
+  const year = d.getFullYear();
+  const month = String(d.getMonth() + 1).padStart(2, '0');
+  const day = String(d.getDate()).padStart(2, '0');
+  return `${year}-${month}-${day}`; // Fecha local "YYYY-MM-DD"
 }
 
 function getDailyUsage() {
@@ -45,7 +49,8 @@ function getDailyUsage() {
   let usage = { date: today, count: 0, lastExportTime: null };
   try {
     if (fs.existsSync(file)) {
-      const parsed = JSON.parse(fs.readFileSync(file, 'utf8'));
+      const raw = fs.readFileSync(file, 'utf8').trim().replace(/^\uFEFF/, '');
+      const parsed = JSON.parse(raw);
       if (parsed && parsed.date === today) {
         usage = parsed;
       }
