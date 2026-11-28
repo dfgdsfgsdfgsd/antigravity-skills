@@ -104,10 +104,13 @@ Al pulsar **F9** o detener grabación manual:
    file 'D:/vivo/buffer/live_hls/live121.ts'
    ...
    ```
-4. Concatenar en milisegundos sin re-codificar:
+4. Concatenar en milisegundos sin re-codificar con alineación estricta de timestamps desde t=0:
    ```bash
-   ffmpeg -y -f concat -safe 0 -i concat.txt -c copy clip_timestamp.mp4
+   ffmpeg -y -f concat -safe 0 -i concat.txt -c copy -fflags +genpts -avoid_negative_ts make_zero -movflags +faststart clip_timestamp.mp4
    ```
+   > [!IMPORTANT]
+   > Las banderas `-fflags +genpts -avoid_negative_ts make_zero -movflags +faststart` son **obligatorias**. Sin ellas, los fragmentos MPEG-TS conservan sus marcas PTS originales desfasadas, provocando que el audio arranque de inmediato pero el video quede congelado/pausado durante los primeros 2 a 4 segundos.
+
 5. Generar miniatura en 1 frame:
    ```bash
    ffmpeg -y -i clip_timestamp.mp4 -ss 00:00:01 -vframes 1 -q:v 2 thumb_timestamp.jpg
@@ -120,3 +123,4 @@ Al pulsar **F9** o detener grabación manual:
 1. **Limpieza Previa:** Antes de arrancar un nuevo directo, terminar el proceso FFmpeg anterior y vaciar la carpeta `live_hls/` para evitar que fragmentos viejos corrompan la nueva lista de reproducción.
 2. **Espera de Generación:** Al iniciar la conexión, aguardar 2 a 3 segundos hasta que `live.m3u8` tenga al menos 1 fragmento antes de responder al frontend.
 3. **Persistencia del Monitor:** Al reproducir un clip en el móvil vertical, el reproductor panorámico izquierdo **nunca debe detenerse** para que el usuario no pierda el hilo del directo en vivo.
+4. **Desfase Audio/Video en Concat (PTS Gap):** Nunca ejecutes `ffmpeg -f concat -c copy` sin `-fflags +genpts -avoid_negative_ts make_zero -movflags +faststart`. De lo contrario, el contenedor MP4 resultante tendrá un desfase de inicio donde el espectro de audio se mueve pero la imagen de video queda en pausa durante 2 a 4 segundos.

@@ -147,6 +147,16 @@ Asegura que el script de inicio apunte a Electron:
 
 ---
 
+## 🛡️ Protocolo de Ciclo de Vida Limpio en Desarrollo (Clean Lifecycle)
+
+Cuando un desarrollador o agente de IA trabaja sobre el código fuente de Electron, relanzar automáticamente el ejecutable en cada micro-guardado genera **parpadeos, cierres sucesivos molestos y colisiones de sockets**. Aplica este protocolo:
+
+1. **Al iniciar el desarrollo / refactorización:** Detener completamente los procesos de Electron (`Stop-Process -Name electron`).
+2. **Durante la edición:** Realizar todas las modificaciones, pruebas unitarias y sincronizaciones en silencio sin abrir ventanas a medias.
+3. **Al finalizar el trabajo:** Iniciar la aplicación **una sola vez** (`npm start`), garantizando una experiencia fluida y sin ventanas parpadeantes.
+
+---
+
 ## 🛡️ Protocolo Anti-Regresión
 
 1. **Exclusión Estricta de Carpetas de Datos/Búfer:**
@@ -155,3 +165,5 @@ Asegura que el script de inicio apunte a Electron:
    - Siempre invocar `app.releaseSingleInstanceLock()` antes de `app.relaunch()`. Si no se libera, Windows detectará que la aplicación sigue abierta y abortará el nuevo proceso.
 3. **Mata de Procesos Hijos:**
    - Si la app corre procesos secundarios (FFmpeg, Python, servidores HTTP), deben terminarse (`stopLiveHls()`) antes de `app.exit(0)` para no dejar sockets colgados en el puerto.
+4. **Prevención de Tormenta de Reinicios (Relaunch Storm):**
+   - Si se editan múltiples archivos del proceso principal en ráfaga (`main.js`, `preload.js`), es preferible no forzar `app.relaunch()` automático en cada guardado, sino recargar suavemente el renderer y dejar que el ciclo de vida del entorno reinicie la app una sola vez al terminar.
